@@ -10,33 +10,29 @@ public class cPelanggan {
         int pilih = add.sc().nextInt();
         switch (pilih) {
             case 1:
-                System.out.println(" ⁘ Menu Buat Pelanggan Baru");
-                System.out.print("Nama: ");
-                String nama = add.sc().next();
-                System.out.print("Alamat: ");
-                String alamat = add.sc().next();
-                cTransaksi.pembeli = new cPelanggan(nama, alamat);
-                System.out.println("  ⁂ Pelanggan " + nama + " dibuat");
+                add.cls();
+                add.border();
+                System.out.println(" ⁘⁘ Menu Buat Pelanggan Baru");
+                add.border();
+                System.out.print("Nama\t: ");
+                String nama = add.sc().nextLine();
+                System.out.print("Alamat\t: ");
+                String alamat = add.sc().nextLine();
+                cTransaksi.pembeli[add.idxPembeli] = new cPembeli(nama, alamat);
+                add.idxPembeli++;
                 Pelanggan();
                 break;
+
             case 2:
-                System.out.println(" ⁘ Menu Lihat Pelanggan");
-                System.out.println("  ⁂ Pelanggan");
-                for (int i = 0; i < add.idxPelanggan; i++) {
-                    System.out.println("  " + (i + 1) + ". " + cTransaksi.pembeli[i].getNama());
-                }
-                System.out.print("Pilih Pelanggan: ");
-                int pilihPelanggan = add.sc().nextInt();
-                System.out.println("  ⁂ Pelanggan " + add.pembeli[pilihPelanggan - 1].getNama());
-                System.out.println("  ⁂ Alamat " + add.pembeli[pilihPelanggan - 1].getAlamat());
+                System.out.println(" ⁘⁘ Menu Lihat Pelanggan");
+                add.listPembeli();
                 Pelanggan();
                 break;
             case 3:
-                System.out.println(" ⁘ Keluar");
+                add.backToMenu();
                 break;
             default:
-                System.out.println(" ⁘ Menu Pelanggan");
-                System.out.println("  ⁂ Pilihan tidak ada");
+                add.salahInput();
                 Pelanggan();
                 break;
         }

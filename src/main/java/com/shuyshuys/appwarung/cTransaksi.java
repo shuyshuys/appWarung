@@ -343,7 +343,7 @@ public class cTransaksi {
 
     static int pilihPembeli;
     // static int[][] porsiPembeli;
-    static cTransaksi beli = new cTransaksi();
+    public static cTransaksi beli = new cTransaksi();
 
     public static void Transaksi() {
         int pilihanPembelian;
@@ -534,6 +534,10 @@ public class cTransaksi {
                     break;
                 case 4:
                     cMenuCLI.menuCLI();
+                    break;
+                default:
+                    add.salahInput();
+                    Transaksi();
                     break;
             }
         } while (pilihanPembelian != 4);

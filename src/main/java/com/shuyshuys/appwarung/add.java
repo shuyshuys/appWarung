@@ -137,7 +137,7 @@ public class add {
 
     // TODO: test print v2
     public static void printPembeli() {
-        System.out.println("  ⁂ Daftar Pembeli");
+        System.out.println("  ⁂ Daftar Pelanggan");
         System.out.println("  ⁂ NO\tID\t\tNAMA\t\tALAMAT");
         for (int i = 0; i < add.idxPembeli; i++) {
             System.out.println("  ⁂ [" + (i + 1) + "] " + cTransaksi.pembeli[i].getId() + "\t"
@@ -316,8 +316,9 @@ public class add {
     }
 
     public static void salahInput() {
-        JOptionPane.showMessageDialog(null, "Pilihan salah, mohon ulangi!", "",
-                JOptionPane.ERROR_MESSAGE);
+        // JOptionPane.showMessageDialog(null, "Pilihan salah, mohon ulangi!", "",
+        // JOptionPane.ERROR_MESSAGE);
+        System.out.println("Pilihan salah, mohon ulangi!");
     }
 
     public static void cls() {
