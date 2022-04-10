@@ -13,8 +13,6 @@ import java.util.Date;
 public class add {
     public static int idxMakanan = 0;
     public static int idxMinuman = 0;
-    // what is idxPelanggan for?
-    // public static int idxPelanggan = 0;
     public static int idxPembeli = 0;
     public static int idxTransaksi = 0;
     public static int idTransaksi = 902000;
@@ -356,22 +354,12 @@ public class add {
         return dateFormat.format(date);
     }
 
-    public static String PATH_MAKANAN = "./src/main/java/com/shuyshuys/appwarung/Kasir/makananMenu.txt";
-    public static String PATH_MINUMAN = "./src/main/java/com/shuyshuys/appwarung/Kasir/minumanMenu.txt";
-    public static String PATH_PEMBELI = "./src/main/java/com/shuyshuys/appwarung/Kasir/pembeli.txt";
-    public static String PATH_TRANSAKSI = "./src/main/java/com/shuyshuys/appwarung/Kasir/transaksi.txt";
-    public static String PATH_LOG = "./src/main/java/com/shuyshuys/appwarung/Kasir/log.txt";
+    public static String PATH_MAKANAN = "./src/main/java/com/shuyshuys/appwarung/database/makananMenu.txt";
+    public static String PATH_MINUMAN = "./src/main/java/com/shuyshuys/appwarung/database/minumanMenu.txt";
+    public static String PATH_PEMBELI = "./src/main/java/com/shuyshuys/appwarung/database/pembeli.txt";
+    public static String PATH_TRANSAKSI = "./src/main/java/com/shuyshuys/appwarung/database/transaksi.txt";
+    public static String PATH_LOG = "./src/main/java/com/shuyshuys/appwarung/database/log.txt";
 
-    // public static String PATH_ID_MAKANAN =
-    // "./src/main/java/com/shuyshuys/appwarung/Kasir/makananId.txt";
-    // public static String PATH_HARGA_MAKANAN =
-    // "./src/main/java/com/shuyshuys/appwarung/Kasir/makananHarga.txt";
-    // public static String PATH_STOK_MAKANAN =
-    // "./src/main/java/com/shuyshuys/appwarung/Kasir/makananStok.txt";
-    // public static String PATH_ID_MINUMAN =
-    // "./src/main/java/com/shuyshuys/appwarung/Kasir/minumanMenu.txt";
-    // public static String PATH_HARGA_MINUMAN =
-    // "./src/main/java/com/shuyshuys/appwarung/Kasir/hargaMinuman.txt";
     // public static String PATH_STRUK =
     // "./src/main/java/com/shuyshuys/appwarung/Kasir/struk.txt";
 
