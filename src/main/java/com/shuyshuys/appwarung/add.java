@@ -1,7 +1,7 @@
 package com.shuyshuys.appwarung;
 
 import java.util.Scanner;
-import javax.swing.JOptionPane;
+// import javax.swing.JOptionPane;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -140,8 +140,13 @@ public class add {
         System.out.println("  ⁂ Daftar Pelanggan");
         System.out.println("  ⁂ NO\tID\t\tNAMA\t\tALAMAT");
         for (int i = 0; i < add.idxPembeli; i++) {
-            System.out.println("  ⁂ [" + (i + 1) + "] " + cTransaksi.pembeli[i].getId() + "\t"
-                    + cTransaksi.pembeli[i].getNama() + "\t\t" + cTransaksi.pembeli[i].getAlamat());
+            if (cTransaksi.pembeli[i].getNama().length() < 8) {
+                System.out.println("  ⁂ [" + (i + 1) + "]" + cTransaksi.pembeli[i].getId() + "\t"
+                        + cTransaksi.pembeli[i].getNama() + "\t\t" + cTransaksi.pembeli[i].getAlamat());
+            } else {
+                System.out.println("  ⁂ [" + (i + 1) + "]" + cTransaksi.pembeli[i].getId() + "\t"
+                        + cTransaksi.pembeli[i].getNama() + "\t" + cTransaksi.pembeli[i].getAlamat());
+            }
         }
     }
 
