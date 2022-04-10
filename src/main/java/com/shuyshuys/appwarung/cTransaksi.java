@@ -34,7 +34,7 @@ public class cTransaksi {
     private static int[] totalHarga = new int[mineReader.idx_count];
     private int totalHargaLifeTime;
     private int[] bayar = new int[mineReader.idx_count];
-    private int[] kembalian = new int[mineReader.idx_count];
+    private static int[] kembalian = new int[mineReader.idx_count];
     private String[] tanggalTransaksi = new String[mineReader.idx_count];
 
     // NOTE: constructor untuk reader TODO: kayanya ada yg kurang di setter ny
@@ -97,7 +97,7 @@ public class cTransaksi {
             porsiMakanan[idxPembeli][idxMakanan] = jumlah;
             jumlahMakanan++;
             System.out.println(
-                    "  ⁂ Objek Makanan " + makanan.getNama() + " ditambahkan ke Nota " + pembeli[idxPembeli].getNama()
+                    "  ⁂ Makanan " + makanan.getNama() + " ditambahkan ke Nota " + pembeli[idxPembeli].getNama()
                             + "...");
             beli.ToString(idxPembeli);
         } else {
@@ -393,7 +393,7 @@ public class cTransaksi {
                             add.cls();
                             add.border();
                             System.out.println(
-                                    " ⁘⁘⁘ Tambah Pesanan pembeli " + cTransaksi.pembeli[pilihPembeli - 1].getNama());
+                                    " ⁘⁘⁘ Tambah Pesanan - " + cTransaksi.pembeli[pilihPembeli - 1].getNama());
                             System.out.println("Input Kode Menu\n\t0 untuk makanan\n\t1 untuk minuman");
                             System.out.print("Kode menu: ");
                             int kodeMenu = add.sc().nextInt();
@@ -441,11 +441,23 @@ public class cTransaksi {
                     }
                     add.border();
                     add.idxTransaksi++; // FIXME: check emang ini dipake ya?
-                    System.out.print("Bayar\t\t\t\t: ");
-                    int bayar = add.sc().nextInt();
-                    int kembalian = bayar - totalHarga[pilihPembeli - 1];
-                    System.out.println("Kembalian\t\t\t: " + kembalian);
-                    cPembeli.jPembelian++;
+                    boolean paidInFull = false;
+                    do {
+                        add.cls();
+                        beli.ToString(pilihPembeli - 1);
+                        add.border();
+                        System.out.println(" ⁘⁘⁘ Bayar");
+                        System.out.println("Total Harga\t\t: " + beli.getTotalHarga(pilihPembeli - 1));
+                        System.out.println("Bayar\t\t\t: ");
+                        int bayar = add.sc().nextInt();
+                        if (bayar >= beli.getTotalHarga(pilihPembeli - 1)) {
+                            paidInFull = true;
+                            kembalian[pilihPembeli - 1] = bayar - beli.getTotalHarga(pilihPembeli - 1);
+                            System.out.println("Kembalian\t\t: " + kembalian[pilihPembeli - 1]);
+                        } else {
+                            System.out.println("Uang anda kurang");
+                        }
+                    } while (paidInFull == false);
                     add.border();
                     add.backToMenu();
                     break;
