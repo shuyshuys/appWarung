@@ -277,7 +277,7 @@ public class cTransaksi {
     }
 
     public void setKembalian(int kembalian, int idxPembeli) {
-        this.kembalian[idxPembeli] = kembalian;
+        cTransaksi.kembalian[idxPembeli] = kembalian;
     }
 
     public String getTanggalTransaksi(int idxPembeli) {
@@ -444,17 +444,21 @@ public class cTransaksi {
                     boolean paidInFull = false;
                     do {
                         add.cls();
+                        boolean notEnough = false;
                         beli.ToString(pilihPembeli - 1);
-                        add.border();
                         System.out.println(" ⁘⁘⁘ Bayar");
-                        System.out.println("Total Harga\t\t: " + beli.getTotalHarga(pilihPembeli - 1));
-                        System.out.println("Bayar\t\t\t: ");
+                        if (notEnough == true) {
+                            System.out.println("UANG ANDA KURANG!");
+                        }
+                        System.out.println("Total Harga\t\t\t" + beli.getTotalHarga(pilihPembeli - 1));
+                        System.out.print("Bayar\t\t\t\t");
                         int bayar = add.sc().nextInt();
                         if (bayar >= beli.getTotalHarga(pilihPembeli - 1)) {
                             paidInFull = true;
                             kembalian[pilihPembeli - 1] = bayar - beli.getTotalHarga(pilihPembeli - 1);
-                            System.out.println("Kembalian\t\t: " + kembalian[pilihPembeli - 1]);
+                            System.out.println("Kembalian\t\t\t: " + kembalian[pilihPembeli - 1]);
                         } else {
+                            notEnough = true;
                             System.out.println("Uang anda kurang");
                         }
                     } while (paidInFull == false);
