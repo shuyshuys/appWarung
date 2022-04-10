@@ -2,7 +2,9 @@ package com.shuyshuys.appwarung;
 
 public class cPelanggan {
     static void Pelanggan() {
+        add.border();
         System.out.println(" ⁘ Menu Pelanggan");
+        add.border();
         System.out.println("1. Buat Pelanggan Baru");
         System.out.println("2. Lihat Pelanggan");
         System.out.println("3. Keluar");
@@ -18,18 +20,21 @@ public class cPelanggan {
                 String nama = add.sc().nextLine();
                 System.out.print("Alamat\t: ");
                 String alamat = add.sc().nextLine();
-                cTransaksi.pembeli[add.idxPembeli] = new cPembeli(nama, alamat);
+                if (alamat == "") {
+                    cTransaksi.pembeli[add.idxPembeli] = new cPembeli(nama);
+                } else {
+                    cTransaksi.pembeli[add.idxPembeli] = new cPembeli(nama, alamat);
+                }
                 add.idxPembeli++;
                 Pelanggan();
                 break;
-
             case 2:
                 System.out.println(" ⁘⁘ Menu Lihat Pelanggan");
                 add.listPembeli();
                 Pelanggan();
                 break;
             case 3:
-                add.backToMenu();
+                cMenuCLI.menuCLI();
                 break;
             default:
                 add.salahInput();

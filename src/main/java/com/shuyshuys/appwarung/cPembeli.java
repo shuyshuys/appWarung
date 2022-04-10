@@ -8,13 +8,13 @@ public class cPembeli {
     private int id;
     private String nama;
     private String alamat;
-    private int jPembelian = 0;
+    static int jPembelian = 0;
 
     cPembeli() {
         this.id = cTransaksi.pembeli[add.idxPembeli - 1].getId() + 1;
         this.nama = "Non Pelanggan";
         this.alamat = "Non Pelanggan";
-        this.jPembelian = 0;
+        cPembeli.jPembelian = 0;
         System.out.println("  ⁂ Objek Pembeli " + nama + " dibuat");
     }
 
@@ -22,7 +22,7 @@ public class cPembeli {
         this.id = id;
         this.nama = nama;
         this.alamat = alamat;
-        this.jPembelian = jPembelian;
+        cPembeli.jPembelian = jPembelian;
         System.out.println("  ⁂ Object " + nama + " dibuat...");
     }
 
@@ -30,7 +30,7 @@ public class cPembeli {
         this.id = cTransaksi.pembeli[add.idxPembeli - 1].getId() + 1;
         this.nama = nama;
         this.alamat = alamat;
-        this.jPembelian = this.jPembelian;
+        cPembeli.jPembelian = 0;
         System.out.println("  ⁂ Objek " + nama + " dibuat...");
     }
 
@@ -69,7 +69,7 @@ public class cPembeli {
     }
 
     public void setjPembelian() {
-        this.jPembelian++;
+        cPembeli.jPembelian++;
     }
 
     public String ToString() {

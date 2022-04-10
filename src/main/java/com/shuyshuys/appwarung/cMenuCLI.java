@@ -15,7 +15,7 @@ public class cMenuCLI {
 
     public static void menuCLI() {
         do {
-            // add.cls();
+            add.cls();
             System.out.println();
             System.out.println("Selamat Datang " + AppWarung.user);
             System.out.println(add.logTime("Login"));
@@ -33,7 +33,7 @@ public class cMenuCLI {
             pilihan = sc.nextInt();
             switch (pilihan) {
                 case 1:
-                    // add.cls();
+                    add.cls();
                     add.border();
                     System.out.println(" ⁘ Menu Barang");
                     System.out.println("1. Tambah Barang");
@@ -45,7 +45,7 @@ public class cMenuCLI {
                     int pilihanBarang = sc.nextInt();
                     switch (pilihanBarang) {
                         case 1:
-                            // add.cls();
+                            add.cls();
                             add.border();
                             System.out.println(" ⁘⁘ Tambah Barang");
                             System.out.println("1. Makanan");
@@ -55,13 +55,13 @@ public class cMenuCLI {
                             int pilihanTambahBarang = sc.nextInt();
                             switch (pilihanTambahBarang) {
                                 case 1:
-                                    // add.cls();
+                                    add.cls();
                                     add.border();
                                     add.addMenu("Makanan");
                                     add.backToMenu();
                                     break;
                                 case 2:
-                                    // add.cls();
+                                    add.cls();
                                     add.border();
                                     add.addMenu("Minuman");
                                     add.backToMenu();
@@ -71,7 +71,7 @@ public class cMenuCLI {
                                     break;
                             }
                         case 2:
-                            // add.cls();
+                            add.cls();
                             add.border();
                             System.out.println(" ⁘⁘ Menu Hapus Barang");
                             System.out.println("1. Makanan");
@@ -81,7 +81,7 @@ public class cMenuCLI {
                             int pilihanHapusBarang = sc.nextInt();
                             switch (pilihanHapusBarang) {
                                 case 1:
-                                    // add.cls();
+                                    add.cls();
                                     add.border();
                                     add.printMenu("makanan");
                                     add.border();
@@ -123,7 +123,7 @@ public class cMenuCLI {
                                     add.backToMenu();
                                     break;
                                 case 2:
-                                    // add.cls();
+                                    add.cls();
                                     add.border();
                                     add.printMenu("minuman");
                                     add.border();
@@ -169,7 +169,7 @@ public class cMenuCLI {
                                     break;
                             }
                         case 3:
-                            // add.cls();
+                            add.cls();
                             add.border();
                             System.out.println(" ⁘⁘ Menu Ubah Barang");
                             System.out.println("1. Makanan");
@@ -180,7 +180,7 @@ public class cMenuCLI {
                             int pilihanUbahBarang = sc.nextInt();
                             switch (pilihanUbahBarang) {
                                 case 1:
-                                    // add.cls();
+                                    add.cls();
                                     add.border();
                                     add.printMenu("makanan");
                                     add.border();
@@ -214,7 +214,7 @@ public class cMenuCLI {
                                     add.backToMenu();
                                     break;
                                 case 2:
-                                    // add.cls();
+                                    add.cls();
                                     add.border();
                                     add.printMenu("minuman");
                                     add.border();
@@ -248,7 +248,7 @@ public class cMenuCLI {
                                     add.backToMenu();
                                     break;
                                 case 3:
-                                    // add.cls();
+                                    add.cls();
                                     add.border();
                                     add.printMenu("makanan");
                                     add.border();
@@ -282,7 +282,7 @@ public class cMenuCLI {
                                     break;
                             }
                         case 4:
-                            // add.cls();
+                            add.cls();
                             add.border();
                             System.out.println(" ⁘⁘ Tampilkan Barang");
                             System.out.println("1. Makanan");
@@ -312,8 +312,7 @@ public class cMenuCLI {
                 case 2:
                     cTransaksi.Transaksi();
                 case 3:
-                    // add.cls();
-                    add.border();
+                    add.cls();
                     cPelanggan.Pelanggan();
                     break;
                 case 4:
@@ -329,7 +328,9 @@ public class cMenuCLI {
                     AppWarung.main(null);
                     break;
                 case 7:
+                    add.border();
                     System.out.println("Terima Kasih Telah Menggunakan Program ini");
+                    add.border();
                     System.exit(0);
                     break;
             }
