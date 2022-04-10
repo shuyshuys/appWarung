@@ -101,7 +101,7 @@ public class cTransaksi {
                             + "...");
             beli.ToString(idxPembeli);
         } else {
-            System.out.println("  ⁂ Jumlah Makanan sudah mencapai maksimal...");
+            System.out.println("  ⁂ Jumlah Nota Makanan sudah mencapai maksimal...");
         }
     }
 
@@ -117,7 +117,7 @@ public class cTransaksi {
                     "  ⁂ Objek Minuman " + minuman.getNama() + " ditambahkan ke Nota " + pembeli[idxPembeli].getNama()
                             + "...");
         } else {
-            System.out.println("  ⁂ Jumlah Minuman sudah mencapai maksimal...");
+            System.out.println("  ⁂ Jumlah Nota Minuman sudah mencapai maksimal...");
         }
     }
 
@@ -306,9 +306,9 @@ public class cTransaksi {
                     // "Jumlah Makanan\t: " +
                     // porsiMakanan[idxPembeli][add.searchById(tMakanan[i].getId(), 0)]);
                     System.out.println(tMakanan[i].getNama() + "\t" + tMakanan[i].getHarga() + "\tx"
-                            + porsiMakanan[idxPembeli][add.searchById(tMakanan[i].getId(), 0)] + "\t"
+                            + porsiMakanan[idxPembeli][add.searchIdxById(tMakanan[i].getId(), 0)] + "\t"
                             + (tMakanan[i].getHarga()
-                                    * porsiMakanan[idxPembeli][add.searchById(tMakanan[i].getId(), 0)]));
+                                    * porsiMakanan[idxPembeli][add.searchIdxById(tMakanan[i].getId(), 0)]));
                 }
             }
         } catch (Exception e) {
@@ -320,12 +320,12 @@ public class cTransaksi {
                     // System.out.println("Harga Minuman\t: " + tMinuman[i].getHarga());
                     // System.out.println(
                     // "Jumlah Minuman\t: " + porsiMinuman[idxPembeli]);// +
-                    // // porsiPembeli[idxPembeli][add.searchById(tMinuman[i].getId(),
+                    // // porsiPembeli[idxPembeli][add.searchIdxById(tMinuman[i].getId(),
                     // // 1)]);
                     System.out.println(tMinuman[i].getNama() + "\t" + tMinuman[i].getHarga() + "\tx"
-                            + porsiMinuman[idxPembeli][add.searchById(tMinuman[i].getId(), 1)] + "\t"
+                            + porsiMinuman[idxPembeli][add.searchIdxById(tMinuman[i].getId(), 1)] + "\t"
                             + (tMinuman[i].getHarga()
-                                    * porsiMinuman[idxPembeli][add.searchById(tMinuman[i].getId(), 1)]));
+                                    * porsiMinuman[idxPembeli][add.searchIdxById(tMinuman[i].getId(), 1)]));
                 }
             }
         } catch (Exception e) {
@@ -366,7 +366,7 @@ public class cTransaksi {
             pilihanPembelian = add.sc().nextInt();
             switch (pilihanPembelian) {
                 case 1:
-                    add.cls();
+                    // add.cls();
                     add.border();
                     int[][] jumlah = new int[5][2];
                     // TODO: set pembeli belum beres
@@ -390,22 +390,59 @@ public class cTransaksi {
                         // transaksi");
                         boolean belilagi = false;
                         do {
-                            add.cls();
+                            // add.cls();
                             add.border();
                             System.out.println(
-                                    " ⁘⁘⁘ Tambah Pesanan - " + cTransaksi.pembeli[pilihPembeli - 1].getNama());
-                            System.out.println("Input Kode Menu\n\t0 untuk makanan\n\t1 untuk minuman");
+                                    " ⁘⁘⁘ Tambah Pesanan [" + cTransaksi.pembeli[pilihPembeli - 1].getNama() + "]");
+                            System.out.println(
+                                    "Input Kode Menu\n\t0 untuk makanan\n\t1 untuk minuman\n\t2 untuk pencarian");
                             System.out.print("Kode menu: ");
                             int kodeMenu = add.sc().nextInt();
+                            int idMenu;
+                            int id = 0;
                             if (kodeMenu == 0) {
                                 add.printMenu("makanan");
+                                System.out.print("ID menu: ");
+                                idMenu = add.sc().nextInt();
+                                id = add.searchIdxById(idMenu, kodeMenu);
                             }
                             if (kodeMenu == 1) {
                                 add.printMenu("minuman");
+                                System.out.print("ID menu: ");
+                                idMenu = add.sc().nextInt();
+                                id = add.searchIdxById(idMenu, kodeMenu);
                             }
-                            System.out.print("ID menu: ");
-                            int idMenu = add.sc().nextInt();
-                            int id = add.searchById(idMenu, kodeMenu);
+                            if (kodeMenu == 2) {
+                                boolean found = false;
+                                do {
+                                    System.out.print("Cari menu: ");
+                                    String cari = add.sc().nextLine();
+                                    if (found == false) {
+                                        cMakanan ketemu = add.searchMakanan(cari);
+                                        if (ketemu != null) {
+                                            found = true;
+                                            kodeMenu = 0;
+                                            id = add.searchIdxById(ketemu.getId(), kodeMenu);
+                                            // beli.tambahMakanan(ketemu, jumlah[id][kodeMenu],
+                                            // (pilihPembeli - 1), add.searchIdxMakanan(cari));
+                                        }
+                                    }
+                                    if (found == false) {
+                                        cMinuman ketemu = add.searchMinuman(cari);
+                                        if (ketemu != null) {
+                                            found = true;
+                                            kodeMenu = 1;
+                                            id = add.searchIdxById(ketemu.getId(), kodeMenu);
+                                            // beli.tambahMinuman(ketemu, jumlah[id][kodeMenu], (pilihPembeli - 1),
+                                            // add.searchIdxMinuman(cari));
+                                        }
+                                    }
+                                    if (found == false) {
+                                        System.out.println("Menu tidak ditemukan");
+                                        add.border();
+                                    }
+                                } while (found == false);
+                            }
                             System.out.print("Jumlah: ");
                             jumlah[id][kodeMenu] = add.sc().nextInt();
                             akumulasi[3][id] = String.valueOf(jumlah[id][kodeMenu]);
