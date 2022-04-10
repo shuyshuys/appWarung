@@ -93,7 +93,7 @@ public class add {
         return 0;
     }
 
-    static int searchById(int idCari, int kodeMenu) {
+    static int searchIdxById(int idCari, int kodeMenu) {
         int id = 0;
         if (kodeMenu == 0) {
             boolean found = false;
@@ -138,13 +138,13 @@ public class add {
     // TODO: test print v2
     public static void printPembeli() {
         System.out.println("  ⁂ Daftar Pelanggan");
-        System.out.println("  ⁂ NO\tID\t\tNAMA\t\tALAMAT");
+        System.out.println("    NO\tID\t\tNAMA\t\tALAMAT");
         for (int i = 0; i < add.idxPembeli; i++) {
             if (cTransaksi.pembeli[i].getNama().length() < 8) {
-                System.out.println("  ⁂ [" + (i + 1) + "]" + cTransaksi.pembeli[i].getId() + "\t"
+                System.out.println("    [" + (i + 1) + "]" + cTransaksi.pembeli[i].getId() + "\t"
                         + cTransaksi.pembeli[i].getNama() + "\t\t" + cTransaksi.pembeli[i].getAlamat());
             } else {
-                System.out.println("  ⁂ [" + (i + 1) + "]" + cTransaksi.pembeli[i].getId() + "\t"
+                System.out.println("    [" + (i + 1) + "]" + cTransaksi.pembeli[i].getId() + "\t"
                         + cTransaksi.pembeli[i].getNama() + "\t" + cTransaksi.pembeli[i].getAlamat());
             }
         }
