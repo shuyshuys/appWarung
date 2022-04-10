@@ -120,7 +120,7 @@ class MasterMenuFrame extends JFrame implements ActionListener {
             pembelianMenu.setVisible(true);
             dispose();
         } else if (e.getSource() == memberButton) {
-            Member member = new Member();
+            MemberGUI member = new MemberGUI();
             member.setVisible(true);
             dispose();
         } else if (e.getSource() == laporanButton) {

@@ -9,7 +9,6 @@ public class cTransaksi {
     private int jumlahMakanan, jumlahMinuman, idxMaxMakanan, idxMaxMinuman;
     cMakanan tMakanan[];
     cMinuman tMinuman[];
-    static String[][] menu = new String[5][5];
 
     static int getMostMenu() {
         int mostMenu;
@@ -26,10 +25,12 @@ public class cTransaksi {
     // private int maxPembelian;
 
     private int[] idTransaksi = new int[mineReader.idx_count];
-    private String namaPembeli;
-    private String[] namaBarang = new String[mineReader.idx_count];
-    private int[] hargaBarang = new int[mineReader.idx_count];
-    private int[] jumlahBarang = new int[mineReader.idx_count];
+    // private String namaPembeli;
+    // private String[] namaBarang = new String[mineReader.idx_count];
+    // private int[] hargaBarang = new int[mineReader.idx_count];
+    private int[][] porsiMakanan = new int[50][getMostMenu()]; // 0 idxmaxpembeli
+    private int[][] porsiMinuman = new int[50][getMostMenu()]; // 0 idxmaxpembeli
+    // private int[] jumlahBarang = new int[mineReader.idx_count];
     private int[] totalHarga = new int[mineReader.idx_count];
     private int totalHargaLifeTime;
     private int[] bayar = new int[mineReader.idx_count];
@@ -86,8 +87,13 @@ public class cTransaksi {
             akumulasi[2][idxMakanan] = Integer.toString(makanan.getHarga());
             akumulasi[3][idxMakanan] = String.valueOf(jumlah); // +akumulasi[3][idxMakanan];
             akumulasi[4][idxPembeli] = String.valueOf(jumlah);
+            // System.out.println("Akumulasi 3 idxMakanan: " + akumulasi[3][idxMakanan]);
+            // System.out.println("Akumulasi 4 idxPembeli: " + akumulasi[4][idxPembeli]);
+            // System.out.println("idxMakanan: " + idxMakanan);
+            // System.out.println("idxPembeli: " + idxPembeli);
             tanggalTransaksi[idxPembeli] = add.getDateTime();
             idTransaksi[idxPembeli] = add.idTransaksi + 1;
+            porsiMakanan[idxPembeli][idxMakanan] = jumlah;
             add.idTransaksi++;
             add.idxTransaksi++;
             jumlahMakanan++;
@@ -219,37 +225,37 @@ public class cTransaksi {
         this.idTransaksi[idxPembeli] = idTransaksi;
     }
 
-    public String getNamaPembeli() {
-        return namaPembeli;
-    }
+    // public String getNamaPembeli() {
+    // return namaPembeli;
+    // }
 
     // public void setNamaPembeli(String namaPembeli) {
     // this.pembeli = namaPembeli;
     // }
 
-    public String getNamaBarang(int idxPembeli) {
-        return namaBarang[idxPembeli];
-    }
+    // public String getNamaBarang(int idxPembeli) {
+    // return namaBarang[idxPembeli];
+    // }
 
-    public void setNamaBarang(String namaBarang, int idxPembeli) {
-        this.namaBarang[idxPembeli] = namaBarang;
-    }
+    // public void setNamaBarang(String namaBarang, int idxPembeli) {
+    // this.namaBarang[idxPembeli] = namaBarang;
+    // }
 
-    public int getHargaBarang(int idxPembeli) {
-        return hargaBarang[idxPembeli];
-    }
+    // public int getHargaBarang(int idxPembeli) {
+    // return hargaBarang[idxPembeli];
+    // }
 
-    public void setHargaBarang(int hargaBarang, int idxPembeli) {
-        this.hargaBarang[idxPembeli] = hargaBarang;
-    }
+    // public void setHargaBarang(int hargaBarang, int idxPembeli) {
+    // this.hargaBarang[idxPembeli] = hargaBarang;
+    // }
 
-    public int getJumlahBarang(int idxPembeli) {
-        return jumlahBarang[idxPembeli];
-    }
+    // public int getJumlahBarang(int idxPembeli) {
+    // return jumlahBarang[idxPembeli];
+    // }
 
-    public void setJumlahBarang(int jumlahBarang, int idxPembeli) {
-        this.jumlahBarang[idxPembeli] = jumlahBarang;
-    }
+    // public void setJumlahBarang(int jumlahBarang, int idxPembeli) {
+    // this.jumlahBarang[idxPembeli] = jumlahBarang;
+    // }
 
     public int getTotalHarga(int idxPembeli) {
         return totalHarga[idxPembeli];
@@ -284,15 +290,20 @@ public class cTransaksi {
     }
 
     public void ToString(int idxPembeli) {
-        System.out.println("ID Transaksi : " + idTransaksi[idxPembeli]);
-        System.out.println("Tanggal Transaksi : " + tanggalTransaksi[idxPembeli]);
-        System.out.println("Nama Pembeli : " + pembeli[idxPembeli].getNama());
+        add.border();
+        System.out.println("ID Transaksi\t: " + idTransaksi[idxPembeli]);
+        System.out.println("Tanggal Transaksi\t: " + tanggalTransaksi[idxPembeli]);
+        System.out.println("Nama Pembeli\t: " + pembeli[idxPembeli].getNama());
         try {
             for (int i = 0; i < tMakanan.length; i++) {
                 if (tMakanan[i] != null) {
-                    System.out.println("Nama Makanan : " + tMakanan[i].getNama());
-                    System.out.println("Harga Makanan : " + tMakanan[i].getHarga());
-                    System.out.println("Jumlah Makanan : " + akumulasi[3][i]);
+                    add.border();
+                    System.out.println("Nama Makanan\t: " + tMakanan[i].getNama());
+                    System.out.println("Harga Makanan\t: " + tMakanan[i].getHarga());
+
+                    System.out.println(
+                            "Jumlah Makanan\t: " + porsiMakanan[idxPembeli]);// porsiPembeli[idxPembeli][add.searchById(tMakanan[i].getId(),
+                                                                             // 0)]);
                 }
             }
         } catch (Exception e) {
@@ -300,13 +311,23 @@ public class cTransaksi {
         try {
             for (int i = 0; i < tMinuman.length; i++) {
                 if (tMinuman[i] != null) {
-                    System.out.println("Nama Minuman : " + tMinuman[i].getNama());
-                    System.out.println("Harga Minuman : " + tMinuman[i].getHarga());
+                    add.border();
+                    System.out.println("Nama Minuman\t: " + tMinuman[i].getNama());
+                    System.out.println("Harga Minuman\t: " + tMinuman[i].getHarga());
+                    System.out.println(
+                            "Jumlah Minuman\t: " + porsiMinuman[idxPembeli]);// +
+                                                                             // porsiPembeli[idxPembeli][add.searchById(tMinuman[i].getId(),
+                                                                             // 1)]);
                     System.out.println(akumulasi[3][i]);
                 }
             }
         } catch (Exception e) {
         }
+        add.border();
+        System.out.println("Total Harga\t: " + totalHarga[idxPembeli]);
+        System.out.println("Bayar\t: " + bayar[idxPembeli]);
+        System.out.println("Kembalian\t: " + kembalian[idxPembeli]);
+        add.border();
     }
 
     // public String ToString(int idxPembeli) {
@@ -321,184 +342,152 @@ public class cTransaksi {
     // }
 
     static int pilihPembeli;
+    // static int[][] porsiPembeli;
     static cTransaksi beli = new cTransaksi();
 
     public static void Transaksi() {
-        // add.cls();
-        add.border();
-        System.out.println(" ⁘ MENU Pembelian");
-        System.out.println("1. Tambah Pembeli");
-        System.out.println("2. Tambah Pesanan");
-        System.out.println("3. Tampilkan Pesanan");
-        System.out.println("4. Hapus Pesanan");
-        System.out.println("5. Kembali");
-        System.out.print("Pilihan : ");
-        int pilihanPembelian = add.sc().nextInt();
-        switch (pilihanPembelian) {
-            case 1:
-                // add.cls();
-                add.border();
-                System.out.println(" ⁘⁘ Tambah Pembeli");
-                System.out.print("Nama Pembeli\t: ");
-                String namaPembeli = add.sc().next();
-                System.out.print("Alamat Pembeli\t: ");
-                String alamatPembeli = add.sc().next();
-                add.border();
-                cTransaksi.pembeli[add.idxPembeli] = new cPembeli(
-                        cTransaksi.pembeli[add.idxPembeli - 1].getId() + 1,
-                        namaPembeli,
-                        alamatPembeli);
-                add.idxPembeli++;
-                System.out.println("Berhasil menambahkan pembeli");
-                add.border();
-                add.backToMenu();
-                break;
-            case 2:
-                // add.cls();
-                add.border();
-                int[][] jumlah = new int[5][2];
-                // TODO: set pembeli belum beres
-                // TODO: tambah pesanan - siapkan buat perulangan lanjut ga
-                // cTransaksi beli = new cTransaksi();
-                System.out.println(" ⁘⁘ Tambah Transaksi");
-                add.border();
-                System.out.println("\t[list] untuk melihat list pembeli");
-                System.out.print("Nama pembeli baru : ");
-                String pilih = add.sc().nextLine();
-                add.border();
-                if (pilih.equals("list")) {
-                    add.printPembeli();
+        int pilihanPembelian;
+        do {
+            // add.cls();
+            add.border();
+            System.out.println(" ⁘ MENU Pembelian");
+            System.out.println("1. Tambah Pesanan");
+            System.out.println("2. Tampilkan Pesanan");
+            System.out.println("3. Hapus Pesanan");
+            System.out.println("4. Kembali");
+            System.out.print("Pilihan : ");
+            pilihanPembelian = add.sc().nextInt();
+            switch (pilihanPembelian) {
+                case 1:
+                    // add.cls();
                     add.border();
-                    System.out.print("Pilih nomor: ");
-                    pilihPembeli = add.sc().nextInt();
-                    // add.idxPembeli++; FIXME:
-                    beli.isiPembeli(cTransaksi.pembeli[pilihPembeli - 1], (pilihPembeli - 1));
-                    // beli.isiPembeli(cTransaksi.pembeli[pilihPembeli - 1], pilihPembeli - 1);
-                    System.out.println("Pembeli [" + beli.getNamaPembeli() + "] ditambahkan ke transaksi");
+                    int[][] jumlah = new int[5][2];
+                    // TODO: set pembeli belum beres
+                    // TODO: tambah pesanan - siapkan buat perulangan lanjut ga
+                    // cTransaksi beli = new cTransaksi();
+                    System.out.println(" ⁘⁘ Tambah Transaksi");
                     add.border();
-                    add.printMenu("makanan");
-                    add.printMenu("minuman");
-                    System.out.println("Input kode menu\n0 untuk makanan\t1 untuk minuman");
-                    System.out.print("Kode menu: ");
-                    int kodeMenu = add.sc().nextInt();
-                    System.out.print("ID menu: ");
-                    int idMenu = add.sc().nextInt();
-                    int id = add.searchById(idMenu, kodeMenu);
-                    System.out.print("Jumlah: ");
-                    jumlah[id][kodeMenu] = add.sc().nextInt();
-                    akumulasi[3][id] = String.valueOf(jumlah[id][kodeMenu]);
-                    System.out.println(id);
-                    System.out.println(akumulasi[3][id]);
-                    if (kodeMenu == 0) {
-                        beli.tambahMakanan(cMenuCLI.makanan[id], jumlah[id][kodeMenu], (pilihPembeli - 1), id);
-                        // System.out.println("Pesanan ditambahkan");
+                    System.out.println("\t[list] untuk melihat list pembeli");
+                    System.out.print("Nama pembeli baru : ");
+                    String pilih = add.sc().nextLine();
+                    add.border();
+                    if (pilih.equals("list")) {
+                        add.printPembeli();
+                        add.border();
+                        System.out.print("Pilih nomor: ");
+                        pilihPembeli = add.sc().nextInt();
+                        // add.idxPembeli++; FIXME:
+                        beli.isiPembeli(cTransaksi.pembeli[pilihPembeli - 1], (pilihPembeli - 1));
+                        // beli.isiPembeli(cTransaksi.pembeli[pilihPembeli - 1], pilihPembeli - 1);
+                        // System.out.println("Pembeli [" + beli.getNamaPembeli() + "] ditambahkan ke
+                        // transaksi");
+                        boolean belilagi = false;
+                        do {
+                            add.border();
+                            System.out.println("Input Kode Menu\n\t0 untuk makanan\n\t1 untuk minuman");
+                            System.out.print("Kode menu: ");
+                            int kodeMenu = add.sc().nextInt();
+                            if (kodeMenu == 0) {
+                                add.printMenu("makanan");
+                            }
+                            if (kodeMenu == 1) {
+                                add.printMenu("minuman");
+                            }
+                            System.out.print("ID menu: ");
+                            int idMenu = add.sc().nextInt();
+                            int id = add.searchById(idMenu, kodeMenu);
+                            System.out.print("Jumlah: ");
+                            jumlah[id][kodeMenu] = add.sc().nextInt();
+                            akumulasi[3][id] = String.valueOf(jumlah[id][kodeMenu]);
+                            // System.out.println(id);
+                            // System.out.println(akumulasi[3][id]);
+                            if (kodeMenu == 0) {
+                                beli.tambahMakanan(cMenuCLI.makanan[id], jumlah[id][kodeMenu], (pilihPembeli - 1), id);
+                                // porsiPembeli[pilihPembeli - 1][id] = jumlah[id][kodeMenu];
+                                // System.out.println("Pesanan ditambahkan");
+                            }
+                            if (kodeMenu == 1) {
+                                beli.tambahMinuman(cMenuCLI.minuman[id], jumlah[id][kodeMenu], (pilihPembeli - 1), id);
+                                // porsiPembeli[pilihPembeli - 1][id] = jumlah[id][kodeMenu];
+                                // System.out.println("Pesanan ditambahkan");
+                            }
+                            System.out.println("\tTambah Pesanan Lagi? (0 Tidak/1 Ya)");
+                            System.out.print("\tPilihan: ");
+                            int pilihLagi = add.sc().nextInt();
+                            if (pilihLagi == 0) {
+                                belilagi = false;
+                            } else {
+                                belilagi = true;
+                            }
+                        } while (belilagi == true);
+                    } else {
+                        // beli.isiPembeli(cMenuCLI.pembeli[add.idxPembeli - 1]);
+                        // System.out.println("Pembeli [" + beli.getNamaPembeli() + "] ditambahkan ke
+                        // transaksi");
+                        add.border();
+                        // TODO: tambah pesanan dengan pembeli baru
+
                     }
-                    if (kodeMenu == 1) {
-                        beli.tambahMinuman(cMenuCLI.minuman[id], jumlah[id][kodeMenu], (pilihPembeli - 1), id);
-                        // System.out.println("Pesanan ditambahkan");
-                    }
                     add.border();
-
-                } else {
-                    // beli.isiPembeli(cMenuCLI.pembeli[add.idxPembeli - 1]);
-                    // System.out.println("Pembeli [" + beli.getNamaPembeli() + "] ditambahkan ke
-                    // transaksi");
+                    add.idxTransaksi++;
+                    System.out.println("Berhasil menambahkan transaksi");
                     add.border();
-                    // TODO: tambah pesanan dengan pembeli baru
-
-                }
-                add.idxTransaksi++;
-                System.out.println("Berhasil menambahkan transaksi");
-                add.border();
-                add.backToMenu();
-                break;
-            // add.border();
-            // cTransaksi.pembeli.setNama(pilihPembeli);
-            // add.printMenu("makanan");
-            // add.printMenu("minuman");
-            // add.border();
-            // System.out.print("Pilih Id Menu : ");
-            // int idMenu = add.sc().nextInt();
-            // add.border();
-            // System.out.print("Jumlah Pesanan : ");
-            // int jumlahPesanan = add.sc().nextInt();
-            // add.border();
-            // cMenuCLI.transaksi[add.idxTransaksi] = new cTransaksi(
-            // cMenuCLI.transaksi[add.idxTransaksi - 1].getIdTransaksi() + 1,
-            // cMenuCLI.pembeli[idPembeli - 1].getNama(),
-            // cMenuCLI.makanan[idMenu - 1].getNama(),
-            // cMenuCLI.makanan[idMenu - 1].getHarga(),
-            // jumlahPesanan,
-            // cMenuCLI.makanan[idMenu - 1].getHarga() * jumlahPesanan);
-
-            // System.out.println(cMenuCLI.makanan);
-            // add.border();
-            // add.backToMenu();
-            // break;
-            // cTransaksi transaksi = new cTransaksi();
-            // if (pilih > 0 && pilih <= add.idxPembeli) {
-            // add.border();
-            // System.out.println(cMenuCLI.pembeli[pilih - 1].ToString());
-            // add.border();
-            // } else {
-            // add.salahInput();
-            // }
-            // switch (pilih) {
-            // case 1:
-            // break;
-            // case 2:
-            // break;
-            // default:
-            // add.salahInput();
-            // break;
-            // }
-            // add.backToMenu();
-            // break;
-            case 3:
-                // add.cls();
-                add.border();
-                System.out.println(" ⁘⁘ Lihat Transaksi");
-                add.border();
-                for (int i = 0; i < add.idxTransaksi; i++) {
-                    System.out.println("[Transaksi ke-" + (i + 1) + "] ");
-                    beli.ToString(i);
-                    add.border();
-                }
-                // System.out.println(cMenuCLI.transaksi[i].ToString());
-                // System.out.println(beli.cetakNota(i));
-                // if (cMenuCLI.transaksi[i] != null) {
+                    add.backToMenu();
+                    break;
                 // add.border();
-                // System.out.println(i);
-                // System.out.println("[Transaksi ke-" + (i + 1) + "] ");
-                // System.out.println(cMenuCLI.transaksi[i].ToString());
+                // cTransaksi.pembeli.setNama(pilihPembeli);
+                // add.printMenu("makanan");
+                // add.printMenu("minuman");
                 // add.border();
-                // i++;
+                // System.out.print("Pilih Id Menu : ");
+                // int idMenu = add.sc().nextInt();
+                // add.border();
+                // System.out.print("Jumlah Pesanan : ");
+                // int jumlahPesanan = add.sc().nextInt();
+                // add.border();
+                // cMenuCLI.transaksi[add.idxTransaksi] = new cTransaksi(
+                // cMenuCLI.transaksi[add.idxTransaksi - 1].getIdTransaksi() + 1,
+                // cMenuCLI.pembeli[idPembeli - 1].getNama(),
+                // cMenuCLI.makanan[idMenu - 1].getNama(),
+                // cMenuCLI.makanan[idMenu - 1].getHarga(),
+                // jumlahPesanan,
+                // cMenuCLI.makanan[idMenu - 1].getHarga() * jumlahPesanan);
+
+                // System.out.println(cMenuCLI.makanan);
+                // add.border();
+                // add.backToMenu();
+                // break;
+                // cTransaksi transaksi = new cTransaksi();
+                // if (pilih > 0 && pilih <= add.idxPembeli) {
+                // add.border();
+                // System.out.println(cMenuCLI.pembeli[pilih - 1].ToString());
+                // add.border();
+                // } else {
+                // add.salahInput();
                 // }
-                add.border();
-                add.backToMenu();
-                break;
-            // System.out.println(" ⁘⁘ Tambah Pesanan");
-            // add.border();
-            // System.out.print("Pembeli\t: ");
-            // int pilihPembeli = add.sc().nextInt();
-            // System.out.print("Alamat\t: ");
-            // String alamatPembeli = add.sc().next();
-            // cMenuCLI.pembeli[add.idxPembeli] = new cPembeli(
-            // cMenuCLI.pembeli[add.idxPembeli - 1].getId() + 1,
-            // namaPembeli,
-            // alamatPembeli);
-            // System.out.println("[Pembeli id: " + cMenuCLI.pembeli[0].getId() + " nama: "
-            // + cMenuCLI.pembeli[0].getNama() + "] ");
-            // break;
-            case 4:
-                // add.cls();
-                add.border();
-                System.out.println(" ⁘⁘ Hapus Pesanan");
-                add.border();
-                for (int i = 0; i < add.idxTransaksi; i++) {
-                    System.out.println("[Transaksi ke-" + (i + 1) + "] ");
-                    // System.out.println(print.ToString(i));
+                // switch (pilih) {
+                // case 1:
+                // break;
+                // case 2:
+                // break;
+                // default:
+                // add.salahInput();
+                // break;
+                // }
+                // add.backToMenu();
+                // break;
+                case 2:
+                    // add.cls();
                     add.border();
+                    System.out.println(" ⁘⁘ Lihat Transaksi");
+                    add.border();
+                    for (int i = 0; i < add.idxTransaksi; i++) {
+                        System.out.println("[Transaksi ke-" + (i + 1) + "] ");
+                        beli.ToString(i);
+                        add.border();
+                    }
+                    // System.out.println(cMenuCLI.transaksi[i].ToString());
+                    // System.out.println(beli.cetakNota(i));
                     // if (cMenuCLI.transaksi[i] != null) {
                     // add.border();
                     // System.out.println(i);
@@ -507,12 +496,46 @@ public class cTransaksi {
                     // add.border();
                     // i++;
                     // }
-                }
-                add.backToMenu();
-                break;
-            case 5:
-                cMenuCLI.menuCLI();
-                break;
-        }
+                    add.border();
+                    add.backToMenu();
+                    break;
+                // System.out.println(" ⁘⁘ Tambah Pesanan");
+                // add.border();
+                // System.out.print("Pembeli\t: ");
+                // int pilihPembeli = add.sc().nextInt();
+                // System.out.print("Alamat\t: ");
+                // String alamatPembeli = add.sc().next();
+                // cMenuCLI.pembeli[add.idxPembeli] = new cPembeli(
+                // cMenuCLI.pembeli[add.idxPembeli - 1].getId() + 1,
+                // namaPembeli,
+                // alamatPembeli);
+                // System.out.println("[Pembeli id: " + cMenuCLI.pembeli[0].getId() + " nama: "
+                // + cMenuCLI.pembeli[0].getNama() + "] ");
+                // break;
+                case 3:
+                    // add.cls();
+                    add.border();
+                    System.out.println(" ⁘⁘ Hapus Pesanan");
+                    add.border();
+                    for (int i = 0; i < add.idxTransaksi; i++) {
+                        System.out.println("[Transaksi ke-" + (i + 1) + "] ");
+                        // System.out.println(print.ToString(i));
+                        add.border();
+                        // if (cMenuCLI.transaksi[i] != null) {
+                        // add.border();
+                        // System.out.println(i);
+                        // System.out.println("[Transaksi ke-" + (i + 1) + "] ");
+                        // System.out.println(cMenuCLI.transaksi[i].ToString());
+                        // add.border();
+                        // i++;
+                        // }
+                    }
+                    add.backToMenu();
+                    break;
+                case 4:
+                    cMenuCLI.menuCLI();
+                    break;
+            }
+        } while (pilihanPembelian != 4);
     }
 }

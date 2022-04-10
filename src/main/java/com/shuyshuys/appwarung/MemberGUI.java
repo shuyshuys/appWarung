@@ -9,10 +9,10 @@ package com.shuyshuys.appwarung;
  * @author shuyshuys
  */
 
-public class Member extends javax.swing.JFrame {
+public class MemberGUI extends javax.swing.JFrame {
 
         /** Creates new form Member */
-        public Member() {
+        public MemberGUI() {
                 initComponents();
         }
 
@@ -187,16 +187,20 @@ public class Member extends javax.swing.JFrame {
                                 }
                         }
                 } catch (ClassNotFoundException ex) {
-                        java.util.logging.Logger.getLogger(Member.class.getName()).log(java.util.logging.Level.SEVERE,
+                        java.util.logging.Logger.getLogger(MemberGUI.class.getName()).log(
+                                        java.util.logging.Level.SEVERE,
                                         null, ex);
                 } catch (InstantiationException ex) {
-                        java.util.logging.Logger.getLogger(Member.class.getName()).log(java.util.logging.Level.SEVERE,
+                        java.util.logging.Logger.getLogger(MemberGUI.class.getName()).log(
+                                        java.util.logging.Level.SEVERE,
                                         null, ex);
                 } catch (IllegalAccessException ex) {
-                        java.util.logging.Logger.getLogger(Member.class.getName()).log(java.util.logging.Level.SEVERE,
+                        java.util.logging.Logger.getLogger(MemberGUI.class.getName()).log(
+                                        java.util.logging.Level.SEVERE,
                                         null, ex);
                 } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-                        java.util.logging.Logger.getLogger(Member.class.getName()).log(java.util.logging.Level.SEVERE,
+                        java.util.logging.Logger.getLogger(MemberGUI.class.getName()).log(
+                                        java.util.logging.Level.SEVERE,
                                         null, ex);
                 }
                 // </editor-fold>
@@ -204,7 +208,7 @@ public class Member extends javax.swing.JFrame {
                 /* Create and display the form */
                 java.awt.EventQueue.invokeLater(new Runnable() {
                         public void run() {
-                                new Member().setVisible(true);
+                                new MemberGUI().setVisible(true);
                         }
                 });
         }
