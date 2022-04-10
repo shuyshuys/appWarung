@@ -314,7 +314,6 @@ public class cMenuCLI {
                 case 3:
                     // add.cls();
                     add.border();
-                    // TODO: set menu atur pelanggan
                     cPelanggan.Pelanggan();
                     break;
                 case 4:
