@@ -15,7 +15,7 @@ public class cMenuCLI {
     public static cMakanan[] makanan;
     public static cMinuman[] minuman;
     // public static cPembeli[] pembeli;
-    public static cTransaksi[] transaksi; // TODO: mengubah dari 2d jadi 1d
+    // public static cTransaksi[] transaksi; // TODO: mengubah dari 2d jadi 1d
     // public static cTransaksi[] struk; // = new cStruk[10];
 
     public static void menuCLI() {
@@ -319,7 +319,7 @@ public class cMenuCLI {
                 // add.cls();
                 add.border();
                 // TODO: set menu atur pelanggan
-                System.out.println(" ⁘ Menu Pelanggan");
+                cPelanggan.Pelanggan();
                 break;
             case 4:
                 // add.cls();
