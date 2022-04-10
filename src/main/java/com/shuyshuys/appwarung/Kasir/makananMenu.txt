@@ -1,0 +1,5 @@
+179001  Nasi Bakar  5000  10
+179002  Nasi Goreng  12000  15
+179003  Sate Ayam  17000  17
+179004  Soto Ayam  20000  20
+179005  Geprek Ayam  13000  9

@@ -1,0 +1,4 @@
+146001  Shuya Setsuna  Veda no 5  1
+146002  Lynn Setsuna  Athanor no 7  0
+146003  Mshiro Setsuna  Lokheim no 3  1
+146004  Pembeli 3  Alamat Pembeli 3  1
