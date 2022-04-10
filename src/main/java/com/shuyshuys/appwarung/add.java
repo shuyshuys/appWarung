@@ -290,7 +290,8 @@ public class add {
         while (pilihBackToMenu != 1) {
             System.out.println("1. Back to Menu");
             System.out.println("2. Back to Login");
-            System.out.println("3. Keluar Aplikasi");
+            System.out.println("3. Save and Exit");
+            System.out.println("4. Exit");
             System.out.print("Pilihan : ");
             int pilihBackToMenu = add.sc().nextInt();
             switch (pilihBackToMenu) {
@@ -301,6 +302,8 @@ public class add {
                     AppWarung.main(null);
                     break;
                 case 3:
+                    break;
+                case 4:
                     exit();
                     break;
                 default:
