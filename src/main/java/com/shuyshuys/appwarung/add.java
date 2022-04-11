@@ -139,7 +139,7 @@ public class add {
         System.out.println("    NO\tID\t\tNAMA\t\tALAMAT");
         for (int i = 0; i < add.idxPembeli; i++) {
             if (cTransaksi.pembeli[i].getNama().length() < 8) {
-                System.out.println("    [" + (i + 1) + "]" + cTransaksi.pembeli[i].getId() + "\t"
+                System.out.println("   [" + (i + 1) + "] " + cTransaksi.pembeli[i].getId() + "\t"
                         + cTransaksi.pembeli[i].getNama() + "\t\t" + cTransaksi.pembeli[i].getAlamat());
             } else {
                 System.out.println("    [" + (i + 1) + "]" + cTransaksi.pembeli[i].getId() + "\t"
