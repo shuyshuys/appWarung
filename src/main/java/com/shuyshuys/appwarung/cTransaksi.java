@@ -334,7 +334,7 @@ public class cTransaksi {
         } catch (Exception e) {
         }
         add.border();
-        System.out.println("Total Harga\t\t\t" + totalHarga[idxPembeli]);
+        System.out.println("Total Harga\t\t\t\t" + totalHarga[idxPembeli]);
         // System.out.println("Bayar\t\t: " + bayar[idxPembeli]);
         // System.out.println("Kembalian\t: " + kembalian[idxPembeli]);
         add.border();
