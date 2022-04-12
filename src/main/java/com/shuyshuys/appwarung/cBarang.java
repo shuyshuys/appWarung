@@ -22,11 +22,11 @@ public class cBarang {
     // Logger.getLogger(cBarang.class.getName()).log(Level.SEVERE, null, ex);
     // }
 
-    cBarang(int id, String nama, int harga, int stok) {
+    cBarang(int id, String nama, int harga) {
         this.id = id;
         this.nama = nama;
         this.harga = harga;
-        this.stok = stok;
+        // this.stok = stok;
         // this.kategori = kategori;
         // this.detail = detail;
         System.out.println("  ⁂ Objek " + nama + " dibuat...");
@@ -64,13 +64,13 @@ public class cBarang {
         this.harga = harga;
     }
 
-    public int getStok() {
-        return stok;
-    }
+    // public int getStok() {
+    // return stok;
+    // }
 
-    public void setStok(int stok) {
-        this.stok = stok;
-    }
+    // public void setStok(int stok) {
+    // this.stok = stok;
+    // }
 
     // public String getKategori() {
     // return kategori;
@@ -89,6 +89,6 @@ public class cBarang {
     // }
 
     public String ToString() {
-        return "ID: " + id + "\nNama: " + nama + "\nHarga: " + harga + "\nStok: " + stok;
+        return "ID: " + id + "\nNama: " + nama + "\nHarga: " + harga;
     }
 }

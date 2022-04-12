@@ -6,8 +6,8 @@ package com.shuyshuys.appwarung;
 
 public class cMinuman extends cBarang {
 
-    cMinuman(int id, String nama, int harga, int stok) {
-        super(id, nama, harga, stok);
+    cMinuman(int id, String nama, int harga) {
+        super(id, nama, harga);
         // Auto-generated constructor stub
     }
 
