@@ -23,6 +23,16 @@ public class add {
         return new Scanner(System.in);
     }
 
+    static int getMostMenu() {
+        int mostMenu;
+        if (add.idxMakanan > add.idxMinuman) {
+            mostMenu = add.idxMakanan + 5;
+        } else {
+            mostMenu = add.idxMinuman + 5;
+        }
+        return mostMenu;
+    }
+
     // TODO: String[][] rekapMenu() dan String[][] daftarRekapMenu()
     public static void rekapMenu() {
 
@@ -92,7 +102,8 @@ public class add {
     }
 
     static int searchIdxById(int idCari, int kodeMenu) {
-        int id = -1;
+        // int id = -1;
+        int id = 0;
         if (kodeMenu == 0) {
             boolean found = false;
             for (int i = 0; i < add.idxMakanan; i++) {
@@ -173,7 +184,7 @@ public class add {
             border();
             System.out.println("  ⁂ List Menu Makanan");
             border();
-            System.out.println("  ⁂ NO\tID\tNAMA\t\tHARGA");
+            System.out.println("     NO\tID\tNAMA\t\tHARGA");
             for (int i = 0; i < idxMakanan; i++) {
                 // add.border();
                 if (cMenuCLI.makanan[i].getNama().length() < 8) {
@@ -187,7 +198,7 @@ public class add {
         } else if (menu == "minuman") {
             System.out.println("  ⁂ List Menu Minuman");
             border();
-            System.out.println("  ⁂ NO\tID\tNAMA\t\tHARGA");
+            System.out.println("     NO\tID\tNAMA\t\tHARGA");
             for (int i = 0; i < idxMinuman; i++) {
                 // add.border();
                 if (cMenuCLI.minuman[i].getNama().length() < 8) {
