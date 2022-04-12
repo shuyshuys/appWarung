@@ -1,5 +1,7 @@
 package com.shuyshuys.appwarung;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -13,6 +15,22 @@ public class cMenuCLI {
     public static cMinuman[] minuman;
     static int pilihan;
     static boolean found = false;
+
+    static Integer[] laporanHargaMakanan;
+    static Integer[] laporanHargaMinuman;
+
+    static void initLaporan() {
+        laporanHargaMakanan = new Integer[add.idxMakanan];
+        laporanHargaMinuman = new Integer[add.idxMinuman];
+        // for (int i = 0; i < add.idxMakanan; i++) {
+        // laporanHargaMakanan[i] = cMenuCLI.makanan[i].getNama();
+        // System.out.println(laporanHargaMakanan[i]);
+        // }
+        // for (int i = 0; i < add.idxMinuman; i++) {
+        // laporanHargaMinuman[i] = cMenuCLI.minuman[i].getNama();
+        // System.out.println(laporanHargaMinuman[i]);
+        // }
+    }
 
     public static void menuCLI() {
         do {
@@ -290,7 +308,71 @@ public class cMenuCLI {
                     // add.cls();
                     add.border();
                     // TODO: set menu laporan
+                    initLaporan();
                     System.out.println(" ⁘ Menu Laporan");
+                    System.out.println("1. Laporan Transaksi");
+                    System.out.println("2. Laporan Pelanggan");
+                    System.out.println("3. Kembali");
+                    System.out.print("Pilihan : ");
+                    int pilihLaporan = add.sc().nextInt();
+                    switch (pilihLaporan) {
+                        case 1:
+                            // add.cls();
+                            add.border();
+                            System.out.println(" ⁘⁘ Menu Laporan Transaksi");
+                            add.border();
+                            System.out.println("1. Laporan Makanan");
+                            System.out.println("2. Laporan Minuman");
+                            System.out.println("3. Laporan Total");
+                            System.out.println("4. Kembali");
+                            System.out.print("Pilihan : ");
+                            int pilihLaporanTransaksi = add.sc().nextInt();
+                            switch (pilihLaporanTransaksi) {
+                                case 1:
+                                    // add.cls();
+                                    add.border();
+                                    System.out.println(" ⁘⁘ Menu Laporan Makanan");
+                                    add.border();
+                                    // String[] sortlaporanHargaMakanan = new String[add.idxMakanan];
+                                    Arrays.sort(laporanHargaMakanan, Collections.reverseOrder());
+                                    for (int i = 0; i < add.idxMakanan; i++) {
+                                        if (laporanHargaMakanan[i] != null) {
+                                            System.out.print(
+                                                    cMenuCLI.makanan[i].getNama() + "\t" + laporanHargaMakanan[i]);
+                                        }
+                                    }
+                                    break;
+                                case 2:
+                                    // add.cls();
+                                    add.border();
+                                    System.out.println(" ⁘⁘ Menu Laporan Minuman");
+                                    add.border();
+                                    // String[] sortlaporanHargaMinuman = new String[add.idxMinuman];
+                                    Arrays.sort(laporanHargaMinuman, Collections.reverseOrder());
+                                    for (int i = 0; i < add.idxMinuman; i++) {
+                                        System.out.print(cMenuCLI.minuman[i].getNama() + "\t");
+                                        System.out.println(laporanHargaMinuman[i]);
+                                    }
+                                    break;
+                                case 3:
+                                    break;
+                                case 4:
+                                    break;
+                            }
+                        case 2:
+                            // add.cls();
+                            add.border();
+                            System.out.println(" ⁘⁘ Menu Laporan Pelanggan");
+                            add.border();
+                            // TODO: laporan
+                            break;
+                        case 3:
+                            menuCLI();
+                            break;
+                        default:
+                            add.salahInput();
+                            break;
+                    }
                     break;
                 case 5:
                     // TODO: set writer here

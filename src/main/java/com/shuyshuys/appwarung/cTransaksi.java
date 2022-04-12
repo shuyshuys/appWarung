@@ -74,6 +74,8 @@ public class cTransaksi {
     public void tambahMakanan(cMakanan makanan, int jumlah, int idxPembeli, int idxMakanan) {
         if (jumlahMakanan < idxMaxMakanan) {
 
+            idTransaksi[idxPembeli] = add.idTransaksi + 1;
+            tanggalTransaksi[idxPembeli] = add.getDateTime();
             tMakanan[jumlahMakanan] = makanan;
             totalHarga[idxPembeli] = totalHarga[idxPembeli] + makanan.getHarga() * jumlah;
             totalHargaLifeTime = totalHargaLifeTime + totalHarga[idxPembeli];
@@ -81,13 +83,9 @@ public class cTransaksi {
             akumulasi[2][idxMakanan] = Integer.toString(makanan.getHarga());
             akumulasi[3][idxMakanan] = String.valueOf(jumlah); // +akumulasi[3][idxMakanan];
             akumulasi[4][idxPembeli] = String.valueOf(jumlah);
-            // System.out.println("Akumulasi 3 idxMakanan: " + akumulasi[3][idxMakanan]);
-            // System.out.println("Akumulasi 4 idxPembeli: " + akumulasi[4][idxPembeli]);
-            // System.out.println("idxMakanan: " + idxMakanan);
-            // System.out.println("idxPembeli: " + idxPembeli);
-            tanggalTransaksi[idxPembeli] = add.getDateTime();
-            idTransaksi[idxPembeli] = add.idTransaksi + 1;
-            porsiMakanan[idxPembeli][idxMakanan] = jumlah;
+            cMenuCLI.laporanHargaMakanan[idxMakanan] = makanan.getHarga() * jumlah;
+
+            porsiMakanan[idxPembeli][idxMakanan] = jumlah; // TODO: ini buat ToString kayanya
             jumlahMakanan++;
             System.out.println(
                     "  ↂ  Makanan " + makanan.getNama() + " ditambahkan ke Nota " + pembeli[idxPembeli].getNama()
