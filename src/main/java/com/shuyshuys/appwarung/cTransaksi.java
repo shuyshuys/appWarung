@@ -373,7 +373,7 @@ public class cTransaksi {
                 case 1:
                     // add.cls();
                     add.border();
-                    int[][] jumlah = new int[5][2];
+                    int[][] jumlah = new int[getMostMenu()][2];
                     // TODO: set pembeli belum beres
                     // TODO: tambah pesanan - siapkan buat perulangan lanjut ga
                     // cTransaksi beli = new cTransaksi();
@@ -422,18 +422,18 @@ public class cTransaksi {
                         System.out.print("Kode menu: ");
                         int kodeMenu = add.sc().nextInt();
                         int idMenu;
-                        int id = 0;
+                        int idx = 0;
                         if (kodeMenu == 0) {
                             add.printMenu("makanan");
                             System.out.print("ID menu: ");
                             idMenu = add.sc().nextInt();
-                            id = add.searchIdxById(idMenu, kodeMenu);
+                            idx = add.searchIdxById(idMenu, kodeMenu);
                         }
                         if (kodeMenu == 1) {
                             add.printMenu("minuman");
                             System.out.print("ID menu: ");
                             idMenu = add.sc().nextInt();
-                            id = add.searchIdxById(idMenu, kodeMenu);
+                            idx = add.searchIdxById(idMenu, kodeMenu);
                         }
                         if (kodeMenu == 2) {
                             boolean found = false;
@@ -450,7 +450,7 @@ public class cTransaksi {
                                     if (ketemu != null) {
                                         found = true;
                                         kodeMenu = 0;
-                                        id = add.searchIdxById(ketemu.getId(), kodeMenu);
+                                        idx = add.searchIdxById(ketemu.getId(), kodeMenu);
                                     }
                                 }
                                 if (found == false) {
@@ -458,7 +458,7 @@ public class cTransaksi {
                                     if (ketemu != null) {
                                         found = true;
                                         kodeMenu = 1;
-                                        id = add.searchIdxById(ketemu.getId(), kodeMenu);
+                                        idx = add.searchIdxById(ketemu.getId(), kodeMenu);
                                     }
                                 }
                                 if (found == false) {
@@ -468,17 +468,17 @@ public class cTransaksi {
                             } while (found == false);
                         }
                         System.out.print("Jumlah: ");
-                        jumlah[id][kodeMenu] = add.sc().nextInt();
-                        akumulasi[3][id] = String.valueOf(jumlah[id][kodeMenu]);
+                        jumlah[idx][kodeMenu] = add.sc().nextInt();
+                        akumulasi[3][idx] = String.valueOf(jumlah[idx][kodeMenu]);
 
                         if (kodeMenu == 0) {
-                            beli.tambahMakanan(cMenuCLI.makanan[id], jumlah[id][kodeMenu], (pilihPembeli - 1), id);
-                            porsiMakanan[pilihPembeli - 1][id] = jumlah[id][kodeMenu];
+                            beli.tambahMakanan(cMenuCLI.makanan[idx], jumlah[idx][kodeMenu], (pilihPembeli - 1), idx);
+                            porsiMakanan[pilihPembeli - 1][idx] = jumlah[idx][kodeMenu];
                             // System.out.println("Pesanan ditambahkan");
                         }
                         if (kodeMenu == 1) {
-                            beli.tambahMinuman(cMenuCLI.minuman[id], jumlah[id][kodeMenu], (pilihPembeli - 1), id);
-                            porsiMinuman[pilihPembeli - 1][id] = jumlah[id][kodeMenu];
+                            beli.tambahMinuman(cMenuCLI.minuman[idx], jumlah[idx][kodeMenu], (pilihPembeli - 1), idx);
+                            porsiMinuman[pilihPembeli - 1][idx] = jumlah[idx][kodeMenu];
                             // System.out.println("Pesanan ditambahkan");
                         }
                         System.out.println("\tTambah Pesanan Lagi? (0 Tidak/1 Ya)");
