@@ -10,17 +10,8 @@ public class cTransaksi {
     cMakanan tMakanan[];
     cMinuman tMinuman[];
 
-    static int getMostMenu() {
-        int mostMenu;
-        if (add.idxMakanan > add.idxMinuman) {
-            mostMenu = add.idxMakanan + 5;
-        } else {
-            mostMenu = add.idxMinuman + 5;
-        }
-        return mostMenu;
-    }
-
-    static String[][] akumulasi = new String[5][getMostMenu()]; // 0 makanan 1 minuman 2 harga 3 jumlah 4 porsiPembeli
+    static String[][] akumulasi = new String[5][add.getMostMenu()]; // 0 makanan 1 minuman 2 harga 3 jumlah 4
+                                                                    // porsiPembeli
     static int idPembeli;
     // private int maxPembelian;
 
@@ -28,8 +19,8 @@ public class cTransaksi {
     // private String namaPembeli;
     // private String[] namaBarang = new String[mineReader.idx_count];
     // private int[] hargaBarang = new int[mineReader.idx_count];
-    private static int[][] porsiMakanan = new int[50][getMostMenu()]; // 0 idxmaxpembeli
-    private static int[][] porsiMinuman = new int[50][getMostMenu()]; // 0 idxmaxpembeli
+    private static int[][] porsiMakanan = new int[50][add.getMostMenu()]; // 0 idxmaxpembeli
+    private static int[][] porsiMinuman = new int[50][add.getMostMenu()]; // 0 idxmaxpembeli
     // private int[] jumlahBarang = new int[mineReader.idx_count];
     private static int[] totalHarga = new int[mineReader.idx_count];
     private int totalHargaLifeTime;
@@ -373,10 +364,8 @@ public class cTransaksi {
                 case 1:
                     // add.cls();
                     add.border();
-                    int[][] jumlah = new int[getMostMenu()][2];
+                    int[][] jumlah = new int[add.getMostMenu()][2];
                     // TODO: set pembeli belum beres
-                    // TODO: tambah pesanan - siapkan buat perulangan lanjut ga
-                    // cTransaksi beli = new cTransaksi();
                     System.out.println(" ⁘⁘ Tambah Transaksi");
                     add.border();
                     System.out.println("\t[list] untuk melihat list pembeli");
@@ -561,6 +550,7 @@ public class cTransaksi {
                 case 2:
                     add.cls();
                     add.border();
+                    // FIXME: bug gaes :)
                     System.out.println(" ⁘⁘ Lihat Transaksi");
                     add.border();
                     for (int i = 0; i < add.idxTransaksi; i++) {
