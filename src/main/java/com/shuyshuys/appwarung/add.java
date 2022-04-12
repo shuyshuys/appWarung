@@ -224,13 +224,10 @@ public class add {
                     }
                     System.out.print("Harga Makanan\t: ");
                     int hargaMakanan = add.sc().nextInt();
-                    System.out.print("Stok Makanan\t: ");
-                    int stokMakanan = add.sc().nextInt();
                     cMenuCLI.makanan[idxMakanan] = new cMakanan(
                             cMenuCLI.makanan[add.idxMakanan - 1].getId() + 1,
                             namaMakanan,
-                            hargaMakanan,
-                            stokMakanan);
+                            hargaMakanan);
                     add.idxMakanan++;
                     add.border();
                     System.out.println(
@@ -262,13 +259,10 @@ public class add {
                     }
                     System.out.print("Harga Minuman\t: ");
                     int hargaMinuman = add.sc().nextInt();
-                    System.out.print("Stok Minuman\t: ");
-                    int stokMinuman = add.sc().nextInt();
                     cMenuCLI.minuman[add.idxMinuman] = new cMinuman(
                             cMenuCLI.minuman[add.idxMinuman - 1].getId() + 1,
                             namaMinuman,
-                            hargaMinuman,
-                            stokMinuman);
+                            hargaMinuman);
                     add.idxMinuman++;
                     add.border();
                     System.out.println(
