@@ -92,23 +92,31 @@ public class cTransaksi {
                             + "...");
             beli.ToString(idxPembeli);
         } else {
-            System.out.println("  ↂ  Jumlah Nota Makanan sudah mencapai maksimal...");
+            System.out.println("  ↂ  Barang dalam Nota sudah mencapai maksimal...");
         }
     }
 
     public void tambahMinuman(cMinuman minuman, int jumlah, int idxPembeli, int idxMinuman) {
         if (jumlahMinuman < idxMaxMinuman) {
+
+            idTransaksi[idxPembeli] = add.idTransaksi + 1;
+            tanggalTransaksi[idxPembeli] = add.getDateTime();
             tMinuman[jumlahMinuman] = minuman;
             totalHarga[idxPembeli] = totalHarga[idxPembeli] + minuman.getHarga() * jumlah;
             totalHargaLifeTime = totalHargaLifeTime + totalHarga[idxPembeli];
             akumulasi[1][idxMinuman] = minuman.getNama();
             akumulasi[2][idxMinuman] = String.valueOf(minuman.getHarga());
+            akumulasi[3][idxMinuman] = String.valueOf(jumlah); // +akumulasi[3][idxMinuman];
+            akumulasi[4][idxPembeli] = String.valueOf(jumlah);
+            cMenuCLI.laporanHargaMinuman[idxMinuman] = minuman.getHarga() * jumlah;
+
+            porsiMinuman[idxPembeli][idxMinuman] = jumlah; // TODO: ini buat ToString kayanya
             jumlahMinuman++;
             System.out.println(
                     "  ↂ  Minuman " + minuman.getNama() + " ditambahkan ke Nota " + pembeli[idxPembeli].getNama()
                             + "...");
         } else {
-            System.out.println("  ↂ  Jumlah Nota Minuman sudah mencapai maksimal...");
+            System.out.println("  ↂ  Barang dalam Nota sudah mencapai maksimal...");
         }
     }
 
@@ -551,10 +559,13 @@ public class cTransaksi {
                     // FIXME: bug gaes :)
                     System.out.println(" ⁘⁘ Lihat Transaksi");
                     add.border();
-                    for (int i = 0; i < add.idxTransaksi; i++) {
+                    for (int i = 0; i < add.idxPembeli; i++) {
+                        // if (beli[i].getIdTransaksi() != 0) {
                         System.out.println("[Transaksi ke-" + (i + 1) + "] ");
-                        beli.ToString(i);
+                        cTransaksi.beli.ToString(i);
                         add.border();
+                        // }
+                        // beli.ToString(i);
                     }
                     // System.out.println(cMenuCLI.transaksi[i].ToString());
                     // System.out.println(beli.cetakNota(i));
