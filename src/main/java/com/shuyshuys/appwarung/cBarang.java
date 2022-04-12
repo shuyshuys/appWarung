@@ -9,7 +9,7 @@ public class cBarang {
     private String nama;
     private int harga;
     private int id;
-    private int stok;
+    // private int stok;
     // private String kategori;
     // private String detail;
 
