@@ -22,14 +22,18 @@ public class cPelanggan {
                 String alamat = add.sc().nextLine();
                 if (alamat == "") {
                     cTransaksi.pembeli[add.idxPembeli] = new cPembeli(nama);
-                } else {
+                } else if (alamat != "" && nama != "") {
                     cTransaksi.pembeli[add.idxPembeli] = new cPembeli(nama, alamat);
+                } else if (nama == "") {
+                    System.out.println("  ⁂ Nama tidak boleh kosong");
                 }
                 add.idxPembeli++;
                 Pelanggan();
                 break;
             case 2:
+                add.border();
                 System.out.println(" ⁘⁘ Menu Lihat Pelanggan");
+                add.border();
                 add.listPembeli();
                 Pelanggan();
                 break;
