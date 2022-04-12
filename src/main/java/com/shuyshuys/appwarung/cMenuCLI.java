@@ -12,6 +12,7 @@ public class cMenuCLI {
     public static cMakanan[] makanan;
     public static cMinuman[] minuman;
     static int pilihan;
+    static boolean found = false;
 
     public static void menuCLI() {
         do {
@@ -105,13 +106,13 @@ public class cMenuCLI {
                                                     }
                                                 }
                                                 add.idxMakanan--;
-                                                System.out.println("Makanan berhasil dihapus");
+                                                System.out.println("  ⁂ Makanan berhasil dihapus");
                                             } else {
-                                                System.out.println("Makanan tidak dihapus");
+                                                System.out.println("  ⁂ Makanan tidak dihapus");
                                                 break;
                                             }
                                             if (!found) {
-                                                System.out.println("Makanan tidak ditemukan");
+                                                System.out.println("  ⁂ Makanan tidak ditemukan");
                                             }
                                         }
                                         // else {
@@ -147,13 +148,13 @@ public class cMenuCLI {
                                                     }
                                                 }
                                                 add.idxMinuman--;
-                                                System.out.println("Minuman berhasil dihapus");
+                                                System.out.println("  ⁂ Minuman berhasil dihapus");
                                             } else {
-                                                System.out.println("Minuman tidak dihapus");
+                                                System.out.println("  ⁂ Minuman tidak dihapus");
                                                 break;
                                             }
                                             if (!found2) {
-                                                System.out.println("Minuman tidak ditemukan");
+                                                System.out.println("  ⁂ Minuman tidak ditemukan");
                                             }
                                         }
                                         // else {
@@ -185,7 +186,7 @@ public class cMenuCLI {
                                     System.out.println(" ⁘⁘⁘ Menu Ubah Makanan");
                                     System.out.print("Id Makanan\t: ");
                                     int idMakananUbah = sc.nextInt();
-                                    boolean found = false;
+                                    found = false;
                                     for (int i = 0; i < add.idxMakanan; i++) {
                                         if (cMenuCLI.makanan[i].getId() == idMakananUbah) {
                                             found = true;
@@ -198,12 +199,12 @@ public class cMenuCLI {
                                             int hargaMakananUbah = add.sc().nextInt();
                                             cMenuCLI.makanan[i].setNama(namaMakananUbah);
                                             cMenuCLI.makanan[i].setHarga(hargaMakananUbah);
-                                            System.out.println("Makanan berhasil diubah");
+                                            System.out.println("  ⁂ Makanan berhasil diubah");
                                         }
                                         // break;
                                     }
                                     if (!found) {
-                                        System.out.println("Makanan tidak ditemukan");
+                                        System.out.println("  ⁂ Makanan tidak ditemukan");
                                     }
                                     add.border();
                                     add.backToMenu();
@@ -216,10 +217,10 @@ public class cMenuCLI {
                                     System.out.println(" ⁘⁘⁘ Menu Ubah Minuman");
                                     System.out.print("Id Minuman\t: ");
                                     int idMinumanUbah = sc.nextInt();
-                                    boolean found2 = false;
+                                    found = false;
                                     for (int i = 0; i < add.idxMinuman; i++) {
                                         if (cMenuCLI.minuman[i].getId() == idMinumanUbah) {
-                                            found2 = true;
+                                            found = true;
                                             add.border();
                                             System.out.println(cMenuCLI.minuman[i].ToString());
                                             add.border();
@@ -229,12 +230,12 @@ public class cMenuCLI {
                                             int hargaMinumanUbah = add.sc().nextInt();
                                             cMenuCLI.minuman[i].setNama(namaMinumanUbah);
                                             cMenuCLI.minuman[i].setHarga(hargaMinumanUbah);
-                                            System.out.println("Minuman berhasil diubah");
+                                            System.out.println("  ⁂ Minuman berhasil diubah");
                                         }
                                         // break;
                                     }
-                                    if (!found2) {
-                                        System.out.println("Minuman tidak ditemukan");
+                                    if (!found) {
+                                        System.out.println("  ⁂ Minuman tidak ditemukan");
                                     }
                                     add.border();
                                     add.backToMenu();
@@ -245,29 +246,7 @@ public class cMenuCLI {
                                     add.printMenu("makanan");
                                     add.border();
                                     // TODO: custom spesifikmu lo
-                                    System.out.println(" ⁘⁘⁘ Menu Ubah Spesifik per setter");
-                                    // System.out.print("Id Makanan\t: ");
-                                    // int idMakananUbahSpesifik = sc.nextInt();
-                                    // boolean found3 = false;
-                                    // for (int i = 0; i < add.idxMakanan; i++) {
-                                    // if (cMenuCLI.makanan[i].getId() == idMakananUbahSpesifik) {
-                                    // found3 = true;
-                                    // System.out.println(cMenuCLI.makanan[i].ToString());
-                                    // System.out.print("Nama Makanan\t: ");
-                                    // String namaMakananUbahSpesifik = sc.next();
-                                    // System.out.print("Harga Makanan\t: ");
-                                    // int hargaMakananUbahSpesifik = sc.nextInt();
-                                    // cMenuCLI.makanan[i].setNama(namaMakananUbahSpesifik);
-                                    // cMenuCLI.makanan[i].setHarga(hargaMakananUbahSpesifik);
-
-                                    // System.out.println("Makanan berhasil diubah");
-                                    // } else {
-                                    // System.out.println("Data makanan kosong");
-                                    // }
-                                    // // break;
-                                    // }
-                                    add.border();
-                                    add.backToMenu();
+                                    //
                                     break;
                                 case 4:
                                     menuCLI();

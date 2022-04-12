@@ -68,12 +68,12 @@ public class cTransaksi {
         tMinuman = new cMinuman[idxMaxMinuman];
         tanggalTransaksi[add.idxTransaksi] = add.getDate();
         add.idTransaksi++;
-        System.out.println("  ⁂ Objek Nota dibuat...");
+        System.out.println("  ↂ  Objek Nota dibuat...");
     }
 
     public void isiPembeli(cPembeli pembeli, int idxPembeli) {
         cTransaksi.pembeli[idxPembeli] = pembeli;
-        System.out.println("  ⁂ Nama Pembeli " + cTransaksi.pembeli[idxPembeli].getNama() + " ditambahkan ke Nota...");
+        System.out.println("  ↂ  Nama Pembeli " + cTransaksi.pembeli[idxPembeli].getNama() + " ditambahkan ke Nota...");
     }
 
     // TODO: pembayaran
@@ -97,11 +97,11 @@ public class cTransaksi {
             porsiMakanan[idxPembeli][idxMakanan] = jumlah;
             jumlahMakanan++;
             System.out.println(
-                    "  ⁂ Makanan " + makanan.getNama() + " ditambahkan ke Nota " + pembeli[idxPembeli].getNama()
+                    "  ↂ  Makanan " + makanan.getNama() + " ditambahkan ke Nota " + pembeli[idxPembeli].getNama()
                             + "...");
             beli.ToString(idxPembeli);
         } else {
-            System.out.println("  ⁂ Jumlah Nota Makanan sudah mencapai maksimal...");
+            System.out.println("  ↂ  Jumlah Nota Makanan sudah mencapai maksimal...");
         }
     }
 
@@ -114,16 +114,16 @@ public class cTransaksi {
             akumulasi[2][idxMinuman] = String.valueOf(minuman.getHarga());
             jumlahMinuman++;
             System.out.println(
-                    "  ⁂ Objek Minuman " + minuman.getNama() + " ditambahkan ke Nota " + pembeli[idxPembeli].getNama()
+                    "  ↂ  Minuman " + minuman.getNama() + " ditambahkan ke Nota " + pembeli[idxPembeli].getNama()
                             + "...");
         } else {
-            System.out.println("  ⁂ Jumlah Nota Minuman sudah mencapai maksimal...");
+            System.out.println("  ↂ  Jumlah Nota Minuman sudah mencapai maksimal...");
         }
     }
 
     public void hapusMakanan(int idxPembeli) {
         if (jumlahMakanan < 0) {
-            System.out.println("  ⁂ Makanan kosong...");
+            System.out.println("  ↂ  Makanan kosong...");
         } else {
             add.border();
             for (int i = 0; i < tMakanan.length; i++) {
@@ -146,19 +146,20 @@ public class cTransaksi {
                             tMakanan[j] = tMakanan[j + 1];
                         }
                     }
-                    System.out.println("  ⁂ Makanan " + hapusMakanan + " dihapus...");
+                    System.out.println("  ↂ  Makanan " + hapusMakanan + " dihapus...");
                     break;
                 }
             }
             if (!found) {
-                System.out.println("  ⁂ Makanan " + hapusMakanan + " tidak ditemukan dalam nota...");
+                System.out.println("  ↂ  Makanan " + hapusMakanan + " tidak ditemukan dalam nota"
+                        + pembeli[idxPembeli].getNama() + "...");
             }
         }
     }
 
     public void hapusMinuman(int idxPembeli) {
         if (jumlahMinuman < 0) {
-            System.out.println("  ⁂ Minuman kosong...");
+            System.out.println("  ↂ  Minuman kosong...");
         } else {
             add.border();
             for (int i = 0; i < tMinuman.length; i++) {
@@ -181,38 +182,40 @@ public class cTransaksi {
                             tMinuman[j] = tMinuman[j + 1];
                         }
                     }
-                    System.out.println("  ⁂ Minuman " + hapusMinuman + " dihapus...");
+                    System.out.println("  ↂ  Minuman " + hapusMinuman + " dihapus...");
                     break;
                 }
             }
             if (!found) {
-                System.out.println("  ⁂ Minuman " + hapusMinuman + " tidak ditemukan dalam nota...");
+                System.out.println("  ↂ  Minuman " + hapusMinuman + " tidak ditemukan dalam nota"
+                        + pembeli[idxPembeli].getNama() + "...");
             }
         }
     }
 
-    public String cetakNota(int idxPembeli) {
-        String nota = "  ⁂ Nota " + pembeli[idxPembeli].getNama() + " dicetak..." + "\n" +
-                "  ⁂ Tanggal Transaksi : " + tanggalTransaksi + "\n" +
-                "  ⁂ Nama Pembeli : " + pembeli[idxPembeli].getNama() + "\n" +
-                // for (int i = 0; i < tMakanan.length; i++) {
-                // if (tMakanan[i] != null) {
-                // System.out.println(" ⁂ Makanan " + tMakanan[i].getNama() + " " +
-                // tMakanan[i].getHarga() + " x "
-                // + akumulasi[3][i]);
-                // }
-                // }
-                // for (int i = 0; i < tMinuman.length; i++) {
-                // if (tMinuman[i] != null) {
-                // System.out.println(" ⁂ Minuman " + tMinuman[i].getNama() + " " +
-                // tMinuman[i].getHarga() + " x "
-                // + akumulasi[3][i]);
-                // }
-                // }
-                "  ⁂ Total Harga : " + totalHarga[idxPembeli] + "\n" +
-                "  ⁂ Kembalian : " + kembalian[idxPembeli];
-        return nota;
-    }
+    // public String cetakNota(int idxPembeli) {
+    // String nota = " ⁂ Nota " + pembeli[idxPembeli].getNama() + " dicetak..." +
+    // "\n" +
+    // " ⁂ Tanggal Transaksi : " + tanggalTransaksi + "\n" +
+    // " ⁂ Nama Pembeli : " + pembeli[idxPembeli].getNama() + "\n" +
+    // // for (int i = 0; i < tMakanan.length; i++) {
+    // // if (tMakanan[i] != null) {
+    // // System.out.println(" ⁂ Makanan " + tMakanan[i].getNama() + " " +
+    // // tMakanan[i].getHarga() + " x "
+    // // + akumulasi[3][i]);
+    // // }
+    // // }
+    // // for (int i = 0; i < tMinuman.length; i++) {
+    // // if (tMinuman[i] != null) {
+    // // System.out.println(" ⁂ Minuman " + tMinuman[i].getNama() + " " +
+    // // tMinuman[i].getHarga() + " x "
+    // // + akumulasi[3][i]);
+    // // }
+    // // }
+    // " ⁂ Total Harga : " + totalHarga[idxPembeli] + "\n" +
+    // " ⁂ Kembalian : " + kembalian[idxPembeli];
+    // return nota;
+    // }
 
     public int getIdTransaksi(int idxPembeli) {
         return idTransaksi[idxPembeli];
@@ -288,6 +291,7 @@ public class cTransaksi {
         this.tanggalTransaksi[idxPembeli] = tanggalTransaksi;
     }
 
+    // FIXME: to string
     public void ToString(int idxPembeli) {
         add.border();
         add.border();
@@ -375,107 +379,115 @@ public class cTransaksi {
                     System.out.println(" ⁘⁘ Tambah Transaksi");
                     add.border();
                     System.out.println("\t[list] untuk melihat list pembeli");
-                    System.out.print("Nama pembeli baru : ");
+                    System.out.print("Nama pembeli baru\t: ");
                     String pilih = add.sc().nextLine();
-                    add.border();
                     if (pilih.equals("list")) {
+                        add.border();
                         add.printPembeli();
                         add.border();
                         System.out.print("Pilih nomor: ");
                         pilihPembeli = add.sc().nextInt();
-                        // add.idxPembeli++; FIXME:
                         beli.isiPembeli(cTransaksi.pembeli[pilihPembeli - 1], (pilihPembeli - 1));
-                        // beli.isiPembeli(cTransaksi.pembeli[pilihPembeli - 1], pilihPembeli - 1);
-                        // System.out.println("Pembeli [" + beli.getNamaPembeli() + "] ditambahkan ke
-                        // transaksi");
-                        boolean belilagi = false;
-                        do {
-                            // add.cls();
-                            add.border();
-                            System.out.println(
-                                    " ⁘⁘⁘ Tambah Pesanan [" + cTransaksi.pembeli[pilihPembeli - 1].getNama() + "]");
-                            System.out.println(
-                                    "Input Kode Menu\n\t0 untuk makanan\n\t1 untuk minuman\n\t2 untuk pencarian");
-                            System.out.print("Kode menu: ");
-                            int kodeMenu = add.sc().nextInt();
-                            int idMenu;
-                            int id = 0;
-                            if (kodeMenu == 0) {
-                                add.printMenu("makanan");
-                                System.out.print("ID menu: ");
-                                idMenu = add.sc().nextInt();
-                                id = add.searchIdxById(idMenu, kodeMenu);
-                            }
-                            if (kodeMenu == 1) {
-                                add.printMenu("minuman");
-                                System.out.print("ID menu: ");
-                                idMenu = add.sc().nextInt();
-                                id = add.searchIdxById(idMenu, kodeMenu);
-                            }
-                            if (kodeMenu == 2) {
-                                boolean found = false;
-                                do {
-                                    System.out.print("Cari menu: ");
-                                    String cari = add.sc().nextLine();
-                                    if (found == false) {
-                                        cMakanan ketemu = add.searchMakanan(cari);
-                                        if (ketemu != null) {
-                                            found = true;
-                                            kodeMenu = 0;
-                                            id = add.searchIdxById(ketemu.getId(), kodeMenu);
-                                            // beli.tambahMakanan(ketemu, jumlah[id][kodeMenu],
-                                            // (pilihPembeli - 1), add.searchIdxMakanan(cari));
-                                        }
-                                    }
-                                    if (found == false) {
-                                        cMinuman ketemu = add.searchMinuman(cari);
-                                        if (ketemu != null) {
-                                            found = true;
-                                            kodeMenu = 1;
-                                            id = add.searchIdxById(ketemu.getId(), kodeMenu);
-                                            // beli.tambahMinuman(ketemu, jumlah[id][kodeMenu], (pilihPembeli - 1),
-                                            // add.searchIdxMinuman(cari));
-                                        }
-                                    }
-                                    if (found == false) {
-                                        System.out.println("Menu tidak ditemukan");
-                                        add.border();
-                                    }
-                                } while (found == false);
-                            }
-                            System.out.print("Jumlah: ");
-                            jumlah[id][kodeMenu] = add.sc().nextInt();
-                            akumulasi[3][id] = String.valueOf(jumlah[id][kodeMenu]);
-                            // System.out.println(id);
-                            // System.out.println(akumulasi[3][id]);
-                            // FIXME: jumlah makan / minum kayanya perlu diperbaiki
-                            if (kodeMenu == 0) {
-                                beli.tambahMakanan(cMenuCLI.makanan[id], jumlah[id][kodeMenu], (pilihPembeli - 1), id);
-                                porsiMakanan[pilihPembeli - 1][id] = jumlah[id][kodeMenu];
-                                // System.out.println("Pesanan ditambahkan");
-                            }
-                            if (kodeMenu == 1) {
-                                beli.tambahMinuman(cMenuCLI.minuman[id], jumlah[id][kodeMenu], (pilihPembeli - 1), id);
-                                porsiMinuman[pilihPembeli - 1][id] = jumlah[id][kodeMenu];
-                                // System.out.println("Pesanan ditambahkan");
-                            }
-                            System.out.println("\tTambah Pesanan Lagi? (0 Tidak/1 Ya)");
-                            System.out.print("\tPilihan: ");
-                            int pilihLagi = add.sc().nextInt();
-                            if (pilihLagi == 0) {
-                                belilagi = false;
-                            } else {
-                                belilagi = true;
-                            }
-                        } while (belilagi == true);
                     } else {
-                        // beli.isiPembeli(cMenuCLI.pembeli[add.idxPembeli - 1]);
-                        // System.out.println("Pembeli [" + beli.getNamaPembeli() + "] ditambahkan ke
-                        // transaksi");
+                        System.out.print("Alamat\t\t\t: ");
+                        String alamat = add.sc().nextLine();
+                        if (pilih != "" && alamat == "") {
+                            cTransaksi.pembeli[add.idxPembeli] = new cPembeli(pilih);
+                            beli.isiPembeli(pembeli[add.idxPembeli], add.idxPembeli - 1);
+                            add.idxPembeli++;
+                            pilihPembeli = add.idxPembeli - 1;
+                        } else if (alamat == "" && pilih == "") {
+                            cTransaksi.pembeli[0] = new cPembeli();
+                            beli.isiPembeli(pembeli[0], 0);
+                            pilihPembeli = 1;
+                        } else {
+                            cTransaksi.pembeli[add.idxPembeli] = new cPembeli(pilih, alamat);
+                            beli.isiPembeli(pembeli[add.idxPembeli], add.idxPembeli - 1);
+                            add.idxPembeli++;
+                            pilihPembeli = add.idxPembeli - 1;
+                        }
                         add.border();
-                        // TODO: tambah pesanan dengan pembeli baru
-
                     }
+                    boolean belilagi = false;
+                    do {
+                        // add.cls();
+                        add.border();
+                        System.out.println("pilih pembeli: " + pilihPembeli);
+                        System.out.println(
+                                " ⁘⁘⁘ Tambah Pesanan [" + cTransaksi.pembeli[pilihPembeli - 1].getNama() + "]");
+                        System.out.println(
+                                "Input Kode Menu\n\t0 untuk makanan\n\t1 untuk minuman\n\t2 untuk pencarian");
+                        System.out.print("Kode menu: ");
+                        int kodeMenu = add.sc().nextInt();
+                        int idMenu;
+                        int id = 0;
+                        if (kodeMenu == 0) {
+                            add.printMenu("makanan");
+                            System.out.print("ID menu: ");
+                            idMenu = add.sc().nextInt();
+                            id = add.searchIdxById(idMenu, kodeMenu);
+                        }
+                        if (kodeMenu == 1) {
+                            add.printMenu("minuman");
+                            System.out.print("ID menu: ");
+                            idMenu = add.sc().nextInt();
+                            id = add.searchIdxById(idMenu, kodeMenu);
+                        }
+                        if (kodeMenu == 2) {
+                            boolean found = false;
+                            do {
+                                System.out.println(" ⁘⁘⁘ Pencarian");
+                                System.out.print("\t[exit] untuk keluar");
+                                System.out.print("Cari menu: ");
+                                String cari = add.sc().nextLine();
+                                if (cari.equals("exit")) {
+                                    break;
+                                }
+                                if (found == false) {
+                                    cMakanan ketemu = add.searchMakanan(cari);
+                                    if (ketemu != null) {
+                                        found = true;
+                                        kodeMenu = 0;
+                                        id = add.searchIdxById(ketemu.getId(), kodeMenu);
+                                    }
+                                }
+                                if (found == false) {
+                                    cMinuman ketemu = add.searchMinuman(cari);
+                                    if (ketemu != null) {
+                                        found = true;
+                                        kodeMenu = 1;
+                                        id = add.searchIdxById(ketemu.getId(), kodeMenu);
+                                    }
+                                }
+                                if (found == false) {
+                                    System.out.println("Menu tidak ditemukan");
+                                    add.border();
+                                }
+                            } while (found == false);
+                        }
+                        System.out.print("Jumlah: ");
+                        jumlah[id][kodeMenu] = add.sc().nextInt();
+                        akumulasi[3][id] = String.valueOf(jumlah[id][kodeMenu]);
+
+                        if (kodeMenu == 0) {
+                            beli.tambahMakanan(cMenuCLI.makanan[id], jumlah[id][kodeMenu], (pilihPembeli - 1), id);
+                            porsiMakanan[pilihPembeli - 1][id] = jumlah[id][kodeMenu];
+                            // System.out.println("Pesanan ditambahkan");
+                        }
+                        if (kodeMenu == 1) {
+                            beli.tambahMinuman(cMenuCLI.minuman[id], jumlah[id][kodeMenu], (pilihPembeli - 1), id);
+                            porsiMinuman[pilihPembeli - 1][id] = jumlah[id][kodeMenu];
+                            // System.out.println("Pesanan ditambahkan");
+                        }
+                        System.out.println("\tTambah Pesanan Lagi? (0 Tidak/1 Ya)");
+                        System.out.print("\tPilihan: ");
+                        int pilihLagi = add.sc().nextInt();
+                        if (pilihLagi == 0) {
+                            belilagi = false;
+                        } else {
+                            belilagi = true;
+                        }
+                    } while (belilagi == true);
                     add.border();
                     add.idxTransaksi++; // FIXME: check emang ini dipake ya?
                     boolean paidInFull = false;
@@ -493,7 +505,7 @@ public class cTransaksi {
                         if (bayar >= beli.getTotalHarga(pilihPembeli - 1)) {
                             paidInFull = true;
                             kembalian[pilihPembeli - 1] = bayar - beli.getTotalHarga(pilihPembeli - 1);
-                            System.out.println("Kembalian\t\t\t: " + kembalian[pilihPembeli - 1]);
+                            System.out.println("Kembalian\t\t\t" + kembalian[pilihPembeli - 1]);
                         } else {
                             notEnough = true;
                             System.out.println("Uang anda kurang");

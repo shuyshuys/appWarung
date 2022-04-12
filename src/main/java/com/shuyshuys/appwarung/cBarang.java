@@ -29,7 +29,7 @@ public class cBarang {
         // this.stok = stok;
         // this.kategori = kategori;
         // this.detail = detail;
-        System.out.println("  ↂ Objek " + nama + " dibuat...");
+        System.out.println("  ↂ  Objek " + nama + " dibuat...");
     }
 
     // cBarang(int id, String nama, int harga, int stok) {

@@ -92,7 +92,7 @@ public class add {
     }
 
     static int searchIdxById(int idCari, int kodeMenu) {
-        int id = 0;
+        int id = -1;
         if (kodeMenu == 0) {
             boolean found = false;
             for (int i = 0; i < add.idxMakanan; i++) {
@@ -133,7 +133,6 @@ public class add {
         }
     }
 
-    // TODO: test print v2
     public static void printPembeli() {
         System.out.println("  ⁂ Daftar Pelanggan");
         System.out.println("    NO\tID\t\tNAMA\t\tALAMAT");
@@ -231,18 +230,17 @@ public class add {
                     add.idxMakanan++;
                     add.border();
                     System.out.println(
-                            "Berhasil menambahkan menu " + cMenuCLI.makanan[add.idxMakanan - 1].getNama());
+                            "  ⁂ Berhasil menambahkan menu " + cMenuCLI.makanan[add.idxMakanan - 1].getNama());
                     break;
                 } while (found != true);
-                add.border();
             } else {
-                System.out.println("Kapasitas menu " + menu + " Penuh!");
+                System.out.println("  ⁂ Kapasitas menu " + menu + " Penuh!");
             }
         }
         if (menu == "Minuman") {
             System.out.println(" ⁘⁘⁘ Tambah Minuman");
             String namaMinuman; // input tambah menu makanan
-            if (idxMakanan < mineReader.idx_max_makanan) {
+            if (idxMakanan < mineReader.idx_max_minuman) {
                 boolean found = false;
                 do {
                     // Scanner scMakan = new Scanner(System.in);
@@ -266,12 +264,11 @@ public class add {
                     add.idxMinuman++;
                     add.border();
                     System.out.println(
-                            "Berhasil menambahkan menu " + cMenuCLI.minuman[add.idxMinuman - 1].getNama());
+                            "  ⁂ Berhasil menambahkan menu " + cMenuCLI.minuman[add.idxMinuman - 1].getNama());
                     break;
                 } while (found != true);
-                add.border();
             } else {
-                System.out.println("Kapasitas Menu " + menu + " Penuh!");
+                System.out.println("  ⁂ Kapasitas Menu " + menu + " Penuh!");
             }
         }
         border();
