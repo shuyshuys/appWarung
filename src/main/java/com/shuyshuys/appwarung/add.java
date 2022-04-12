@@ -15,7 +15,7 @@ public class add {
     public static int idxMinuman = 0;
     public static int idxPembeli = 0;
     public static int idxTransaksi = 0;
-    public static int idTransaksi = 902000;
+    public static int idTransaksi = 92000;
 
     private static int pilihBackToMenu = 0;
 
