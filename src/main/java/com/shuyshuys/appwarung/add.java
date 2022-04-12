@@ -184,14 +184,18 @@ public class add {
             border();
             System.out.println("  ⁂ List Menu Makanan");
             border();
-            System.out.println("     NO\tID\tNAMA\t\tHARGA");
+            System.out.println("     NO\tID\tNAMA\t\t\tHARGA");
             for (int i = 0; i < idxMakanan; i++) {
                 // add.border();
                 if (cMenuCLI.makanan[i].getNama().length() < 8) {
-                    System.out.println("  ⁂ [" + (i + 1) + "] " + cMenuCLI.makanan[i].getId() + "\t"
+                    System.out.println(" ⁂ [" + (i + 1) + "]\t" + cMenuCLI.makanan[i].getId() + "\t"
+                            + cMenuCLI.makanan[i].getNama() + "\t\t\t" + cMenuCLI.makanan[i].getHarga());
+                }
+                if (cMenuCLI.makanan[i].getNama().length() < 16) {
+                    System.out.println(" ⁂ [" + (i + 1) + "]\t" + cMenuCLI.makanan[i].getId() + "\t"
                             + cMenuCLI.makanan[i].getNama() + "\t\t" + cMenuCLI.makanan[i].getHarga());
                 } else {
-                    System.out.println("  ⁂ [" + (i + 1) + "] " + cMenuCLI.makanan[i].getId() + "\t"
+                    System.out.println(" ⁂ [" + (i + 1) + "]\t" + cMenuCLI.makanan[i].getId() + "\t"
                             + cMenuCLI.makanan[i].getNama() + "\t" + cMenuCLI.makanan[i].getHarga());
                 }
             }
@@ -202,10 +206,14 @@ public class add {
             for (int i = 0; i < idxMinuman; i++) {
                 // add.border();
                 if (cMenuCLI.minuman[i].getNama().length() < 8) {
-                    System.out.println("  ⁂ [" + (i + 1) + "] " + cMenuCLI.minuman[i].getId() + "\t"
+                    System.out.println(" ⁂ [" + (i + 1) + "]\t" + cMenuCLI.minuman[i].getId() + "\t"
+                            + cMenuCLI.minuman[i].getNama() + "\t\t\t" + cMenuCLI.minuman[i].getHarga());
+                }
+                if (cMenuCLI.makanan[i].getNama().length() < 16) {
+                    System.out.println(" ⁂ [" + (i + 1) + "]\t" + cMenuCLI.minuman[i].getId() + "\t"
                             + cMenuCLI.minuman[i].getNama() + "\t\t" + cMenuCLI.minuman[i].getHarga());
                 } else {
-                    System.out.println("  ⁂ [" + (i + 1) + "] " + cMenuCLI.minuman[i].getId() + "\t"
+                    System.out.println(" ⁂ [" + (i + 1) + "]\t" + cMenuCLI.minuman[i].getId() + "\t"
                             + cMenuCLI.minuman[i].getNama() + "\t" + cMenuCLI.minuman[i].getHarga());
                 }
             }
