@@ -1,5 +1,21 @@
-172001  Es teh  3000
-172002  Es Jeruk  4000
-172003  Es Jus  8000
-172004  Es Milo  5000
-172005  Es Kelapa  7000
+18001  Teh Panas  3000
+18002  Es Teh  4000
+18003  Teh Rosella  5000
+18004  Jeruk Panas  4000
+18005  Milo Panas  5000
+18006  Es Milo  5000
+18007  Cappunico Panas  5000
+18008  Es Cappucino  6000
+18009  Es Nutrisari  3000
+18010  Es Ekstra Joss Susu  8000
+18011  Es Soda Gembira  8000
+18012  Es Mega Mendung  8000
+18013  Fanta / Coca Cola  6000
+18014  Kopi  4000
+18015  Kopi Susu  4000
+18016  Kopi Jahe  4000
+18017  Susu / Susu Coklat  4000
+18018  Susu Jahe  4000
+18019  Es Batu  1000
+18020  Air Mineral 600ml  3000
+18021  Air Es  1000
