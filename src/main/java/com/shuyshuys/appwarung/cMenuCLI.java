@@ -181,9 +181,7 @@ public class cMenuCLI {
                             switch (pilihanUbahBarang) {
                                 case 1:
                                     add.cls();
-                                    add.border();
                                     add.printMenu("makanan");
-                                    add.border();
                                     System.out.println(" ⁘⁘⁘ Menu Ubah Makanan");
                                     System.out.print("Id Makanan\t: ");
                                     int idMakananUbah = sc.nextInt();
@@ -198,11 +196,8 @@ public class cMenuCLI {
                                             String namaMakananUbah = add.sc().nextLine();
                                             System.out.print("Harga Makanan\t: ");
                                             int hargaMakananUbah = add.sc().nextInt();
-                                            System.out.print("Stok Makanan\t: ");
-                                            int stokMakananUbah = add.sc().nextInt();
                                             cMenuCLI.makanan[i].setNama(namaMakananUbah);
                                             cMenuCLI.makanan[i].setHarga(hargaMakananUbah);
-                                            cMenuCLI.makanan[i].setStok(stokMakananUbah);
                                             System.out.println("Makanan berhasil diubah");
                                         }
                                         // break;
@@ -232,11 +227,8 @@ public class cMenuCLI {
                                             String namaMinumanUbah = add.sc().nextLine();
                                             System.out.print("Harga Minuman\t: ");
                                             int hargaMinumanUbah = add.sc().nextInt();
-                                            System.out.print("Stok Minuman\t: ");
-                                            int stokMinumanUbah = add.sc().nextInt();
                                             cMenuCLI.minuman[i].setNama(namaMinumanUbah);
                                             cMenuCLI.minuman[i].setHarga(hargaMinumanUbah);
-                                            cMenuCLI.minuman[i].setStok(stokMinumanUbah);
                                             System.out.println("Minuman berhasil diubah");
                                         }
                                         // break;
