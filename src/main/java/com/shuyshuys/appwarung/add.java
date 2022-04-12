@@ -208,8 +208,7 @@ public class add {
                 if (cMenuCLI.minuman[i].getNama().length() < 8) {
                     System.out.println(" ⁂ [" + (i + 1) + "]\t" + cMenuCLI.minuman[i].getId() + "\t"
                             + cMenuCLI.minuman[i].getNama() + "\t\t\t" + cMenuCLI.minuman[i].getHarga());
-                }
-                if (cMenuCLI.makanan[i].getNama().length() < 16) {
+                } else if (cMenuCLI.minuman[i].getNama().length() < 16) {
                     System.out.println(" ⁂ [" + (i + 1) + "]\t" + cMenuCLI.minuman[i].getId() + "\t"
                             + cMenuCLI.minuman[i].getNama() + "\t\t" + cMenuCLI.minuman[i].getHarga());
                 } else {
