@@ -62,7 +62,7 @@ public class cTransaksi {
     cTransaksi() {
         idxMaxMakanan = 5;
         idxMaxMinuman = 5;
-        jumlahMakanan = 0; // TODO: pake array
+        jumlahMakanan = 0;
         jumlahMinuman = 0;
         tMakanan = new cMakanan[idxMaxMakanan];
         tMinuman = new cMinuman[idxMaxMinuman];
@@ -73,6 +73,8 @@ public class cTransaksi {
 
     public void isiPembeli(cPembeli pembeli, int idxPembeli) {
         cTransaksi.pembeli[idxPembeli] = pembeli;
+        // jumlahMakanan = 0;
+        // jumlahMinuman = 0;
         System.out.println("  ↂ  Nama Pembeli " + cTransaksi.pembeli[idxPembeli].getNama() + " ditambahkan ke Nota...");
     }
 
@@ -353,13 +355,12 @@ public class cTransaksi {
     // }
 
     static int pilihPembeli;
-    // static int[][] porsiPembeli;
     public static cTransaksi beli = new cTransaksi();
 
     public static void Transaksi() {
         int pilihanPembelian;
         do {
-            // add.cls();
+            add.cls();
             add.border();
             System.out.println(" ⁘ MENU Pembelian");
             System.out.println("1. Tambah Pesanan");
@@ -410,11 +411,12 @@ public class cTransaksi {
                     }
                     boolean belilagi = false;
                     do {
-                        // add.cls();
+                        add.cls();
                         add.border();
-                        System.out.println("pilih pembeli: " + pilihPembeli);
+                        // System.out.println("pilih pembeli: " + pilihPembeli);
                         System.out.println(
                                 " ⁘⁘⁘ Tambah Pesanan [" + cTransaksi.pembeli[pilihPembeli - 1].getNama() + "]");
+                        add.border();
                         System.out.println(
                                 "Input Kode Menu\n\t0 untuk makanan\n\t1 untuk minuman\n\t2 untuk pencarian");
                         System.out.print("Kode menu: ");
