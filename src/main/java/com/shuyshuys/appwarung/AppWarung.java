@@ -25,7 +25,12 @@ public class AppWarung {
 
         cMenuCLI.laporanHargaMakanan = new Integer[add.idxMakanan];
         cMenuCLI.laporanHargaMinuman = new Integer[add.idxMinuman];
-
+        for (int i = 0; i < add.idxMakanan; i++) {
+            cMenuCLI.laporanHargaMakanan[i] = 0;
+            cMenuCLI.laporanHargaMinuman[i] = 0;
+            System.out.println("laporan harga makanan " + cMenuCLI.laporanHargaMakanan[i] + ", minuman "
+                    + cMenuCLI.laporanHargaMinuman[i]);
+        }
         while (pilihan != 3) {
             add.border();
             System.out.println("Selamat datang di App Warung by 129_ahmyaz.id");
