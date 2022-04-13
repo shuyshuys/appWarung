@@ -87,7 +87,8 @@ public class mineReader {
                     while ((line = bufferedReader.readLine()) != null) {
                         cPembeli foundPembeli = add.searchPembeli(line.split("  ")[1]);
                         cTransaksi.beli.isiPembeli(foundPembeli, add.idxTransaksi);
-                        cTransaksi.beli.setIdTransaksi(Integer.parseInt(line.split("  ")[0]), i); // FIXME:
+                        cTransaksi.beli.setIdTransaksi(add.idTransaksi, Integer.parseInt(line.split("  ")[0]), i); // FIXME:
+                        add.idxTransaksi++;
                         cMakanan hasilCariMakanan = add.searchMakanan(line.split("  ")[2]);
                         cMinuman hasilCariMinuman = add.searchMinuman(line.split("  ")[2]);
                         try {
