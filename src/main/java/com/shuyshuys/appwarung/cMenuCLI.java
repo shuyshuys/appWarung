@@ -20,8 +20,8 @@ public class cMenuCLI {
     static Integer[] laporanHargaMinuman;
 
     static void initLaporan() {
-        laporanHargaMakanan = new Integer[add.idxMakanan];
-        laporanHargaMinuman = new Integer[add.idxMinuman];
+        // laporanHargaMakanan = new Integer[add.idxMakanan];
+        // laporanHargaMinuman = new Integer[add.idxMinuman];
         // for (int i = 0; i < add.idxMakanan; i++) {
         // laporanHargaMakanan[i] = cMenuCLI.makanan[i].getNama();
         // System.out.println(laporanHargaMakanan[i]);
@@ -193,8 +193,7 @@ public class cMenuCLI {
                             System.out.println(" ⁘⁘ Menu Ubah Barang");
                             System.out.println("1. Makanan");
                             System.out.println("2. Minuman");
-                            System.out.println("3. Spesifik");
-                            System.out.println("4. Kembali");
+                            System.out.println("3. Kembali");
                             System.out.print("Pilihan : ");
                             int pilihanUbahBarang = sc.nextInt();
                             switch (pilihanUbahBarang) {
@@ -211,15 +210,21 @@ public class cMenuCLI {
                                             add.border();
                                             System.out.println(cMenuCLI.makanan[i].ToString());
                                             add.border();
-                                            System.out.print("Nama Makanan\t: ");
-                                            String namaMakananUbah = add.sc().nextLine();
-                                            System.out.print("Harga Makanan\t: ");
-                                            int hargaMakananUbah = add.sc().nextInt();
-                                            cMenuCLI.makanan[i].setNama(namaMakananUbah);
-                                            cMenuCLI.makanan[i].setHarga(hargaMakananUbah);
-                                            System.out.println("  ⁂ Makanan berhasil diubah");
+                                            System.out.print("Apakah anda yakin ingin ubah? (y/n)  : ");
+                                            String jawab = sc.next();
+                                            if (jawab.equals("y")) {
+                                                System.out.print("Nama Makanan\t: ");
+                                                String namaMakananUbah = add.sc().nextLine();
+                                                System.out.print("Harga Makanan\t: ");
+                                                int hargaMakananUbah = add.sc().nextInt();
+                                                cMenuCLI.makanan[i].setNama(namaMakananUbah);
+                                                cMenuCLI.makanan[i].setHarga(hargaMakananUbah);
+                                                System.out.println("  ⁂ Makanan berhasil diubah");
+                                            } else {
+                                                System.out.println("  ⁂ Makanan tidak diubah");
+                                                break;
+                                            }
                                         }
-                                        // break;
                                     }
                                     if (!found) {
                                         System.out.println("  ⁂ Makanan tidak ditemukan");
@@ -242,13 +247,20 @@ public class cMenuCLI {
                                             add.border();
                                             System.out.println(cMenuCLI.minuman[i].ToString());
                                             add.border();
-                                            System.out.print("Nama Minuman\t: ");
-                                            String namaMinumanUbah = add.sc().nextLine();
-                                            System.out.print("Harga Minuman\t: ");
-                                            int hargaMinumanUbah = add.sc().nextInt();
-                                            cMenuCLI.minuman[i].setNama(namaMinumanUbah);
-                                            cMenuCLI.minuman[i].setHarga(hargaMinumanUbah);
-                                            System.out.println("  ⁂ Minuman berhasil diubah");
+                                            System.out.print("Apakah anda yakin ingin menghapus? (y/n)  : ");
+                                            String jawab = sc.next();
+                                            if (jawab.equals("y")) {
+                                                System.out.print("Nama Minuman\t: ");
+                                                String namaMinumanUbah = add.sc().nextLine();
+                                                System.out.print("Harga Minuman\t: ");
+                                                int hargaMinumanUbah = add.sc().nextInt();
+                                                cMenuCLI.minuman[i].setNama(namaMinumanUbah);
+                                                cMenuCLI.minuman[i].setHarga(hargaMinumanUbah);
+                                                System.out.println("  ⁂ Minuman berhasil diubah");
+                                            } else {
+                                                System.out.println("  ⁂ Minuman tidak diubah");
+                                                break;
+                                            }
                                         }
                                         // break;
                                     }
@@ -259,14 +271,6 @@ public class cMenuCLI {
                                     add.backToMenu();
                                     break;
                                 case 3:
-                                    add.cls();
-                                    add.border();
-                                    add.printMenu("makanan");
-                                    add.border();
-                                    // TODO: custom spesifikmu lo
-                                    //
-                                    break;
-                                case 4:
                                     menuCLI();
                                     break;
                             }
