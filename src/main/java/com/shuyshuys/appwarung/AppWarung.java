@@ -16,8 +16,10 @@ public class AppWarung {
         int pilihan = 0;
 
         // mineReader.getReader(add.PATH_ID_MAKANAN, "id_makanan", "makanan");
-        mineReader.getReader(add.PATH_MAKANAN, "makanan");
-        mineReader.getReader(add.PATH_MINUMAN, "minuman");
+        // mineReader.getReader(add.PATH_MAKANAN, "makanan");
+        PostReader.getPostReader("makanan");
+        PostReader.getPostReader("minuman");
+        // mineReader.getReader(add.PATH_MINUMAN, "minuman");
         mineReader.getReader(add.PATH_PEMBELI, "pembeli");
         // mineReader.getReader(add.PATH_TRANSAKSI, "transaksi");
         // mineReader.getReader(add.PATH_HARGA_MAKANAN, "harga_makanan", "makanan");
@@ -25,12 +27,13 @@ public class AppWarung {
 
         cMenuCLI.laporanHargaMakanan = new Integer[add.idxMakanan];
         cMenuCLI.laporanHargaMinuman = new Integer[add.idxMinuman];
-        for (int i = 0; i < add.idxMakanan; i++) {
-            cMenuCLI.laporanHargaMakanan[i] = 0;
-            cMenuCLI.laporanHargaMinuman[i] = 0;
-            System.out.println("laporan harga makanan " + cMenuCLI.laporanHargaMakanan[i] + ", minuman "
-                    + cMenuCLI.laporanHargaMinuman[i]);
-        }
+        // for (int i = 0; i < add.idxMakanan; i++) {
+        // cMenuCLI.laporanHargaMakanan[i] = 0;
+        // cMenuCLI.laporanHargaMinuman[i] = 0;
+        // System.out.println("laporan harga makanan " + cMenuCLI.laporanHargaMakanan[i]
+        // + ", minuman "
+        // + cMenuCLI.laporanHargaMinuman[i]);
+        // }
         while (pilihan != 3) {
             add.border();
             System.out.println("Selamat datang di App Warung by 129_ahmyaz.id");
