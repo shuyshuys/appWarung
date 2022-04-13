@@ -13,7 +13,6 @@ public class cTransaksi {
     static String[][] akumulasi = new String[5][add.getMostMenu()]; // 0 makanan 1 minuman 2 harga 3 jumlah 4
                                                                     // porsiPembeli
     static int idPembeli;
-    static boolean discount;
     // private int maxPembelian;
 
     static int[][] idTransaksi = new int[5][add.idxPembeli + 5];
@@ -79,12 +78,6 @@ public class cTransaksi {
             tanggalTransaksi[add.idxTransaksi] = add.getDateTime();
             tMakanan[jumlahMakanan] = makanan;
             totalHarga[idxPembeli] = totalHarga[idxPembeli] + makanan.getHarga() * jumlah;
-            if (idxPembeli != 0) {
-                totalHarga[idxPembeli] = totalHarga[idxPembeli] * 90 / 100;
-                discount = true;
-            } else {
-                discount = false;
-            }
 
             totalHargaLifeTime = totalHargaLifeTime + totalHarga[idxPembeli];
             akumulasi[0][idxMakanan] = makanan.getNama();
@@ -113,12 +106,6 @@ public class cTransaksi {
             tanggalTransaksi[idxPembeli] = add.getDateTime();
             tMinuman[jumlahMinuman] = minuman;
             totalHarga[idxPembeli] = totalHarga[idxPembeli] + minuman.getHarga() * jumlah;
-            if (idxPembeli != 0) {
-                totalHarga[idxPembeli] = totalHarga[idxPembeli] * 90 / 100;
-                discount = true;
-            } else {
-                discount = false;
-            }
 
             totalHargaLifeTime = totalHargaLifeTime + totalHarga[idxPembeli];
             akumulasi[1][idxMinuman] = minuman.getNama();
@@ -351,8 +338,6 @@ public class cTransaksi {
                             // i
                             + (tMakanan[i].getHarga()
                                     * porsiMakanan[idxPembeli][add.searchIdxById(tMakanan[i].getId(), 0)]));
-                    System.out.println("\t\t\tDiscount 10% : " + (tMakanan[i].getHarga()
-                            * porsiMakanan[idxPembeli][add.searchIdxById(tMakanan[i].getId(), 0)]) * 10 / 100);
                 }
             }
         } catch (Exception e) {
@@ -372,14 +357,18 @@ public class cTransaksi {
                                                                                                          // 1 to i
                             + (tMinuman[i].getHarga()
                                     * porsiMinuman[idxPembeli][add.searchIdxById(tMinuman[i].getId(), 1)]));
-                    System.out.println("\t\t\tDiscount 10% : " + (tMinuman[i].getHarga()
-                            * porsiMinuman[idxPembeli][add.searchIdxById(tMinuman[i].getId(), 1)]) * 10 / 100);
                 }
             }
         } catch (Exception e) {
         }
         add.border();
-        System.out.println("Total Harga\t\t\t\t" + totalHarga[idxPembeli]);
+        if (idxPembeli == 0) {
+            System.out.println("Total Harga\t\t\t\t" + totalHarga[idxPembeli]);
+        } else {
+            System.out.println("\t\t\t\tDiscount 10% : " + totalHarga[idxPembeli] * 10 / 100);
+            System.out.println("Total Harga\t\t\t\t" + totalHarga[idxPembeli]);
+
+        }
         // System.out.println("Bayar\t\t: " + bayar[idxPembeli]);
         // System.out.println("Kembalian\t: " + kembalian[idxPembeli]);
         add.border();
