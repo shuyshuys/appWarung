@@ -7,15 +7,15 @@ package com.shuyshuys.appwarung;
 public class cTransaksi {
     public static cPembeli[] pembeli;
     private int jumlahMakanan, jumlahMinuman, idxMaxMakanan, idxMaxMinuman;
-    cMakanan tMakanan[];
-    cMinuman tMinuman[];
+    cMakanan[] tMakanan;
+    cMinuman[] tMinuman;
 
     static String[][] akumulasi = new String[5][add.getMostMenu()]; // 0 makanan 1 minuman 2 harga 3 jumlah 4
                                                                     // porsiPembeli
     static int idPembeli;
     // private int maxPembelian;
 
-    private int[] idTransaksi = new int[mineReader.idx_count];
+    private int[][] idTransaksi = new int[mineReader.idx_max_transaksi][mineReader.idx_max_transaksi];
     // private String namaPembeli;
     // private String[] namaBarang = new String[mineReader.idx_count];
     // private int[] hargaBarang = new int[mineReader.idx_count];
@@ -57,8 +57,8 @@ public class cTransaksi {
         jumlahMinuman = 0;
         tMakanan = new cMakanan[idxMaxMakanan];
         tMinuman = new cMinuman[idxMaxMinuman];
-        tanggalTransaksi[add.idxTransaksi] = add.getDate();
-        add.idTransaksi++;
+
+        // add.idTransaksi++;
         System.out.println("  ↂ  Objek Nota dibuat...");
     }
 
@@ -74,8 +74,9 @@ public class cTransaksi {
     public void tambahMakanan(cMakanan makanan, int jumlah, int idxPembeli, int idxMakanan) {
         if (jumlahMakanan < idxMaxMakanan) {
 
-            idTransaksi[idxPembeli] = add.idTransaksi + 1;
-            tanggalTransaksi[idxPembeli] = add.getDateTime();
+            idTransaksi[add.idxTransaksi - 1][idxPembeli] = add.idTransaksi + 1;
+            // tanggalTransaksi[idxPembeli] = add.getDateTime();
+            tanggalTransaksi[add.idxTransaksi] = add.getDateTime();
             tMakanan[jumlahMakanan] = makanan;
             totalHarga[idxPembeli] = totalHarga[idxPembeli] + makanan.getHarga() * jumlah;
             totalHargaLifeTime = totalHargaLifeTime + totalHarga[idxPembeli];
@@ -87,6 +88,8 @@ public class cTransaksi {
 
             porsiMakanan[idxPembeli][idxMakanan] = jumlah; // TODO: ini buat ToString kayanya
             jumlahMakanan++;
+            add.idTransaksi++;
+            add.idxTransaksi++;
             System.out.println(
                     "  ↂ  Makanan " + makanan.getNama() + " ditambahkan ke Nota " + pembeli[idxPembeli].getNama()
                             + "...");
@@ -99,7 +102,7 @@ public class cTransaksi {
     public void tambahMinuman(cMinuman minuman, int jumlah, int idxPembeli, int idxMinuman) {
         if (jumlahMinuman < idxMaxMinuman) {
 
-            idTransaksi[idxPembeli] = add.idTransaksi + 1;
+            idTransaksi[add.idxTransaksi][idxPembeli] = add.idTransaksi + 1;
             tanggalTransaksi[idxPembeli] = add.getDateTime();
             tMinuman[jumlahMinuman] = minuman;
             totalHarga[idxPembeli] = totalHarga[idxPembeli] + minuman.getHarga() * jumlah;
@@ -112,6 +115,8 @@ public class cTransaksi {
 
             porsiMinuman[idxPembeli][idxMinuman] = jumlah; // TODO: ini buat ToString kayanya
             jumlahMinuman++;
+            add.idTransaksi++;
+            add.idxTransaksi++;
             System.out.println(
                     "  ↂ  Minuman " + minuman.getNama() + " ditambahkan ke Nota " + pembeli[idxPembeli].getNama()
                             + "...");
@@ -216,16 +221,23 @@ public class cTransaksi {
     // return nota;
     // }
 
-    public int getIdTransaksi(int idxPembeli) {
-        return idTransaksi[idxPembeli];
+    public int getIdTransaksi(int idxTransaksi, int idxPembeli) {
+        return idTransaksi[idxTransaksi][idxPembeli];
     }
 
-    public void setIdTransaksi(int idTransaksi, int idxPembeli) {
+    public void setIdTransaksi(int idxTransaksi, int idTransaksi, int idxPembeli) {
         // this.idTransaksi = cMenuCLI.transaksi[add.idxTransaksi - 1].getIdTransaksi()
         // + 1;
-        this.idTransaksi[idxPembeli] = idTransaksi;
+        this.idTransaksi[idxTransaksi][idxPembeli] = idTransaksi;
     }
 
+    public cMakanan getMakanan(int i) {
+        return tMakanan[i];
+    }
+
+    public cMinuman[] getMinuman() {
+        return tMinuman;
+    }
     // public String getNamaPembeli() {
     // return namaPembeli;
     // }
@@ -353,6 +365,7 @@ public class cTransaksi {
 
     static int pilihPembeli;
     public static cTransaksi beli = new cTransaksi();
+    static int[][] jumlah = new int[add.getMostMenu()][2];
 
     public static void Transaksi() {
         int pilihanPembelian;
@@ -360,19 +373,20 @@ public class cTransaksi {
             add.cls();
             add.border();
             System.out.println(" ⁘ MENU Pembelian");
-            System.out.println("1. Tambah Pesanan");
-            System.out.println("2. Tampilkan Pesanan");
-            System.out.println("3. Hapus Pesanan");
-            System.out.println("4. Kembali");
+            System.out.println("1. Tambah Pembeli");
+            System.out.println("2. Tambah Pesanan");
+            System.out.println("3. Tampilkan Pesanan");
+            System.out.println("4. Hapus Pesanan");
+            System.out.println("5. Kembali");
             System.out.print("Pilihan : ");
             pilihanPembelian = add.sc().nextInt();
             switch (pilihanPembelian) {
                 case 1:
                     // add.cls();
                     add.border();
-                    int[][] jumlah = new int[add.getMostMenu()][2];
+
                     // TODO: set pembeli belum beres
-                    System.out.println(" ⁘⁘ Tambah Transaksi");
+                    System.out.println(" ⁘⁘ Pilih Pembeli");
                     add.border();
                     System.out.println("\t[list] untuk melihat list pembeli");
                     System.out.print("Nama pembeli baru\t: ");
@@ -404,6 +418,13 @@ public class cTransaksi {
                         }
                         add.border();
                     }
+                    cTransaksi.Transaksi();
+                    break;
+                case 2:
+                    add.cls();
+                    add.border();
+                    System.out.println(" ⁘⁘ Tambah Transaksi");
+                    add.border();
                     boolean belilagi = false;
                     do {
                         add.cls();
@@ -464,7 +485,7 @@ public class cTransaksi {
                         }
                         System.out.print("Jumlah: ");
                         jumlah[idx][kodeMenu] = add.sc().nextInt();
-                        akumulasi[3][idx] = String.valueOf(jumlah[idx][kodeMenu]);
+                        // akumulasi[3][idx] = String.valueOf(jumlah[idx][kodeMenu]);
 
                         if (kodeMenu == 0) {
                             beli.tambahMakanan(cMenuCLI.makanan[idx], jumlah[idx][kodeMenu], (pilihPembeli - 1), idx);
@@ -553,20 +574,21 @@ public class cTransaksi {
                 // }
                 // add.backToMenu();
                 // break;
-                case 2:
+                case 3:
                     add.cls();
                     add.border();
                     // FIXME: bug gaes :)
                     System.out.println(" ⁘⁘ Lihat Transaksi");
                     add.border();
-                    for (int i = 0; i < add.idxPembeli; i++) {
-                        // if (beli[i].getIdTransaksi() != 0) {
-                        System.out.println("[Transaksi ke-" + (i + 1) + "] ");
-                        cTransaksi.beli.ToString(i);
-                        add.border();
-                        // }
-                        // beli.ToString(i);
-                    }
+                    // for (int i = 0; i < add.idxTransaksi; i++) {
+                    // String temp = beli[i].getMakanan().getNama();
+                    // if (beli[i].getMakanan(i) != null) {
+                    // System.out.println("[Transaksi ke-" + (i + 1) + "] ");
+                    beli.ToString(pilihPembeli - 1);
+                    add.border();
+                    // }
+                    // beli.ToString(i);
+                    // }
                     // System.out.println(cMenuCLI.transaksi[i].ToString());
                     // System.out.println(beli.cetakNota(i));
                     // if (cMenuCLI.transaksi[i] != null) {
@@ -593,7 +615,7 @@ public class cTransaksi {
                 // System.out.println("[Pembeli id: " + cMenuCLI.pembeli[0].getId() + " nama: "
                 // + cMenuCLI.pembeli[0].getNama() + "] ");
                 // break;
-                case 3:
+                case 4:
                     add.cls();
                     add.border();
                     System.out.println(" ⁘⁘ Hapus Pesanan");
@@ -613,7 +635,7 @@ public class cTransaksi {
                     }
                     add.backToMenu();
                     break;
-                case 4:
+                case 5:
                     cMenuCLI.menuCLI();
                     break;
                 default:
