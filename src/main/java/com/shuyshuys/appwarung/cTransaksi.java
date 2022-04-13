@@ -5,9 +5,9 @@ package com.shuyshuys.appwarung;
  */
 
 public class cTransaksi {
-    public static cPembeli[] pembeli;
+    static cPembeli[] pembeli;
     private int jumlahMakanan, jumlahMinuman, idxMaxMakanan, idxMaxMinuman;
-    cMakanan[] tMakanan;
+    static cMakanan[] tMakanan;
     cMinuman[] tMinuman;
 
     static String[][] akumulasi = new String[5][add.getMostMenu()]; // 0 makanan 1 minuman 2 harga 3 jumlah 4
@@ -16,18 +16,18 @@ public class cTransaksi {
     static boolean discount;
     // private int maxPembelian;
 
-    private int[][] idTransaksi = new int[5][add.idxPembeli + 5];
+    static int[][] idTransaksi = new int[5][add.idxPembeli + 5];
+    static String[] tanggalTransaksi = new String[mineReader.idx_count];
     // private String namaPembeli;
     // private String[] namaBarang = new String[mineReader.idx_count];
     // private int[] hargaBarang = new int[mineReader.idx_count];
-    private static int[][] porsiMakanan = new int[50][add.getMostMenu()]; // 0 idxmaxpembeli
-    private static int[][] porsiMinuman = new int[50][add.getMostMenu()]; // 0 idxmaxpembeli
+    static int[][] porsiMakanan = new int[50][add.getMostMenu()]; // 0 idxmaxpembeli
+    static int[][] porsiMinuman = new int[50][add.getMostMenu()]; // 0 idxmaxpembeli
     // private int[] jumlahBarang = new int[mineReader.idx_count];
     private static int[] totalHarga = new int[mineReader.idx_count];
     private int totalHargaLifeTime;
     private int[] bayar = new int[mineReader.idx_count];
     private static int[] kembalian = new int[mineReader.idx_count];
-    private String[] tanggalTransaksi = new String[mineReader.idx_count];
 
     // NOTE: constructor untuk reader TODO: kayanya ada yg kurang di setter ny
     // cTransaksi(int idTransaksi,
@@ -243,7 +243,7 @@ public class cTransaksi {
     public void setIdTransaksi(int idxTransaksi, int idTransaksi, int idxPembeli) {
         // this.idTransaksi = cMenuCLI.transaksi[add.idxTransaksi - 1].getIdTransaksi()
         // + 1;
-        this.idTransaksi[idxTransaksi][idxPembeli] = idTransaksi;
+        cTransaksi.idTransaksi[idxTransaksi][idxPembeli] = idTransaksi;
     }
 
     public cMakanan getMakanan(int i) {
@@ -314,7 +314,7 @@ public class cTransaksi {
     }
 
     public void setTanggalTransaksi(String tanggalTransaksi, int idxPembeli) {
-        this.tanggalTransaksi[idxPembeli] = tanggalTransaksi;
+        cTransaksi.tanggalTransaksi[idxPembeli] = tanggalTransaksi;
     }
 
     // FIXME: to string
@@ -331,7 +331,7 @@ public class cTransaksi {
         // }
         // }
         System.out.println("Tanggal\t\t: " + tanggalTransaksi[idxPembeli]);
-        if (idxPembeli != 0) {
+        if (idxPembeli == 0) {
             System.out.println("Nama Pembeli\t: " + pembeli[idxPembeli].getNama());
         } else {
             System.out.println("Nama Pembeli\t: " + pembeli[idxPembeli].getNama() + "  [Member]");
