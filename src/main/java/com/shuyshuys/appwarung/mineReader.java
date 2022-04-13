@@ -16,8 +16,7 @@ import javax.swing.JOptionPane;
 
 public class mineReader {
     public static int idx_count;
-    public static int idx_max_makanan;
-    public static int idx_max_minuman;
+
     public static int idx_max_pembeli;
     public static int idx_max_transaksi = 0;
 
@@ -36,7 +35,7 @@ public class mineReader {
 
             if (category == "makanan") {
                 cMenuCLI.makanan = new cMakanan[idx_count];
-                idx_max_makanan = idx_count;
+                add.idx_max_makanan = idx_count;
 
                 for (int i = 0; i < cMenuCLI.makanan.length; i++) {
 
@@ -52,7 +51,7 @@ public class mineReader {
                 }
             } else if (category == "minuman") {
                 cMenuCLI.minuman = new cMinuman[idx_count];
-                idx_max_minuman = idx_count;
+                add.idx_max_minuman = idx_count;
 
                 for (int i = 0; i < cMenuCLI.minuman.length; i++) {
                     while ((line = bufferedReader.readLine()) != null) {

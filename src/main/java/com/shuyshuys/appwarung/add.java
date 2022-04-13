@@ -15,6 +15,8 @@ public class add {
     public static int idxMinuman = 0;
     public static int idxPembeli = 0;
     public static int idxTransaksi = 1;
+    public static int idx_max_makanan;
+    public static int idx_max_minuman;
     public static int idTransaksi = 92000;
 
     private static int pilihBackToMenu = 0;
@@ -224,7 +226,7 @@ public class add {
         if (menu == "Makanan") {
             System.out.println(" ⁘⁘⁘ Tambah Makanan");
             String namaMakanan; // input tambah menu makanan
-            if (idxMakanan < mineReader.idx_max_makanan) {
+            if (idxMakanan < add.idx_max_makanan) {
                 boolean found = false;
                 do {
                     // Scanner scMakan = new Scanner(System.in);
@@ -258,7 +260,7 @@ public class add {
         if (menu == "Minuman") {
             System.out.println(" ⁘⁘⁘ Tambah Minuman");
             String namaMinuman; // input tambah menu makanan
-            if (idxMakanan < mineReader.idx_max_minuman) {
+            if (idxMakanan < add.idx_max_minuman) {
                 boolean found = false;
                 do {
                     // Scanner scMakan = new Scanner(System.in);

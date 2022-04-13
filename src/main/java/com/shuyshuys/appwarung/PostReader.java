@@ -21,6 +21,7 @@ public class PostReader {
                 ResultSet rs = Post.getCon().createStatement().executeQuery(count);
                 while (rs.next()) {
                     cMenuCLI.makanan = new cMakanan[rs.getInt(2) + 10];
+                    add.idx_max_makanan = rs.getInt(2) + 10;
                 }
 
                 String sql = "SELECT * FROM barang WHERE category_barang = '" + category + "';";
@@ -40,6 +41,7 @@ public class PostReader {
                 ResultSet rs = Post.getCon().createStatement().executeQuery(count);
                 while (rs.next()) {
                     cMenuCLI.minuman = new cMinuman[rs.getInt(2) + 10];
+                    add.idx_max_minuman = rs.getInt(2) + 10;
                 }
 
                 String sql = "SELECT * FROM barang WHERE category_barang = '" + category + "';";
