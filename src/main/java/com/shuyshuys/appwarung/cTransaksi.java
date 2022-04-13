@@ -13,9 +13,10 @@ public class cTransaksi {
     static String[][] akumulasi = new String[5][add.getMostMenu()]; // 0 makanan 1 minuman 2 harga 3 jumlah 4
                                                                     // porsiPembeli
     static int idPembeli;
+    static boolean discount;
     // private int maxPembelian;
 
-    private int[][] idTransaksi = new int[mineReader.idx_max_transaksi][mineReader.idx_max_transaksi];
+    private int[][] idTransaksi = new int[5][add.idxPembeli + 5];
     // private String namaPembeli;
     // private String[] namaBarang = new String[mineReader.idx_count];
     // private int[] hargaBarang = new int[mineReader.idx_count];
@@ -75,10 +76,16 @@ public class cTransaksi {
         if (jumlahMakanan < idxMaxMakanan) {
 
             idTransaksi[add.idxTransaksi - 1][idxPembeli] = add.idTransaksi + 1;
-            // tanggalTransaksi[idxPembeli] = add.getDateTime();
             tanggalTransaksi[add.idxTransaksi] = add.getDateTime();
             tMakanan[jumlahMakanan] = makanan;
             totalHarga[idxPembeli] = totalHarga[idxPembeli] + makanan.getHarga() * jumlah;
+            if (idxPembeli != 0) {
+                totalHarga[idxPembeli] = totalHarga[idxPembeli] * 90 / 100;
+                discount = true;
+            } else {
+                discount = false;
+            }
+
             totalHargaLifeTime = totalHargaLifeTime + totalHarga[idxPembeli];
             akumulasi[0][idxMakanan] = makanan.getNama();
             akumulasi[2][idxMakanan] = Integer.toString(makanan.getHarga());
@@ -106,6 +113,13 @@ public class cTransaksi {
             tanggalTransaksi[idxPembeli] = add.getDateTime();
             tMinuman[jumlahMinuman] = minuman;
             totalHarga[idxPembeli] = totalHarga[idxPembeli] + minuman.getHarga() * jumlah;
+            if (idxPembeli != 0) {
+                totalHarga[idxPembeli] = totalHarga[idxPembeli] * 90 / 100;
+                discount = true;
+            } else {
+                discount = false;
+            }
+
             totalHargaLifeTime = totalHargaLifeTime + totalHarga[idxPembeli];
             akumulasi[1][idxMinuman] = minuman.getNama();
             akumulasi[2][idxMinuman] = String.valueOf(minuman.getHarga());
@@ -120,6 +134,7 @@ public class cTransaksi {
             System.out.println(
                     "  ↂ  Minuman " + minuman.getNama() + " ditambahkan ke Nota " + pembeli[idxPembeli].getNama()
                             + "...");
+            beli.ToString(idxPembeli);
         } else {
             System.out.println("  ↂ  Barang dalam Nota sudah mencapai maksimal...");
         }
@@ -306,10 +321,21 @@ public class cTransaksi {
     public void ToString(int idxPembeli) {
         add.border();
         add.border();
-        System.out.println("ID Transaksi\t: " + idTransaksi[idxPembeli]);
-        // TODO: mungkin dijadikan 2d array biar dibedakan jam dan tanggal
+        // int idxTransaksi = 0;
+        // for (int j = 0; j < add.idxTransaksi; j++) {
+        // for (int k = 0; k < akumulasi.length; k++) {
+        // if (idTransaksi[j][idxPembeli] != null) {
+        System.out.println("ID Transaksi\t: " + idTransaksi[add.idxTransaksi - 1][idxPembeli]);
+        // idxTransaksi = j;
+        // }
+        // }
+        // }
         System.out.println("Tanggal\t\t: " + tanggalTransaksi[idxPembeli]);
-        System.out.println("Nama Pembeli\t: " + pembeli[idxPembeli].getNama());
+        if (idxPembeli != 0) {
+            System.out.println("Nama Pembeli\t: " + pembeli[idxPembeli].getNama());
+        } else {
+            System.out.println("Nama Pembeli\t: " + pembeli[idxPembeli].getNama() + "  [Member]");
+        }
         add.border();
         try {
             for (int i = 0; i < tMakanan.length; i++) {
@@ -321,9 +347,12 @@ public class cTransaksi {
                     // "Jumlah Makanan\t: " +
                     // porsiMakanan[idxPembeli][add.searchById(tMakanan[i].getId(), 0)]);
                     System.out.println(tMakanan[i].getNama() + "\t" + tMakanan[i].getHarga() + "\tx"
-                            + porsiMakanan[idxPembeli][add.searchIdxById(tMakanan[i].getId(), 0)] + "\t"
+                            + porsiMakanan[idxPembeli][add.searchIdxById(tMakanan[i].getId(), 0)] + "\t" // change to
+                            // i
                             + (tMakanan[i].getHarga()
                                     * porsiMakanan[idxPembeli][add.searchIdxById(tMakanan[i].getId(), 0)]));
+                    System.out.println("\t\t\tDiscount 10% : " + (tMakanan[i].getHarga()
+                            * porsiMakanan[idxPembeli][add.searchIdxById(tMakanan[i].getId(), 0)]) * 10 / 100);
                 }
             }
         } catch (Exception e) {
@@ -338,9 +367,13 @@ public class cTransaksi {
                     // // porsiPembeli[idxPembeli][add.searchIdxById(tMinuman[i].getId(),
                     // // 1)]);
                     System.out.println(tMinuman[i].getNama() + "\t" + tMinuman[i].getHarga() + "\tx"
-                            + porsiMinuman[idxPembeli][add.searchIdxById(tMinuman[i].getId(), 1)] + "\t"
+                            + porsiMinuman[idxPembeli][add.searchIdxById(tMinuman[i].getId(), 1)] + "\t" // change
+                                                                                                         // add.searchIdxById(tMinuman[i].getId(),
+                                                                                                         // 1 to i
                             + (tMinuman[i].getHarga()
                                     * porsiMinuman[idxPembeli][add.searchIdxById(tMinuman[i].getId(), 1)]));
+                    System.out.println("\t\t\tDiscount 10% : " + (tMinuman[i].getHarga()
+                            * porsiMinuman[idxPembeli][add.searchIdxById(tMinuman[i].getId(), 1)]) * 10 / 100);
                 }
             }
         } catch (Exception e) {
@@ -375,9 +408,10 @@ public class cTransaksi {
             System.out.println(" ⁘ MENU Pembelian");
             System.out.println("1. Tambah Pembeli");
             System.out.println("2. Tambah Pesanan");
-            System.out.println("3. Tampilkan Pesanan");
-            System.out.println("4. Hapus Pesanan");
-            System.out.println("5. Kembali");
+            System.out.println("3. Hapus Pesanan");
+            System.out.println("4. Tampilkan Pesanan");
+            System.out.println("5. Hapus Pesanan");
+            System.out.println("6. Kembali");
             System.out.print("Pilihan : ");
             pilihanPembelian = add.sc().nextInt();
             switch (pilihanPembelian) {
@@ -459,7 +493,7 @@ public class cTransaksi {
                                 System.out.print("Cari menu: ");
                                 String cari = add.sc().nextLine();
                                 if (cari.equals("exit")) {
-                                    break;
+                                    cTransaksi.Transaksi();
                                 }
                                 if (found == false) {
                                     cMakanan ketemu = add.searchMakanan(cari);
@@ -506,29 +540,7 @@ public class cTransaksi {
                             belilagi = true;
                         }
                     } while (belilagi == true);
-                    add.border();
                     add.idxTransaksi++; // FIXME: check emang ini dipake ya?
-                    boolean paidInFull = false;
-                    do {
-                        add.cls();
-                        boolean notEnough = false;
-                        beli.ToString(pilihPembeli - 1);
-                        System.out.println(" ⁘⁘⁘ Bayar");
-                        if (notEnough == true) {
-                            System.out.println("UANG ANDA KURANG!");
-                        }
-                        System.out.println("Total Harga\t\t\t" + beli.getTotalHarga(pilihPembeli - 1));
-                        System.out.print("Bayar\t\t\t\t");
-                        int bayar = add.sc().nextInt();
-                        if (bayar >= beli.getTotalHarga(pilihPembeli - 1)) {
-                            paidInFull = true;
-                            kembalian[pilihPembeli - 1] = bayar - beli.getTotalHarga(pilihPembeli - 1);
-                            System.out.println("Kembalian\t\t\t" + kembalian[pilihPembeli - 1]);
-                        } else {
-                            notEnough = true;
-                            System.out.println("Uang anda kurang");
-                        }
-                    } while (paidInFull == false);
                     add.border();
                     add.backToMenu();
                     break;
@@ -577,15 +589,40 @@ public class cTransaksi {
                 case 3:
                     add.cls();
                     add.border();
-                    // FIXME: bug gaes :)
-                    System.out.println(" ⁘⁘ Lihat Transaksi");
-                    add.border();
+                    System.out.println(" ⁘⁘ Hapus Pesanan");
+
+                    break;
+                case 4:
+                    // add.cls();
+                    // bug gaes :)
                     // for (int i = 0; i < add.idxTransaksi; i++) {
                     // String temp = beli[i].getMakanan().getNama();
                     // if (beli[i].getMakanan(i) != null) {
                     // System.out.println("[Transaksi ke-" + (i + 1) + "] ");
-                    beli.ToString(pilihPembeli - 1);
-                    add.border();
+                    boolean paidInFull = false;
+                    do {
+                        add.cls();
+                        add.border();
+                        System.out.println(" ⁘⁘ Lihat Transaksi");
+                        beli.ToString(pilihPembeli - 1);
+                        boolean notEnough = false;
+                        System.out.println(" ⁘⁘⁘ Bayar");
+                        if (notEnough == true) {
+                            System.out.println("UANG ANDA KURANG!");
+                        }
+                        System.out.println("Total Harga\t\t\t" + beli.getTotalHarga(pilihPembeli - 1));
+                        System.out.print("Bayar\t\t\t\t");
+                        int bayar = add.sc().nextInt();
+                        if (bayar >= beli.getTotalHarga(pilihPembeli - 1)) {
+                            paidInFull = true;
+                            kembalian[pilihPembeli - 1] = bayar - beli.getTotalHarga(pilihPembeli - 1);
+                            System.out.println("Kembalian\t\t\t" + kembalian[pilihPembeli - 1]);
+                        } else {
+                            notEnough = true;
+                            System.out.println("Uang anda kurang");
+                        }
+                    } while (paidInFull == false);
+                    // add.border();
                     // }
                     // beli.ToString(i);
                     // }
@@ -615,13 +652,14 @@ public class cTransaksi {
                 // System.out.println("[Pembeli id: " + cMenuCLI.pembeli[0].getId() + " nama: "
                 // + cMenuCLI.pembeli[0].getNama() + "] ");
                 // break;
-                case 4:
+                case 5:
                     add.cls();
                     add.border();
                     System.out.println(" ⁘⁘ Hapus Pesanan");
                     add.border();
                     for (int i = 0; i < add.idxTransaksi; i++) {
                         System.out.println("[Transaksi ke-" + (i + 1) + "] ");
+                        beli.ToString(i);
                         // System.out.println(print.ToString(i));
                         add.border();
                         // if (cMenuCLI.transaksi[i] != null) {
@@ -635,7 +673,7 @@ public class cTransaksi {
                     }
                     add.backToMenu();
                     break;
-                case 5:
+                case 6:
                     cMenuCLI.menuCLI();
                     break;
                 default:
@@ -643,6 +681,6 @@ public class cTransaksi {
                     Transaksi();
                     break;
             }
-        } while (pilihanPembelian != 4);
+        } while (pilihanPembelian != 6);
     }
 }
