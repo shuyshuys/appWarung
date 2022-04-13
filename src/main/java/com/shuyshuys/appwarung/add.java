@@ -14,7 +14,7 @@ public class add {
     public static int idxMakanan = 0;
     public static int idxMinuman = 0;
     public static int idxPembeli = 0;
-    public static int idxTransaksi = 0;
+    public static int idxTransaksi = 1;
     public static int idTransaksi = 92000;
 
     private static int pilihBackToMenu = 0;
@@ -320,9 +320,9 @@ public class add {
     }
 
     public static void exit() {
+        border();
         System.out.println("Terima Kasih Telah Menggunakan Program ini!");
-        // JOptionPane.showMessageDialog(null, "Terima Kasih Telah Menggunakan Program
-        // ini!");
+        border();
         System.exit(0);
     }
 
