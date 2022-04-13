@@ -131,9 +131,8 @@ class LoginFrame extends JFrame implements ActionListener {
              */
             try {
                 String sql = "SELECT * FROM login where Nama= '" + id + "'and password='" + pass + "'";
-                Statement statement = koneksi.getCon().createStatement();
-                ResultSet rs = statement
-                        .executeQuery(sql);
+                Statement statement = Post.getCon().createStatement();
+                ResultSet rs = statement.executeQuery(sql);
 
                 if (rs.next()) {
                     JOptionPane.showMessageDialog(this, "Login Success!");
