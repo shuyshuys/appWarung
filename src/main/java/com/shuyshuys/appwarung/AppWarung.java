@@ -36,7 +36,7 @@ public class AppWarung {
         // }
         while (pilihan != 3) {
             add.border();
-            System.out.println("Selamat datang di App Warung by 129_ahmyaz.id");
+            System.out.println("Selamat datang di App Warung by @shuyshuys");
             add.border();
             System.out.print(
                     "Silahkan pilih opsi yang tersedia \n1. CLI \n2. GUI (under development)\n3. Exit \nPilihan : ");
