@@ -26,6 +26,45 @@ class mineWriter {
         }
     }
 
+    static void writeTransaksi(int idxPembeli) {
+        try {
+            File file = new File(add.PATH_TRANSAKSI);
+            FileWriter writer = new FileWriter(file, true);
+
+            writer.write("ID Transaksi:  " + cTransaksi.idTransaksi[add.idxTransaksi - 1][idxPembeli] + "\n");
+            writer.write("Tanggal:  " + cTransaksi.tanggalTransaksi[idxPembeli] + "\n");
+            writer.write("Nama Pembeli: " + cTransaksi.pembeli[idxPembeli].getNama() + "\n");
+            try {
+                for (int i = 0; i < cTransaksi.tMakanan.length; i++) {
+                    if (cTransaksi.tMakanan[i] != null) {
+                        // System.out.println("Nama Makanan\t: " + tMakanan[i].getNama());
+                        // System.out.println("Harga Makanan\t: " + tMakanan[i].getHarga());
+
+                        // System.out.println(
+                        // "Jumlah Makanan\t: " +
+                        // porsiMakanan[idxPembeli][add.searchById(tMakanan[i].getId(), 0)]);
+                        System.out.println(
+                                cTransaksi.tMakanan[i].getNama() + "\t" + cTransaksi.tMakanan[i].getHarga() + "\tx"
+                                        + cTransaksi.porsiMakanan[idxPembeli][add
+                                                .searchIdxById(cTransaksi.tMakanan[i].getId(), 0)]
+                                        + "\t"
+                                        + (cTransaksi.tMakanan[i].getHarga() * cTransaksi.porsiMakanan[idxPembeli][add
+                                                .searchIdxById(cTransaksi.tMakanan[i].getId(), 0)]));
+                        System.out.println("\t\t\tDiscount 10% : " + (cTransaksi.tMakanan[i].getHarga()
+                                * cTransaksi.porsiMakanan[idxPembeli][add.searchIdxById(cTransaksi.tMakanan[i].getId(),
+                                        0)])
+                                * 10 / 100);
+                    }
+                }
+            } catch (Exception e) {
+            }
+            // writer.write("\n" + add.getDateTime() + " " + add.getTransaksi());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void write(String path, String[] category, String[] menu, int[] harga, int[] porsi) {
         File file = new File(path);
         // try {
