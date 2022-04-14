@@ -1,7 +1,7 @@
 package com.shuyshuys.appwarung;
 
 import java.util.Scanner;
-import java.sql.SQLException;
+// import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -245,19 +245,20 @@ public class add {
                     }
                     System.out.print("Harga Makanan\t: ");
                     int hargaMakanan = add.sc().nextInt();
-                    String sql = "INSERT INTO barang (id_barang, nama_barang, harga_barang, category_barang) VALUES (nextval('makanan'), '"
-                            + namaMakanan + "', '" + hargaMakanan + "', 'makanan');";
-                    try {
-                        java.sql.Statement stmt = Post.getCon().createStatement();
-                        stmt.executeUpdate(sql);
-                        stmt.close();
-                    } catch (SQLException e) {
-                        add.border();
-                        e.printStackTrace();
-                        add.border();
-                        e.getMessage();
-                        add.border();
-                    }
+                    // String sql = "INSERT INTO barang (id_barang, nama_barang, harga_barang,
+                    // category_barang) VALUES (nextval('makanan'), '"
+                    // + namaMakanan + "', '" + hargaMakanan + "', 'makanan');";
+                    // try {
+                    // java.sql.Statement stmt = Post.getCon().createStatement();
+                    // stmt.executeUpdate(sql);
+                    // stmt.close();
+                    // } catch (SQLException e) {
+                    // add.border();
+                    // e.printStackTrace();
+                    // add.border();
+                    // e.getMessage();
+                    // add.border();
+                    // }
 
                     cMenuCLI.makanan[idxMakanan] = new cMakanan(
                             cMenuCLI.makanan[add.idxMakanan - 1].getId() + 1,
@@ -293,20 +294,21 @@ public class add {
                     }
                     System.out.print("Harga Minuman\t: ");
                     int hargaMinuman = add.sc().nextInt();
-                    String sql = "INSERT INTO barang (id_barang, nama_barang, harga_barang, category_barang) VALUES (nextval('minuman_sec'), '"
-                            + namaMinuman + "', '" + hargaMinuman + "', 'minuman');";
-                    try {
-                        java.sql.Statement stmt = Post.getCon().createStatement();
-                        stmt.executeUpdate(sql);
-                        // Post.getCon().createStatement().executeUpdate(sql);
-                        stmt.close();
-                    } catch (SQLException e) {
-                        add.border();
-                        e.printStackTrace();
-                        add.border();
-                        e.getMessage();
-                        add.border();
-                    }
+                    // String sql = "INSERT INTO barang (id_barang, nama_barang, harga_barang,
+                    // category_barang) VALUES (nextval('minuman_sec'), '"
+                    // + namaMinuman + "', '" + hargaMinuman + "', 'minuman');";
+                    // try {
+                    // java.sql.Statement stmt = Post.getCon().createStatement();
+                    // stmt.executeUpdate(sql);
+                    // // Post.getCon().createStatement().executeUpdate(sql);
+                    // stmt.close();
+                    // } catch (SQLException e) {
+                    // add.border();
+                    // e.printStackTrace();
+                    // add.border();
+                    // e.getMessage();
+                    // add.border();
+                    // }
                     cMenuCLI.minuman[add.idxMinuman] = new cMinuman(
                             cMenuCLI.minuman[add.idxMinuman - 1].getId() + 1,
                             namaMinuman,
