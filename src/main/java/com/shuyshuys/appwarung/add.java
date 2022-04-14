@@ -373,6 +373,14 @@ public class add {
         System.out.flush();
     }
 
+    public static void sleep() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     static String logTime(String status) {
         return "⁂  " + status + " berhasil pada : " + getDateTime();
     }
