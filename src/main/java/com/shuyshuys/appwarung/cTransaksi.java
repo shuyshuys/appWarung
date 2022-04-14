@@ -24,6 +24,7 @@ public class cTransaksi {
     static int[][] porsiMinuman = new int[50][add.getMostMenu()]; // 0 idxmaxpembeli
     // private int[] jumlahBarang = new int[mineReader.idx_count];
     static int[] totalHarga = new int[mineReader.idx_count];
+    static int discount;
     static int bayar;
     static int totalHargaLifeTime;
     // private int[] bayar = new int[mineReader.idx_count];
@@ -90,9 +91,10 @@ public class cTransaksi {
 
             totalHargaLifeTime = totalHargaLifeTime + totalHarga[idxPembeli];
             akumulasi[0][idxMakanan] = makanan.getNama();
-            akumulasi[2][idxMakanan] = Integer.toString(makanan.getHarga());
-            akumulasi[3][idxMakanan] = String.valueOf(jumlah); // +akumulasi[3][idxMakanan];
-            akumulasi[4][idxPembeli] = String.valueOf(jumlah);
+            // akumulasi[2][idxMakanan] = String.valueOf(jumlah);
+            akumulasi[1][idxMakanan] = Integer.toString(makanan.getHarga() * jumlah);
+            // akumulasi[4][idxPembeli] = String.valueOf(jumlah);
+            akumulasi[4][idxPembeli] = String.valueOf(makanan.getHarga() * jumlah);
 
             cMenuCLI.laporanHargaMakanan[idxMakanan] = makanan.getHarga() * jumlah;
 
@@ -115,10 +117,11 @@ public class cTransaksi {
             totalHarga[idxPembeli] = totalHarga[idxPembeli] + minuman.getHarga() * jumlah;
 
             totalHargaLifeTime = totalHargaLifeTime + totalHarga[idxPembeli];
-            akumulasi[1][idxMinuman] = minuman.getNama();
-            akumulasi[2][idxMinuman] = String.valueOf(minuman.getHarga());
-            akumulasi[3][idxMinuman] = String.valueOf(jumlah); // +akumulasi[3][idxMinuman];
-            akumulasi[4][idxPembeli] = String.valueOf(jumlah);
+            akumulasi[2][idxMinuman] = minuman.getNama();
+            // akumulasi[2][idxMinuman] = String.valueOf(jumlah);
+            akumulasi[3][idxMinuman] = String.valueOf(minuman.getHarga() * jumlah);
+            // akumulasi[4][idxPembeli] = String.valueOf(jumlah);
+            akumulasi[4][idxPembeli] = String.valueOf(minuman.getHarga() * jumlah);
 
             cMenuCLI.laporanHargaMinuman[idxMinuman] = minuman.getHarga() * jumlah;
 
@@ -178,7 +181,7 @@ public class cTransaksi {
         } else {
             add.border();
             // beli.ToString(idxPembeli);
-            for (int i = 0; i < tMinuman.length; i++) {
+            for (int i = 0; i < jumlahMinuman; i++) {
                 System.out.println(tMinuman[i].getNama() + " " + tMinuman[i].getHarga());
             }
             // add.border();
@@ -385,14 +388,13 @@ public class cTransaksi {
         } catch (Exception e) {
         }
         add.border();
+        discount = totalHarga[idxPembeli] * 10 / 100;
+        totalHarga[idxPembeli] = totalHarga[idxPembeli] - discount;
         if (idxPembeli == 0) {
-            System.out.println("Total Harga\t\t\t\t\t" + totalHarga[idxPembeli]);
+            System.out.println("Total Harga\t\t\t\t" + totalHarga[idxPembeli]);
         } else {
-            int discount = totalHarga[idxPembeli] * 10 / 100;
             System.out.println("\t\t\tDiscount 10% :  " + discount);
-            int afterDiscount = totalHarga[idxPembeli] - discount;
-            System.out.println("Total Harga\t\t\t\t" + afterDiscount);
-
+            System.out.println("Total Harga\t\t\t\t" + totalHarga[idxPembeli]);
         }
         // System.out.println("Bayar\t\t: " + bayar[idxPembeli]);
         // System.out.println("Kembalian\t: " + kembalian[idxPembeli]);
@@ -636,6 +638,7 @@ public class cTransaksi {
                         add.border();
                         System.out.println(" ⁘⁘ Lihat Transaksi");
                         beli.ToString(pilihPembeli - 1);
+
                         boolean notEnough = false;
                         System.out.println(" ⁘⁘⁘ Bayar");
                         if (notEnough == true) {
