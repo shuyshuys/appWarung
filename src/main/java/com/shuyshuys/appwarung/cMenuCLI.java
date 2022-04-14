@@ -1,7 +1,5 @@
 package com.shuyshuys.appwarung;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -16,8 +14,8 @@ public class cMenuCLI {
     static int pilihan;
     static boolean found = false;
 
-    static Integer[] laporanHargaMakanan;
-    static Integer[] laporanHargaMinuman;
+    static int[] laporanHargaMakanan;
+    static int[] laporanHargaMinuman;
 
     static void initLaporan() {
         // laporanHargaMakanan = new Integer[add.idxMakanan];
@@ -327,21 +325,21 @@ public class cMenuCLI {
                             add.border();
 
                             // String[] sortlaporanHargaMakanan = new String[add.idxMakanan];
-                            Arrays.sort(laporanHargaMakanan);
-                            Arrays.sort(laporanHargaMinuman);
+                            String[] laporanMakanan = add.sort(laporanHargaMakanan);
+                            String[] laporanMinuman = add.sort(laporanHargaMinuman);
                             System.out.println("Total Pendapatan: " + cTransaksi.totalHargaLifeTime);
                             for (int i = 0; i < add.idxMakanan; i++) {
                                 if (laporanHargaMakanan[i] != 0) {
                                     System.out.print(
                                             cMenuCLI.makanan[i].getNama() + "\t" +
-                                                    laporanHargaMakanan[i]);
+                                                    laporanMakanan[i]);
                                 }
                             }
                             for (int i = 0; i < add.idxMinuman; i++) {
                                 if (laporanHargaMinuman[i] != 0) {
                                     System.out.print(
                                             cMenuCLI.minuman[i].getNama() + "\t" +
-                                                    laporanHargaMinuman[i]);
+                                                    laporanMinuman[i]);
                                 }
                             }
                         case 2:
@@ -354,17 +352,18 @@ public class cMenuCLI {
                             for (int i = 1; i < add.idxPembeli; i++) {
                                 if (cTransaksi.pembeli[i].getNama().length() < 13) {
                                     System.out.println(
-                                            (i + 1) + ". " + cTransaksi.pembeli[i].getNama() + "\t\t\t"
-                                                    + cTransaksi.akumulasi[4][i]);
+                                            (i) + ". " + cTransaksi.pembeli[i].getNama() + "\t\t\t"
+                                                    + cTransaksi.dbTransaksi[4][i]);
                                 } else {
                                     System.out.println(
-                                            (i + 1) + ". " + cTransaksi.pembeli[i].getNama() + "\t\t"
-                                                    + cTransaksi.akumulasi[4][i]);
+                                            (i) + ". " + cTransaksi.pembeli[i].getNama() + "\t\t"
+                                                    + cTransaksi.dbTransaksi[4][i]);
                                 }
                                 no = i;
                             }
                             System.out.println(
-                                    no + ". " + cTransaksi.pembeli[0].getNama() + "\t\t" + cTransaksi.akumulasi[4][0]);
+                                    (no + 1) + ". " + cTransaksi.pembeli[0].getNama() + "\t\t"
+                                            + cTransaksi.dbTransaksi[4][0]);
                             add.border();
                             add.backToMenu();
                             // TODO: laporan
