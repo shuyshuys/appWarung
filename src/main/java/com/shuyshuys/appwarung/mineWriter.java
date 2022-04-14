@@ -64,7 +64,7 @@ class mineWriter {
             } catch (Exception e) {
             }
             writer.write(
-                    "  " + cTransaksi.totalHarga[idxPembeli] + "  ");
+                    "  " + cTransaksi.totalHarga + "  ");
             writer.write(cTransaksi.bayar + "  ");
             writer.write(cTransaksi.kembalian[idxPembeli] + "\n");
             // writer.write("\n" + add.getDateTime() + " " + add.getTransaksi());
