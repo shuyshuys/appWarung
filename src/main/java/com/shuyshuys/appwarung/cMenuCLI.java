@@ -247,7 +247,7 @@ public class cMenuCLI {
                                             add.border();
                                             System.out.print("Apakah anda yakin ingin menghapus? (y/n)  : ");
                                             String jawab = sc.next();
-                                            if (jawab.equals("y")) {
+                                            if (jawab.equalsIgnoreCase("y")) {
                                                 System.out.print("Nama Minuman\t: ");
                                                 String namaMinumanUbah = add.sc().nextLine();
                                                 System.out.print("Harga Minuman\t: ");
