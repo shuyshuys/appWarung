@@ -16,10 +16,10 @@ public class AppWarung {
         int pilihan = 0;
 
         // mineReader.getReader(add.PATH_ID_MAKANAN, "id_makanan", "makanan");
-        // mineReader.getReader(add.PATH_MAKANAN, "makanan");
-        PostReader.getPostReader("makanan");
-        PostReader.getPostReader("minuman");
-        // mineReader.getReader(add.PATH_MINUMAN, "minuman");
+        mineReader.getReader(add.PATH_MAKANAN, "makanan");
+        // PostReader.getPostReader("makanan");
+        // PostReader.getPostReader("minuman");
+        mineReader.getReader(add.PATH_MINUMAN, "minuman");
         mineReader.getReader(add.PATH_PEMBELI, "pembeli");
         // mineReader.getReader(add.PATH_TRANSAKSI, "transaksi");
         // mineReader.getReader(add.PATH_HARGA_MAKANAN, "harga_makanan", "makanan");
