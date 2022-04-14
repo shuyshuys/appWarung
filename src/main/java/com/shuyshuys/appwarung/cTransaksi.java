@@ -643,21 +643,21 @@ public class cTransaksi {
                             notEnough = false;
                         } else {
                             if (pilihPembeli - 1 != 0) {
-                                discount = totalHarga[pilihPembeli - 1] * 10 / 100;
+                                discount = totalHarga * 10 / 100;
                                 totalHarga = totalHarga - discount;
                             }
                         }
                         if (pilihPembeli - 1 != 0) {
                             System.out.println("\t\t\tDisc 10% :      " + discount);
-                            System.out.println("Total Bayar\t\t\t\t" + totalHarga[pilihPembeli - 1]);
+                            System.out.println("Total Bayar\t\t\t\t" + totalHarga);
                         } else {
-                            System.out.println("Total Bayar\t\t\t\t" + totalHarga[pilihPembeli - 1]);
+                            System.out.println("Total Bayar\t\t\t\t" + totalHarga);
                         }
                         System.out.print("Bayar\t\t\t\t\t");
                         bayar = add.sc().nextInt();
-                        if (bayar >= totalHarga[pilihPembeli - 1]) {
+                        if (bayar >= totalHarga) {
                             paidInFull = true;
-                            kembalian[pilihPembeli - 1] = bayar - totalHarga[pilihPembeli - 1];
+                            kembalian[pilihPembeli - 1] = bayar - totalHarga;
                             System.out.println("Kembalian\t\t\t\t" + kembalian[pilihPembeli - 1]);
                         } else {
                             notEnough = true;
