@@ -31,35 +31,45 @@ class mineWriter {
             File file = new File(add.PATH_TRANSAKSI);
             FileWriter writer = new FileWriter(file, true);
 
-            writer.write("ID Transaksi:  " + cTransaksi.idTransaksi[add.idxTransaksi - 1][idxPembeli] + "\n");
-            writer.write("Tanggal:  " + cTransaksi.tanggalTransaksi[idxPembeli] + "\n");
-            writer.write("Nama Pembeli: " + cTransaksi.pembeli[idxPembeli].getNama() + "\n");
+            writer.write(cTransaksi.idTransaksi[add.idxTransaksi - 1][idxPembeli] + "  ");
+            writer.write(cTransaksi.tanggalTransaksi[add.idxTransaksi - 1] + "  ");
+            writer.write(cTransaksi.pembeli[idxPembeli].getNama() + "  ");
             try {
                 for (int i = 0; i < cTransaksi.tMakanan.length; i++) {
                     if (cTransaksi.tMakanan[i] != null) {
-                        // System.out.println("Nama Makanan\t: " + tMakanan[i].getNama());
-                        // System.out.println("Harga Makanan\t: " + tMakanan[i].getHarga());
-
-                        // System.out.println(
-                        // "Jumlah Makanan\t: " +
-                        // porsiMakanan[idxPembeli][add.searchById(tMakanan[i].getId(), 0)]);
-                        System.out.println(
-                                cTransaksi.tMakanan[i].getNama() + "\t" + cTransaksi.tMakanan[i].getHarga() + "\tx"
+                        writer.write(
+                                cTransaksi.tMakanan[i].getNama() + "  " + cTransaksi.tMakanan[i].getHarga() + "  "
                                         + cTransaksi.porsiMakanan[idxPembeli][add
                                                 .searchIdxById(cTransaksi.tMakanan[i].getId(), 0)]
-                                        + "\t"
+                                        + "  "
                                         + (cTransaksi.tMakanan[i].getHarga() * cTransaksi.porsiMakanan[idxPembeli][add
-                                                .searchIdxById(cTransaksi.tMakanan[i].getId(), 0)]));
-                        System.out.println("\t\t\tDiscount 10% : " + (cTransaksi.tMakanan[i].getHarga()
-                                * cTransaksi.porsiMakanan[idxPembeli][add.searchIdxById(cTransaksi.tMakanan[i].getId(),
-                                        0)])
-                                * 10 / 100);
+                                                .searchIdxById(cTransaksi.tMakanan[i].getId(), 0)] + "  "));
                     }
                 }
             } catch (Exception e) {
             }
+            writer.write("  ");
+            try {
+                for (int i = 0; i < cTransaksi.tMinuman.length; i++) {
+                    if (cTransaksi.tMinuman[i] != null) {
+                        writer.write(
+                                cTransaksi.tMinuman[i].getNama() + "  " + cTransaksi.tMinuman[i].getHarga() + "  "
+                                        + cTransaksi.porsiMinuman[idxPembeli][add
+                                                .searchIdxById(cTransaksi.tMinuman[i].getId(), 1)]
+                                        + "  "
+                                        + (cTransaksi.tMinuman[i].getHarga() * cTransaksi.porsiMinuman[idxPembeli][add
+                                                .searchIdxById(cTransaksi.tMinuman[i].getId(), 1)] + "  "));
+                    }
+                }
+            } catch (Exception e) {
+            }
+            writer.write(
+                    "  " + cTransaksi.totalHarga[idxPembeli] + "  ");
+            writer.write(cTransaksi.bayar + "  ");
+            writer.write(cTransaksi.kembalian[idxPembeli] + "\n");
             // writer.write("\n" + add.getDateTime() + " " + add.getTransaksi());
             writer.close();
+            System.out.println("Successfully wrote to " + file.getName());
         } catch (IOException e) {
             e.printStackTrace();
         }
