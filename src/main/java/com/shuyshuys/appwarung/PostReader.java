@@ -18,15 +18,17 @@ public class PostReader {
             if (category == "makanan") {
 
                 String count = "SELECT category_barang,COUNT(*) FROM barang WHERE category_barang = 'makanan' GROUP BY category_barang;";
-                ResultSet rs = Post.getCon().createStatement().executeQuery(count);
+                Statement stmt = Post.getCon().createStatement();
+                ResultSet rs = stmt.executeQuery(count);
                 while (rs.next()) {
                     cMenuCLI.makanan = new cMakanan[rs.getInt(2) + 10];
                     add.idx_max_makanan = rs.getInt(2) + 10;
                 }
+                rs.close();
 
                 String sql = "SELECT * FROM barang WHERE category_barang = '" + category + "';";
-                Statement statement = Post.getCon().createStatement();
-                ResultSet res = statement.executeQuery(sql);
+                // Statement stmt = Post.getCon().createStatement();
+                ResultSet res = stmt.executeQuery(sql);
                 while (res.next()) {
                     cMenuCLI.makanan[add.idxMakanan] = new cMakanan(
                             Integer.parseInt(res.getString(1)),
@@ -35,17 +37,21 @@ public class PostReader {
                     cMenuCLI.makanan[add.idxMakanan].ToString();
                     add.idxMakanan++;
                 }
+                stmt.close();
+                res.close();
             } else if (category == "minuman") {
 
                 String count = "SELECT category_barang,COUNT('minuman') FROM barang WHERE category_barang = 'minuman' GROUP BY category_barang;";
-                ResultSet rs = Post.getCon().createStatement().executeQuery(count);
+                Statement stmt = Post.getCon().createStatement();
+                ResultSet rs = stmt.executeQuery(count);
                 while (rs.next()) {
                     cMenuCLI.minuman = new cMinuman[rs.getInt(2) + 10];
                     add.idx_max_minuman = rs.getInt(2) + 10;
                 }
+                rs.close();
 
                 String sql = "SELECT * FROM barang WHERE category_barang = '" + category + "';";
-                Statement stmt = Post.getCon().createStatement();
+                // Statement stmt = Post.getCon().createStatement();
                 ResultSet res = stmt.executeQuery(sql);
                 while (res.next()) {
                     cMenuCLI.minuman[add.idxMinuman] = new cMinuman(
@@ -55,6 +61,8 @@ public class PostReader {
                     cMenuCLI.minuman[add.idxMinuman].ToString();
                     add.idxMinuman++;
                 }
+                stmt.close();
+                res.close();
             }
 
         } catch (Exception e) {
