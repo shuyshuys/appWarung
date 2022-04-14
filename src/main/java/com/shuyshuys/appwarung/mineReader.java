@@ -104,7 +104,7 @@ public class mineReader {
                         } catch (Exception e) {
                         }
                         cTransaksi.beli.setTotalHarga(Integer.parseInt(line.split("  ")[5]), add.idxTransaksi);
-                        cTransaksi.beli.setBayar(Integer.parseInt(line.split("  ")[6]), add.idxTransaksi);
+                        cTransaksi.beli.setBayar(Integer.parseInt(line.split("  ")[6]));
                         cTransaksi.beli.setKembalian(Integer.parseInt(line.split("  ")[7]), add.idxTransaksi);
                         cTransaksi.beli.setTanggalTransaksi(line.split("  ")[8], add.idxTransaksi);
                         add.idxTransaksi++;
