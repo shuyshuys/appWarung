@@ -20,6 +20,9 @@ public class add {
     public static int idx_max_minuman;
     public static int idTransaksi = 92000;
 
+    static boolean foundIdxMa = false;
+    static boolean foundIdxMi = false;
+
     private static int pilihBackToMenu = 0;
 
     public static Scanner sc() {
@@ -108,26 +111,24 @@ public class add {
         // int id = -1;
         int id = 0;
         if (kodeMenu == 0) {
-            boolean found = false;
             for (int i = 0; i < add.idxMakanan; i++) {
                 if (cMenuCLI.makanan[i].getId() == idCari) {
-                    found = true;
+                    foundIdxMa = true;
                     id = i;
-                    if (!found) {
-                        System.out.println("Makanan tidak ditemukan");
-                    }
                 }
             }
+            if (!foundIdxMa) {
+                System.out.println("Makanan tidak ditemukan");
+            }
         } else if (kodeMenu == 1) {
-            boolean found2 = false;
             for (int i = 0; i < add.idxMinuman; i++) {
                 if (cMenuCLI.minuman[i].getId() == idCari) {
-                    found2 = true;
+                    foundIdxMi = true;
                     id = i;
-                    if (!found2) {
-                        System.out.println("Minuman tidak ditemukan");
-                    }
                 }
+            }
+            if (!foundIdxMi) {
+                System.out.println("Minuman tidak ditemukan");
             }
         } else {
             System.out.println("Kode menu tidak sesuai!");
