@@ -25,6 +25,7 @@ public class cTransaksi {
     // private int[] jumlahBarang = new int[mineReader.idx_count];
     static int[] totalHarga = new int[mineReader.idx_count];
     static int discount;
+    static int beforeDiscount;
     static int bayar;
     static int totalHargaLifeTime;
     // private int[] bayar = new int[mineReader.idx_count];
@@ -143,15 +144,15 @@ public class cTransaksi {
         } else {
             add.border();
             // beli.ToString(idxPembeli);
-            for (int i = 0; i < tMakanan.length; i++) {
-                System.out.println(tMakanan[i].getNama() + " " + tMakanan[i].getHarga());
+            for (int i = 0; i < jumlahMakanan; i++) {
+                System.out.println(tMakanan[i].getNama() + "\t" + tMakanan[i].getHarga());
             }
+            add.border();
             System.out.print("Nama Makanan yang ingin dihapus: ");
             String hapusMakanan = add.sc().nextLine();
-            add.border();
             boolean found = false;
             for (int i = 0; i < jumlahMakanan; i++) {
-                if (tMakanan[i].getNama().equals(hapusMakanan)) {
+                if (tMakanan[i].getNama().equalsIgnoreCase(hapusMakanan)) {
                     found = true;
                     totalHarga[idxPembeli] = totalHarga[idxPembeli] - tMakanan[i].getHarga()
                             * porsiMakanan[idxPembeli][add.searchIdxById(tMakanan[i].getId(), 0)];
@@ -172,6 +173,7 @@ public class cTransaksi {
                 System.out.println("  ↂ  Makanan " + hapusMakanan + " tidak ditemukan dalam nota"
                         + pembeli[idxPembeli].getNama() + "...");
             }
+            add.sleep();
         }
     }
 
@@ -182,15 +184,15 @@ public class cTransaksi {
             add.border();
             // beli.ToString(idxPembeli);
             for (int i = 0; i < jumlahMinuman; i++) {
-                System.out.println(tMinuman[i].getNama() + " " + tMinuman[i].getHarga());
+                System.out.println(tMinuman[i].getNama() + "\t" + tMinuman[i].getHarga());
             }
             // add.border();
-            System.out.print("Nama Minuman yang ingin dihapus: ");
             add.border();
+            System.out.print("Nama Minuman yang ingin dihapus: ");
             String hapusMinuman = add.sc().nextLine();
             boolean found = false;
             for (int i = 0; i < jumlahMinuman; i++) {
-                if (tMinuman[i].getNama().equals(hapusMinuman)) {
+                if (tMinuman[i].getNama().equalsIgnoreCase(hapusMinuman)) {
                     found = true;
                     totalHarga[idxPembeli] = totalHarga[idxPembeli] - tMinuman[i].getHarga()
                             * porsiMinuman[idxPembeli][add.searchIdxById(tMinuman[i].getId(), 1)];
@@ -211,6 +213,7 @@ public class cTransaksi {
                 System.out.println("  ↂ  Minuman " + hapusMinuman + " tidak ditemukan dalam nota"
                         + pembeli[idxPembeli].getNama() + "...");
             }
+            add.sleep();
         }
     }
 
@@ -388,14 +391,8 @@ public class cTransaksi {
         } catch (Exception e) {
         }
         add.border();
-        discount = totalHarga[idxPembeli] * 10 / 100;
-        totalHarga[idxPembeli] = totalHarga[idxPembeli] - discount;
-        if (idxPembeli == 0) {
-            System.out.println("Total Harga\t\t\t\t" + totalHarga[idxPembeli]);
-        } else {
-            System.out.println("\t\t\tDiscount 10% :  " + discount);
-            System.out.println("Total Harga\t\t\t\t" + totalHarga[idxPembeli]);
-        }
+        System.out.println("Total Harga\t\t\t\t" + totalHarga[idxPembeli]);
+
         // System.out.println("Bayar\t\t: " + bayar[idxPembeli]);
         // System.out.println("Kembalian\t: " + kembalian[idxPembeli]);
         add.border();
@@ -468,13 +465,10 @@ public class cTransaksi {
                         }
                         add.border();
                     }
+                    add.sleep();
                     cTransaksi.Transaksi();
                     break;
                 case 2:
-                    add.cls();
-                    add.border();
-                    System.out.println(" ⁘⁘ Tambah Transaksi");
-                    add.border();
                     boolean belilagi = false;
                     do {
                         add.cls();
@@ -486,7 +480,6 @@ public class cTransaksi {
                             System.out.println(
                                     " ⁘⁘⁘ Tambah Pesanan [" + pembeli[pilihPembeli - 1].getNama() + "]   [Member]");
                         }
-                        add.border();
                         System.out.println(
                                 "Input Kode Menu\n\t0 untuk makanan\n\t1 untuk minuman\n\t2 untuk pencarian");
                         System.out.print("Kode menu: ");
@@ -498,12 +491,24 @@ public class cTransaksi {
                             System.out.print("ID menu: ");
                             idMenu = add.sc().nextInt();
                             idx = add.searchIdxById(idMenu, kodeMenu);
+                            if (add.foundIdxMa == false) {
+                                System.out.println(
+                                        " ⁘⁘⁘ ID Minuman tidak ditemukan!\n  Kembali ke menu transaksi dalam 3s...");
+                                add.sleep();
+                                cTransaksi.Transaksi();
+                            }
                         }
                         if (kodeMenu == 1) {
                             add.printMenu("minuman");
                             System.out.print("ID menu: ");
                             idMenu = add.sc().nextInt();
                             idx = add.searchIdxById(idMenu, kodeMenu);
+                            if (add.foundIdxMi == false) {
+                                System.out.println(
+                                        " ⁘⁘⁘ID Minuman tidak ditemukan!\n  Kembali ke menu transaksi dalam 3s...");
+                                add.sleep();
+                                cTransaksi.Transaksi();
+                            }
                         }
                         if (kodeMenu == 2) {
                             boolean found = false;
@@ -608,7 +613,7 @@ public class cTransaksi {
                 case 3:
                     add.cls();
                     add.border();
-                    System.out.println(" ⁘⁘ Hapus Pesanan");
+                    System.out.println(" ⁘⁘ Hapus Pesanan  [" + pembeli[pilihPembeli - 1].getNama() + "]");
                     System.out.println("1. Hapus Makanan dari Pesanan");
                     System.out.println("2. Hapus Minuman dari Pesanan");
                     System.out.print("Pilih : ");
@@ -632,81 +637,72 @@ public class cTransaksi {
                     // String temp = beli[i].getMakanan().getNama();
                     // if (beli[i].getMakanan(i) != null) {
                     // System.out.println("[Transaksi ke-" + (i + 1) + "] ");
+                    if (tMakanan[0] == null && tMinuman[0] == null) {
+                        add.border();
+                        System.out.println("Belum mengisi pesanan!");
+                        add.border();
+                        add.sleep();
+                        cTransaksi.Transaksi();
+                    }
                     boolean paidInFull = false;
+                    boolean notEnough = false;
                     do {
                         add.cls();
                         add.border();
                         System.out.println(" ⁘⁘ Lihat Transaksi");
                         beli.ToString(pilihPembeli - 1);
-
-                        boolean notEnough = false;
                         System.out.println(" ⁘⁘⁘ Bayar");
                         if (notEnough == true) {
                             System.out.println("UANG ANDA KURANG!");
+                            notEnough = false;
+                        } else {
+                            if (pilihPembeli - 1 != 0) {
+                                discount = totalHarga[pilihPembeli - 1] * 10 / 100;
+                                totalHarga[pilihPembeli - 1] = totalHarga[pilihPembeli - 1] - discount;
+                            }
                         }
-                        System.out.println("Total Harga\t\t\t\t" + beli.getTotalHarga(pilihPembeli - 1));
+                        if (pilihPembeli - 1 != 0) {
+                            System.out.println("\t\t\tDisc 10% :      " + discount);
+                            System.out.println("Total Bayar\t\t\t\t" + totalHarga[pilihPembeli - 1]);
+                        } else {
+                            System.out.println("Total Bayar\t\t\t\t" + totalHarga[pilihPembeli - 1]);
+                        }
                         System.out.print("Bayar\t\t\t\t\t");
                         bayar = add.sc().nextInt();
-                        if (bayar >= beli.getTotalHarga(pilihPembeli - 1)) {
+                        if (bayar >= totalHarga[pilihPembeli - 1]) {
                             paidInFull = true;
-                            kembalian[pilihPembeli - 1] = bayar - beli.getTotalHarga(pilihPembeli - 1);
+                            kembalian[pilihPembeli - 1] = bayar - totalHarga[pilihPembeli - 1];
                             System.out.println("Kembalian\t\t\t\t" + kembalian[pilihPembeli - 1]);
                         } else {
                             notEnough = true;
-                            System.out.println("Uang anda kurang");
                         }
+                        add.sleep();
                     } while (paidInFull == false);
                     add.border();
                     mineWriter.writeTransaksi(pilihPembeli - 1);
-                    // add.border();
-                    // }
-                    // beli.ToString(i);
-                    // }
-                    // System.out.println(cMenuCLI.transaksi[i].ToString());
-                    // System.out.println(beli.cetakNota(i));
-                    // if (cMenuCLI.transaksi[i] != null) {
-                    // add.border();
-                    // System.out.println(i);
-                    // System.out.println("[Transaksi ke-" + (i + 1) + "] ");
-                    // System.out.println(cMenuCLI.transaksi[i].ToString());
-                    // add.border();
-                    // i++;
-                    // }
                     add.border();
                     add.backToMenu();
                     break;
-                // System.out.println(" ⁘⁘ Tambah Pesanan");
-                // add.border();
-                // System.out.print("Pembeli\t: ");
-                // int pilihPembeli = add.sc().nextInt();
-                // System.out.print("Alamat\t: ");
-                // String alamatPembeli = add.sc().next();
-                // cMenuCLI.pembeli[add.idxPembeli] = new cPembeli(
-                // cMenuCLI.pembeli[add.idxPembeli - 1].getId() + 1,
-                // namaPembeli,
-                // alamatPembeli);
-                // System.out.println("[Pembeli id: " + cMenuCLI.pembeli[0].getId() + " nama: "
-                // + cMenuCLI.pembeli[0].getNama() + "] ");
-                // break;
                 case 5:
                     add.cls();
                     add.border();
-                    System.out.println(" ⁘⁘ Hapus Pesanan");
+                    System.out.println(" ⁘⁘ Hapus Transaksi");
                     add.border();
-                    for (int i = 0; i < add.idxTransaksi; i++) {
-                        System.out.println("[Transaksi ke-" + (i + 1) + "] ");
-                        beli.ToString(i);
-                        // System.out.println(print.ToString(i));
-                        add.border();
-                        // if (cMenuCLI.transaksi[i] != null) {
-                        // add.border();
-                        // System.out.println(i);
-                        // System.out.println("[Transaksi ke-" + (i + 1) + "] ");
-                        // System.out.println(cMenuCLI.transaksi[i].ToString());
-                        // add.border();
-                        // i++;
-                        // }
-                    }
+                    System.out.println("Under development");
+                    // for (int i = 0; i < add.idxTransaksi; i++) {
+                    // System.out.println("[Transaksi ke-" + (i + 1) + "] ");
+                    // beli.ToString(i);
+                    // // System.out.println(print.ToString(i));
+                    // add.border();
+                    // // if (cMenuCLI.transaksi[i] != null) {
+                    // // add.border();
+                    // // System.out.println(i);
+                    // // System.out.println("[Transaksi ke-" + (i + 1) + "] ");
+                    // // System.out.println(cMenuCLI.transaksi[i].ToString());
+                    // // add.border();
+                    // // i++;
+                    // // }
+                    // }
                     add.backToMenu();
                     break;
                 case 6:
