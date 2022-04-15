@@ -42,7 +42,7 @@ public class add {
     public static String[] sort(int[] harga) {
         String[] hasil = new String[harga.length];
         for (int i = 0; i < hasil.length; i++) {
-            for (int j = 0; j < hasil.length; j++) {
+            for (int j = 0; j < hasil.length - 1; j++) {
                 if (harga[j] < harga[j + 1]) {
                     int temp = harga[j];
                     harga[j] = harga[j + 1];
