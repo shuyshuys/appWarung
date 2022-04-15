@@ -25,15 +25,16 @@ public class AppWarung {
         // mineReader.getReader(add.PATH_HARGA_MAKANAN, "harga_makanan", "makanan");
         // mineReader.getReader(add.PATH_STOK_MAKANAN, "stok_makanan", "makanan");
 
-        cMenuCLI.laporanHargaMakanan = new Integer[add.idxMakanan];
-        cMenuCLI.laporanHargaMinuman = new Integer[add.idxMinuman];
-        // for (int i = 0; i < add.idxMakanan; i++) {
-        // cMenuCLI.laporanHargaMakanan[i] = 0;
-        // cMenuCLI.laporanHargaMinuman[i] = 0;
-        // System.out.println("laporan harga makanan " + cMenuCLI.laporanHargaMakanan[i]
-        // + ", minuman "
-        // + cMenuCLI.laporanHargaMinuman[i]);
-        // }
+        cMenuCLI.laporanHargaMakanan = new int[add.idxMakanan];
+        cMenuCLI.laporanHargaMinuman = new int[add.idxMinuman];
+        for (int i = 0; i < add.idxMakanan; i++) {
+            cMenuCLI.laporanHargaMakanan[i] = 0;
+            cMenuCLI.laporanHargaMinuman[i] = 0;
+            System.out.println("laporan harga makanan " + cMenuCLI.laporanHargaMakanan[i]
+                    + ", minuman "
+                    + cMenuCLI.laporanHargaMinuman[i]);
+        }
+
         while (pilihan != 3) {
             add.border();
             System.out.println("Selamat datang di App Warung by @shuyshuys");
