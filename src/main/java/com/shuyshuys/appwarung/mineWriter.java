@@ -76,6 +76,9 @@ class mineWriter {
             writer.write(cTransaksi.idTransaksi[add.idxTransaksi - 1][idxPembeli] + "  ");
             writer.write(cTransaksi.tanggalTransaksi[add.idxTransaksi - 1] + "  ");
             writer.write(cTransaksi.pembeli[idxPembeli].getNama() + "  ");
+            writer.write(cTransaksi.totalHarga + "  ");
+            writer.write(cTransaksi.bayar + "  ");
+            writer.write(cTransaksi.kembalian[idxPembeli] + "    ");
             try {
                 for (int i = 0; i < cTransaksi.tMakanan.length; i++) {
                     if (cTransaksi.tMakanan[i] != null) {
@@ -105,10 +108,7 @@ class mineWriter {
                 }
             } catch (Exception e) {
             }
-            writer.write(
-                    "  " + cTransaksi.totalHarga + "  ");
-            writer.write(cTransaksi.bayar + "  ");
-            writer.write(cTransaksi.kembalian[idxPembeli] + "\n");
+            writer.write("END\n");
             // writer.write("\n" + add.getDateTime() + " " + add.getTransaksi());
             writer.close();
             System.out.println("Successfully wrote to " + file.getName());
