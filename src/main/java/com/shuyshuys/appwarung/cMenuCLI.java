@@ -113,8 +113,8 @@ public class cMenuCLI {
                                             System.out.print("Apakah anda yakin ingin menghapus? (y/n)  : ");
                                             String jawab = sc.next();
                                             if (jawab.equals("y")) {
-                                                cMenuCLI.makanan[i] = cMenuCLI.makanan[add.idxMakanan - 1];
-                                                for (int j = 0; j < add.idxMakanan; j++) {
+                                                // cMenuCLI.makanan[i] = cMenuCLI.makanan[add.idxMakanan - 1];
+                                                for (int j = i; j < add.idxMakanan; j++) {
                                                     if (j == add.idxMakanan - 1) {
                                                         cMenuCLI.makanan[j] = null;
                                                     } else {
@@ -330,18 +330,21 @@ public class cMenuCLI {
                             System.out.println("Total Pendapatan: " + cTransaksi.totalHargaLifeTime);
                             for (int i = 0; i < add.idxMakanan; i++) {
                                 if (laporanHargaMakanan[i] != 0) {
-                                    System.out.print(
+                                    System.out.println(
                                             cMenuCLI.makanan[i].getNama() + "\t" +
-                                                    laporanMakanan[i]);
+                                                    laporanHargaMakanan[i]);
                                 }
                             }
                             for (int i = 0; i < add.idxMinuman; i++) {
                                 if (laporanHargaMinuman[i] != 0) {
-                                    System.out.print(
+                                    System.out.println(
                                             cMenuCLI.minuman[i].getNama() + "\t" +
-                                                    laporanMinuman[i]);
+                                                    laporanHargaMinuman[i]);
                                 }
                             }
+                            add.border();
+                            add.backToMenu();
+                            break;
                         case 2:
                             add.cls();
                             add.border();
@@ -350,16 +353,18 @@ public class cMenuCLI {
                             // System.out.println("1. "+cTransaksi.pembeli[o]);
                             int no = 0;
                             for (int i = 1; i < add.idxPembeli; i++) {
-                                if (cTransaksi.pembeli[i].getNama().length() < 13) {
-                                    System.out.println(
-                                            (i) + ". " + cTransaksi.pembeli[i].getNama() + "\t\t\t"
-                                                    + cTransaksi.dbTransaksi[4][i]);
-                                } else {
-                                    System.out.println(
-                                            (i) + ". " + cTransaksi.pembeli[i].getNama() + "\t\t"
-                                                    + cTransaksi.dbTransaksi[4][i]);
+                                if (cTransaksi.dbTransaksi[2][i] != null) {
+                                    if (cTransaksi.pembeli[i].getNama().length() < 13) {
+                                        System.out.println(
+                                                (i) + ". " + cTransaksi.pembeli[i].getNama() + "\t\t\t"
+                                                        + cTransaksi.dbTransaksi[2][i]);
+                                    } else {
+                                        System.out.println(
+                                                (i) + ". " + cTransaksi.pembeli[i].getNama() + "\t\t"
+                                                        + cTransaksi.dbTransaksi[2][i]);
+                                    }
+                                    no = i;
                                 }
-                                no = i;
                             }
                             System.out.println(
                                     (no + 1) + ". " + cTransaksi.pembeli[0].getNama() + "\t\t"
