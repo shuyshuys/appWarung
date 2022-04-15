@@ -155,8 +155,8 @@ public class cMenuCLI {
                                             System.out.print("Apakah anda yakin ingin menghapus? (y/n)  : ");
                                             String jawab = sc.next();
                                             if (jawab.equals("y")) {
-                                                cMenuCLI.minuman[i] = cMenuCLI.minuman[add.idxMinuman - 1];
-                                                for (int j = 0; j < add.idxMinuman; j++) {
+                                                // cMenuCLI.minuman[i] = cMenuCLI.minuman[add.idxMinuman - 1];
+                                                for (int j = i; j < add.idxMinuman; j++) {
                                                     if (j == add.idxMinuman - 1) {
                                                         cMenuCLI.minuman[j] = null;
                                                     } else {
