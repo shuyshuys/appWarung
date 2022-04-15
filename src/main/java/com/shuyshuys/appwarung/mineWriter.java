@@ -26,6 +26,20 @@ class mineWriter {
         }
     }
 
+    static void writeObject(String path, int id, String nama, int harga) {
+        try {
+            File file = new File(path);
+            FileWriter writer = new FileWriter(file, true);
+
+            writer.write("\n" + id + "  " + nama + "  " + harga);
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            add.border();
+            e.getMessage();
+        }
+    }
+
     static void writeTransaksi(int idxPembeli) {
         try {
             File file = new File(add.PATH_TRANSAKSI);
