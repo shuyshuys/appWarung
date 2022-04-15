@@ -13,7 +13,7 @@ public class cTransaksi {
     static String[][] dbTransaksi = new String[5][add.getMostMenu()]; // 0 makanan 1 minuman 2 harga 3 jumlah 4
                                                                       // porsiPembeli
 
-    static int[][] idTransaksi = new int[5][add.idxPembeli + 5];
+    static int[][] idTransaksi = new int[5][mineReader.idx_count];
     static String[] tanggalTransaksi = new String[mineReader.idx_count];
     static int[][] porsiMakanan = new int[50][add.getMostMenu()]; // 0 idxmaxpembeli
     static int[][] porsiMinuman = new int[50][add.getMostMenu()]; // 0 idxmaxpembeli
@@ -25,14 +25,15 @@ public class cTransaksi {
     static int[] kembalian = new int[mineReader.idx_count];
 
     // cTransaksi(int idTransaksi,
+    // String tanggalTransaksi,
     // String namaPembeli,
     // String namaBarang,
     // int hargaBarang,
     // int jumlahBarang,
     // int totalHarga,
     // int bayar,
-    // int kembalian,
-    // String tanggalTransaksi) {
+    // int kembalian) {
+    // dbTransaksi[][] =
     // this.idTransaksi = idTransaksi;
     // this.namaPembeli = namaPembeli;
     // this.namaBarang = namaBarang;
@@ -42,7 +43,7 @@ public class cTransaksi {
     // this.bayar = bayar;
     // this.kembalian = kembalian;
     // this.tanggalTransaksi = tanggalTransaksi;
-    // System.out.println(" ⁂ Objek Nota " + namaPembeli + " dibuat...");
+    // System.out.println(" ⁂ Objek Transaksi " + namaPembeli + " dibuat...");
     // }
 
     cTransaksi() {
@@ -81,11 +82,11 @@ public class cTransaksi {
             totalHarga = totalHarga + makanan.getHarga() * jumlah;
 
             totalHargaLifeTime = totalHargaLifeTime + totalHarga;
-            dbTransaksi[0][idxMakanan] = makanan.getNama();
+            // dbTransaksi[0][idxMakanan] = makanan.getNama();
             // dbTransaksi[2][idxMakanan] = String.valueOf(jumlah);
-            dbTransaksi[1][idxMakanan] = Integer.toString(makanan.getHarga() * jumlah);
+            dbTransaksi[0][idxMakanan] = Integer.toString(makanan.getHarga() * jumlah);
             // dbTransaksi[4][idxPembeli] = String.valueOf(jumlah);
-            dbTransaksi[4][idxPembeli] = String.valueOf(makanan.getHarga() * jumlah);
+            dbTransaksi[2][idxPembeli] = String.valueOf(makanan.getHarga() * jumlah);
 
             cMenuCLI.laporanHargaMakanan[idxMakanan] = makanan.getHarga() * jumlah;
 
@@ -108,11 +109,11 @@ public class cTransaksi {
             totalHarga = totalHarga + minuman.getHarga() * jumlah;
 
             totalHargaLifeTime = totalHargaLifeTime + totalHarga;
-            dbTransaksi[2][idxMinuman] = minuman.getNama();
+            // dbTransaksi[2][idxMinuman] = minuman.getNama();
             // dbTransaksi[2][idxMinuman] = String.valueOf(jumlah);
-            dbTransaksi[3][idxMinuman] = String.valueOf(minuman.getHarga() * jumlah);
+            dbTransaksi[1][idxMinuman] = String.valueOf(minuman.getHarga() * jumlah);
             // dbTransaksi[4][idxPembeli] = String.valueOf(jumlah);
-            dbTransaksi[4][idxPembeli] = String.valueOf(minuman.getHarga() * jumlah);
+            dbTransaksi[3][idxPembeli] = String.valueOf(minuman.getHarga() * jumlah);
 
             cMenuCLI.laporanHargaMinuman[idxMinuman] = minuman.getHarga() * jumlah;
 
@@ -427,11 +428,12 @@ public class cTransaksi {
                     String pilih = add.sc().nextLine();
                     if (pilih.equals("list")) {
                         add.border();
-                        add.printPembeli();
+                        add.listPembeli();
+                        // add.printPembeli();
                         add.border();
                         System.out.print("Pilih nomor: ");
                         pilihPembeli = add.sc().nextInt();
-                        beli.isiPembeli(cTransaksi.pembeli[pilihPembeli - 1], (pilihPembeli - 1));
+                        beli.isiPembeli(cTransaksi.pembeli[pilihPembeli], (pilihPembeli));
                     } else {
                         System.out.print("Alamat\t\t\t: ");
                         String alamat = add.sc().nextLine();
