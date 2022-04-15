@@ -68,6 +68,13 @@ public class cTransaksi {
             tMakanan[i] = null;
             tMinuman[i] = null;
         }
+        totalHarga = 0;
+        discount = 0;
+        beforeDiscount = 0;
+        bayar = 0;
+        for (int i = 0; i < mineReader.idx_count; i++) {
+            kembalian[i] = 0;
+        }
         // jumlahMakanan = 0;
         // jumlahMinuman = 0;
         add.idxTransaksi++;
@@ -84,9 +91,9 @@ public class cTransaksi {
             totalHargaLifeTime = totalHargaLifeTime + totalHarga;
             // dbTransaksi[0][idxMakanan] = makanan.getNama();
             // dbTransaksi[2][idxMakanan] = String.valueOf(jumlah);
-            dbTransaksi[0][idxMakanan] = Integer.toString(makanan.getHarga() * jumlah);
+            dbTransaksi[0][idxMakanan] = Integer.toString(makanan.getHarga() * jumlah); // jumlah harga makanan
             // dbTransaksi[4][idxPembeli] = String.valueOf(jumlah);
-            dbTransaksi[2][idxPembeli] = String.valueOf(makanan.getHarga() * jumlah);
+            dbTransaksi[2][idxPembeli] = String.valueOf(makanan.getHarga() * jumlah); // jumlah harga pembelian pembeli
 
             cMenuCLI.laporanHargaMakanan[idxMakanan] = makanan.getHarga() * jumlah;
 
@@ -249,37 +256,6 @@ public class cTransaksi {
     public cMinuman[] getMinuman() {
         return tMinuman;
     }
-    // public String getNamaPembeli() {
-    // return namaPembeli;
-    // }
-
-    // public void setNamaPembeli(String namaPembeli) {
-    // this.pembeli = namaPembeli;
-    // }
-
-    // public String getNamaBarang(int idxPembeli) {
-    // return namaBarang[idxPembeli];
-    // }
-
-    // public void setNamaBarang(String namaBarang, int idxPembeli) {
-    // this.namaBarang[idxPembeli] = namaBarang;
-    // }
-
-    // public int getHargaBarang(int idxPembeli) {
-    // return hargaBarang[idxPembeli];
-    // }
-
-    // public void setHargaBarang(int hargaBarang, int idxPembeli) {
-    // this.hargaBarang[idxPembeli] = hargaBarang;
-    // }
-
-    // public int getJumlahBarang(int idxPembeli) {
-    // return jumlahBarang[idxPembeli];
-    // }
-
-    // public void setJumlahBarang(int jumlahBarang, int idxPembeli) {
-    // this.jumlahBarang[idxPembeli] = jumlahBarang;
-    // }
 
     public int getTotalHarga(int idxPembeli) {
         return totalHarga;
@@ -428,12 +404,12 @@ public class cTransaksi {
                     String pilih = add.sc().nextLine();
                     if (pilih.equals("list")) {
                         add.border();
-                        add.listPembeli();
+                        add.printPembeli();
                         // add.printPembeli();
                         add.border();
                         System.out.print("Pilih nomor: ");
                         pilihPembeli = add.sc().nextInt();
-                        beli.isiPembeli(cTransaksi.pembeli[pilihPembeli], (pilihPembeli));
+                        beli.isiPembeli(cTransaksi.pembeli[pilihPembeli - 1], (pilihPembeli - 1));
                     } else {
                         System.out.print("Alamat\t\t\t: ");
                         String alamat = add.sc().nextLine();
@@ -625,13 +601,13 @@ public class cTransaksi {
                     // String temp = beli[i].getMakanan().getNama();
                     // if (beli[i].getMakanan(i) != null) {
                     // System.out.println("[Transaksi ke-" + (i + 1) + "] ");
-                    if (tMakanan[0] == null && tMinuman[0] == null) {
-                        add.border();
-                        System.out.println("Belum mengisi pesanan!");
-                        add.border();
-                        add.sleep();
-                        cTransaksi.Transaksi();
-                    }
+                    // if (tMakanan[0] == null && tMinuman[0] == null) {
+                    // add.border();
+                    // System.out.println("Belum mengisi pesanan!");
+                    // add.border();
+                    // add.sleep();
+                    // cTransaksi.Transaksi();
+                    // }
                     boolean paidInFull = false;
                     boolean notEnough = false;
                     do {
