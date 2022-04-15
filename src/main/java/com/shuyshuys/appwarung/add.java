@@ -58,6 +58,55 @@ public class add {
 
     }
 
+    static void refeshDbPembeli() {
+        mineWriter.writePembeli(add.PATH_PEMBELI,
+                cTransaksi.pembeli[0].getId(),
+                cTransaksi.pembeli[0].getNama(),
+                cTransaksi.pembeli[0].getAlamat());
+        for (int i = 1; i < add.idxPembeli; i++) {
+            mineWriter.writePembeli(add.PATH_PEMBELI,
+                    cTransaksi.pembeli[0].getId(),
+                    cTransaksi.pembeli[0].getNama(),
+                    cTransaksi.pembeli[0].getAlamat());
+        }
+    }
+
+    static void refreshDbMakanan() {
+        // for (cMakanan[] makanan : cMenuCLI.makanan) {
+        // mineWriter.writeObject(add.PATH_MAKANAN, cMenuCLI.makanan[i].getId(),
+        // cMenuCLI.makanan[i].getNama(), cMenuCLI.makanan[i].getHarga());
+        // }
+        for (int i = 0; i < add.idxMakanan; i++) {
+            mineWriter.writeObject(add.PATH_MAKANAN, cMenuCLI.makanan[i].getId(),
+                    cMenuCLI.makanan[i].getNama(),
+                    cMenuCLI.makanan[i].getHarga());
+        }
+    }
+
+    static void refreshDbMinuman() {
+        // if (condition.equals("add")) {
+        for (int i = 0; i < add.idxMinuman; i++) {
+            mineWriter.writeObject(add.PATH_MINUMAN, cMenuCLI.minuman[i].getId(),
+                    cMenuCLI.minuman[i].getNama(),
+                    cMenuCLI.minuman[i].getHarga());
+            // add.idxMakanan++;
+        }
+        // } else if (condition.equals("del")) {
+        // for (int i = 0; i < add.idxMinuman; i++) {
+        // mineWriter.writeObject(add.PATH_MINUMAN, cMenuCLI.minuman[i].getId(),
+        // cMenuCLI.minuman[i].getNama(), cMenuCLI.minuman[i].getHarga());
+        // add.idxMinuman--;
+        // }
+        // } else if (condition.equals("change")) {
+        // for (int i = 0; i < add.idxMinuman; i++) {
+        // mineWriter.writeObject(add.PATH_MINUMAN, cMenuCLI.minuman[i].getId(),
+        // cMenuCLI.minuman[i].getNama(), cMenuCLI.minuman[i].getHarga());
+        // }
+        // } else {
+        // System.out.println(condition + " salah!");
+        // }
+    }
+
     static cPembeli searchPembeli(String namaPembeli) {
         for (int j = 0; j < cTransaksi.pembeli.length; j++) {
             if (namaPembeli.equalsIgnoreCase(cTransaksi.pembeli[j].getNama())) {
@@ -342,8 +391,10 @@ public class add {
     }
 
     public static void backToMenu() {
+
         // Scanner sc = new Scanner(System.in);
         while (pilihBackToMenu != 1) {
+            add.border();
             System.out.println("1. Back to Menu");
             System.out.println("2. Back to Login");
             System.out.println("3. Exit");
