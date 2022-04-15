@@ -39,6 +39,20 @@ public class add {
         return mostMenu;
     }
 
+    public static String[] sort(int[] harga) {
+        String[] hasil = new String[harga.length];
+        for (int i = 0; i < hasil.length; i++) {
+            for (int j = 0; j < hasil.length; j++) {
+                if (harga[j] < harga[j + 1]) {
+                    int temp = harga[j];
+                    harga[j] = harga[j + 1];
+                    harga[j + 1] = temp;
+                }
+            }
+        }
+        return hasil;
+    }
+
     // TODO: String[][] rekapMenu() dan String[][] daftarRekapMenu()
     public static void rekapMenu() {
 
@@ -138,9 +152,9 @@ public class add {
 
     public static void listPembeli() {
         System.out.println("  ⁂ Daftar Pembeli");
-        for (int i = 0; i < add.idxPembeli; i++) {
+        for (int i = 1; i < add.idxPembeli; i++) {
             if (cTransaksi.pembeli[i] != null) {
-                System.out.println("[Pembeli ke-" + (i + 1) + "] ");
+                System.out.println("[Member ke-" + i + "] ");
                 System.out.println(cTransaksi.pembeli[i].ToString());
                 ;
                 add.border();
