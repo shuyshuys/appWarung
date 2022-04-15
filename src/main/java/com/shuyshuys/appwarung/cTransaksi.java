@@ -21,7 +21,7 @@ public class cTransaksi {
     static int discount;
     static int beforeDiscount;
     static int bayar;
-    static int totalHargaLifeTime;
+    static int totalHargaLifeTime = 0;
     static int[] kembalian = new int[mineReader.idx_count];
 
     // cTransaksi(int idTransaksi,
@@ -88,16 +88,18 @@ public class cTransaksi {
             tMakanan[jumlahMakanan] = makanan;
             totalHarga = totalHarga + makanan.getHarga() * jumlah;
 
-            totalHargaLifeTime = totalHargaLifeTime + totalHarga;
             // dbTransaksi[0][idxMakanan] = makanan.getNama();
             // dbTransaksi[2][idxMakanan] = String.valueOf(jumlah);
             dbTransaksi[0][idxMakanan] = Integer.toString(makanan.getHarga() * jumlah); // jumlah harga makanan
             // dbTransaksi[4][idxPembeli] = String.valueOf(jumlah);
-            dbTransaksi[2][idxPembeli] = String.valueOf(makanan.getHarga() * jumlah); // jumlah harga pembelian pembeli
-
+            dbTransaksi[2][idxPembeli] = dbTransaksi[2][idxPembeli] + String.valueOf(makanan.getHarga() * jumlah); // jumlah
+                                                                                                                   // harga
+                                                                                                                   // pembelian
+                                                                                                                   // pembeli
+            cMenuCLI.laporanPelanggan[idxPembeli] = cMenuCLI.laporanPelanggan[idxPembeli] + makanan.getHarga() * jumlah;
             cMenuCLI.laporanHargaMakanan[idxMakanan] = makanan.getHarga() * jumlah;
 
-            porsiMakanan[idxPembeli][idxMakanan] = jumlah; // TODO: ini buat ToString kayanya
+            porsiMakanan[idxPembeli][idxMakanan] = jumlah;
             jumlahMakanan++;
 
             System.out.println(
@@ -115,16 +117,16 @@ public class cTransaksi {
             tMinuman[jumlahMinuman] = minuman;
             totalHarga = totalHarga + minuman.getHarga() * jumlah;
 
-            totalHargaLifeTime = totalHargaLifeTime + totalHarga;
             // dbTransaksi[2][idxMinuman] = minuman.getNama();
             // dbTransaksi[2][idxMinuman] = String.valueOf(jumlah);
             dbTransaksi[1][idxMinuman] = String.valueOf(minuman.getHarga() * jumlah);
             // dbTransaksi[4][idxPembeli] = String.valueOf(jumlah);
-            dbTransaksi[3][idxPembeli] = String.valueOf(minuman.getHarga() * jumlah);
+            dbTransaksi[2][idxPembeli] = String.valueOf(minuman.getHarga() * jumlah);
 
+            cMenuCLI.laporanPelanggan[idxPembeli] = cMenuCLI.laporanPelanggan[idxPembeli] + minuman.getHarga() * jumlah;
             cMenuCLI.laporanHargaMinuman[idxMinuman] = minuman.getHarga() * jumlah;
 
-            porsiMinuman[idxPembeli][idxMinuman] = jumlah; // TODO: ini buat ToString kayanya
+            porsiMinuman[idxPembeli][idxMinuman] = jumlah;
             jumlahMinuman++;
 
             System.out.println(
@@ -388,9 +390,10 @@ public class cTransaksi {
             System.out.println("1. Tambah Pembeli");
             System.out.println("2. Tambah Pesanan");
             System.out.println("3. Hapus Pesanan");
-            System.out.println("4. Tampilkan Pesanan");
-            System.out.println("5. Hapus Pesanan");
-            System.out.println("6. Kembali");
+            System.out.println("4. Tampilkan dan Bayar Pesanan");
+            System.out.println("5. Lihat Transaksi");
+            System.out.println("6. Hapus Transaksi");
+            System.out.println("7. Kembali");
             System.out.print("Pilihan : ");
             pilihanPembelian = add.sc().nextInt();
             switch (pilihanPembelian) {
@@ -479,7 +482,7 @@ public class cTransaksi {
                             boolean found = false;
                             do {
                                 System.out.println(" ⁘⁘⁘ Pencarian");
-                                System.out.print("\t[exit] untuk keluar");
+                                System.out.println("\t[exit] untuk keluar");
                                 System.out.print("Cari menu: ");
                                 String cari = add.sc().nextLine();
                                 if (cari.equals("exit")) {
@@ -644,13 +647,13 @@ public class cTransaksi {
                     } while (paidInFull == false);
                     add.border();
                     mineWriter.writeTransaksi(pilihPembeli - 1);
-                    add.border();
+                    totalHargaLifeTime = totalHargaLifeTime + totalHarga;
                     add.backToMenu();
                     break;
                 case 5:
                     add.cls();
                     add.border();
-                    System.out.println(" ⁘⁘ Hapus Transaksi");
+                    System.out.println(" ⁘⁘ Lihat Transaksi");
                     add.border();
                     System.out.println("Under development");
                     // for (int i = 0; i < add.idxTransaksi; i++) {
@@ -670,6 +673,13 @@ public class cTransaksi {
                     add.backToMenu();
                     break;
                 case 6:
+                    add.cls();
+                    add.border();
+                    System.out.println(" ⁘⁘ Hapus Transaksi");
+                    System.out.println("Under development");
+                    add.border();
+                    break;
+                case 7:
                     cMenuCLI.menuCLI();
                     break;
                 default:
