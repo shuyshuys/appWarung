@@ -1,6 +1,6 @@
 package com.shuyshuys.appwarung;
 
-import java.util.Arrays;
+// import java.util.Arrays;
 import java.util.Scanner;
 
 // import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
@@ -421,7 +421,6 @@ public class cMenuCLI {
                             add.border();
                             System.out.println("\t\t" + add.getDate());
                             // System.out.println("1. "+cTransaksi.pembeli[o]);
-                            int no = 0;
                             for (int i = 1; i < add.idxPembeli; i++) {
                                 if (cMenuCLI.laporanPelanggan[i] != 0) {
                                     if (cTransaksi.pembeli[i].getNama().length() < 13) {
