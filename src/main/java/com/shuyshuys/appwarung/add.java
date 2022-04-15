@@ -39,8 +39,8 @@ public class add {
         return mostMenu;
     }
 
-    public static String[] sort(String[] barang, int[] harga) {
-        String[] hasil = new String[harga.length];
+    public static String[][] sort(String[] barang, int[] harga) {
+        String[][] hasil = new String[harga.length][2];
         for (int i = 0; i < hasil.length; i++) {
             for (int j = 0; j < hasil.length - 1; j++) {
                 if (harga[j] < harga[j + 1]) {
@@ -54,6 +54,10 @@ public class add {
                     barang[j + 1] = t;
                 }
             }
+        }
+        for (int i = 0; i < harga.length; i++) {
+            hasil[i][0] = barang[i];
+            hasil[i][1] = String.valueOf(barang[i]);
         }
         return hasil;
     }
@@ -445,7 +449,7 @@ public class add {
 
     public static void sleep() {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
