@@ -31,7 +31,7 @@ public class mineReader {
 
             long lineCount = Files.lines(Paths.get(path)).count();
 
-            idx_count = (int) lineCount + 5;
+            idx_count = (int) lineCount + 10;
 
             if (category == "makanan") {
                 cMenuCLI.makanan = new cMakanan[idx_count];
@@ -80,6 +80,8 @@ public class mineReader {
                 }
             } else if (category == "transaksi") {
                 cTransaksi.beli = new cTransaksi();
+                cPembeli pembeli = new cPembeli();
+
                 idx_max_transaksi = idx_count;
 
                 for (int i = 0; i <= lineCount; i++) {
