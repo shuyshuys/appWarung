@@ -15,18 +15,16 @@ public class AppWarung {
         add.cls();
         int pilihan = 0;
 
-        // mineReader.getReader(add.PATH_ID_MAKANAN, "id_makanan", "makanan");
         mineReader.getReader(add.PATH_MAKANAN, "makanan");
         // PostReader.getPostReader("makanan");
         // PostReader.getPostReader("minuman");
         mineReader.getReader(add.PATH_MINUMAN, "minuman");
         mineReader.getReader(add.PATH_PEMBELI, "pembeli");
         // mineReader.getReader(add.PATH_TRANSAKSI, "transaksi");
-        // mineReader.getReader(add.PATH_HARGA_MAKANAN, "harga_makanan", "makanan");
-        // mineReader.getReader(add.PATH_STOK_MAKANAN, "stok_makanan", "makanan");
 
         cMenuCLI.laporanHargaMakanan = new int[add.idxMakanan];
         cMenuCLI.laporanHargaMinuman = new int[add.idxMinuman];
+        cMenuCLI.laporanPelanggan = new int[add.idxPembeli + 5];
         // for (int i = 0; i < add.idxMakanan; i++) {
         // if (cMenuCLI.laporanHargaMakanan != null) {
         // cMenuCLI.laporanHargaMakanan[i] = 0;
@@ -57,7 +55,7 @@ public class AppWarung {
                         if (user.equals("admin") && pass.equals("admin")) {
                             cMenuCLI.menuCLI();
                         } else {
-                            JOptionPane.showMessageDialog(null, "Username atau password salah", "Login CLI",
+                            JOptionPane.showMessageDialog(null, "Username atau password salah!", "Login CLI",
                                     JOptionPane.ERROR_MESSAGE);
                             user = null;
                         }
