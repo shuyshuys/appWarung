@@ -39,14 +39,19 @@ public class add {
         return mostMenu;
     }
 
-    public static String[] sort(int[] harga) {
+    public static String[] sort(String[] barang, int[] harga) {
         String[] hasil = new String[harga.length];
         for (int i = 0; i < hasil.length; i++) {
             for (int j = 0; j < hasil.length - 1; j++) {
                 if (harga[j] < harga[j + 1]) {
+                    // harga
                     int temp = harga[j];
                     harga[j] = harga[j + 1];
                     harga[j + 1] = temp;
+                    // barang
+                    String t = barang[j];
+                    barang[j] = barang[j + 1];
+                    barang[j + 1] = t;
                 }
             }
         }
