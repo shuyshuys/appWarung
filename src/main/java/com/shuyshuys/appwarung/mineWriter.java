@@ -29,7 +29,7 @@ class mineWriter {
     static void writeObject(String path, int id, String nama, int harga) {
         try {
             File file = new File(path);
-            FileWriter writer = new FileWriter(file, true);
+            FileWriter writer = new FileWriter(file);
 
             writer.write("\n" + id + "  " + nama + "  " + harga);
             writer.close();
