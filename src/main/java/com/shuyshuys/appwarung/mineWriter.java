@@ -26,12 +26,37 @@ class mineWriter {
         }
     }
 
-    static void writeObject(String path, int id, String nama, int harga) {
+    static void clean(String path) {
         try {
             File file = new File(path);
             FileWriter writer = new FileWriter(file);
+            writer.write("");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-            writer.write("\n" + id + "  " + nama + "  " + harga);
+    static void writeObject(String path, int id, String nama, int harga) {
+        try {
+            File file = new File(path);
+            FileWriter writer = new FileWriter(file, true);
+
+            writer.write(id + "  " + nama + "  " + harga + "\n");
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            add.border();
+            e.getMessage();
+        }
+    }
+
+    static void writePembeli(String path, int id, String nama, String alamat) {
+        try {
+            File file = new File(path);
+            FileWriter writer = new FileWriter(file, true);
+
+            writer.write(id + "  " + nama + "  " + alamat + "\n");
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
