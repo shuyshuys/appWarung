@@ -17,19 +17,6 @@ public class cMenuCLI {
     static int[] laporanHargaMakanan;
     static int[] laporanHargaMinuman;
 
-    static void initLaporan() {
-        // laporanHargaMakanan = new Integer[add.idxMakanan];
-        // laporanHargaMinuman = new Integer[add.idxMinuman];
-        // for (int i = 0; i < add.idxMakanan; i++) {
-        // laporanHargaMakanan[i] = cMenuCLI.makanan[i].getNama();
-        // System.out.println(laporanHargaMakanan[i]);
-        // }
-        // for (int i = 0; i < add.idxMinuman; i++) {
-        // laporanHargaMinuman[i] = cMenuCLI.minuman[i].getNama();
-        // System.out.println(laporanHargaMinuman[i]);
-        // }
-    }
-
     public static void menuCLI() {
         do {
             add.cls();
@@ -75,12 +62,16 @@ public class cMenuCLI {
                                     add.cls();
                                     add.border();
                                     add.addMenu("Makanan");
+                                    mineWriter.clean(add.PATH_MAKANAN);
+                                    add.refreshDbMakanan();
                                     add.backToMenu();
                                     break;
                                 case 2:
                                     add.cls();
                                     add.border();
                                     add.addMenu("Minuman");
+                                    mineWriter.clean(add.PATH_MINUMAN);
+                                    add.refreshDbMinuman();
                                     add.backToMenu();
                                     break;
                                 case 3:
@@ -122,6 +113,8 @@ public class cMenuCLI {
                                                     }
                                                 }
                                                 add.idxMakanan--;
+                                                mineWriter.clean(add.PATH_MAKANAN);
+                                                add.refreshDbMakanan();
                                                 System.out.println("  ⁂ Makanan berhasil dihapus");
                                             } else {
                                                 System.out.println("  ⁂ Makanan tidak dihapus");
@@ -164,6 +157,8 @@ public class cMenuCLI {
                                                     }
                                                 }
                                                 add.idxMinuman--;
+                                                mineWriter.clean(add.PATH_MINUMAN);
+                                                add.refreshDbMinuman();
                                                 System.out.println("  ⁂ Minuman berhasil dihapus");
                                             } else {
                                                 System.out.println("  ⁂ Minuman tidak dihapus");
@@ -217,6 +212,8 @@ public class cMenuCLI {
                                                 int hargaMakananUbah = add.sc().nextInt();
                                                 cMenuCLI.makanan[i].setNama(namaMakananUbah);
                                                 cMenuCLI.makanan[i].setHarga(hargaMakananUbah);
+                                                mineWriter.clean(add.PATH_MINUMAN);
+                                                add.refreshDbMakanan();
                                                 System.out.println("  ⁂ Makanan berhasil diubah");
                                             } else {
                                                 System.out.println("  ⁂ Makanan tidak diubah");
@@ -254,6 +251,8 @@ public class cMenuCLI {
                                                 int hargaMinumanUbah = add.sc().nextInt();
                                                 cMenuCLI.minuman[i].setNama(namaMinumanUbah);
                                                 cMenuCLI.minuman[i].setHarga(hargaMinumanUbah);
+                                                mineWriter.clean(add.PATH_MINUMAN);
+                                                add.refreshDbMinuman();
                                                 System.out.println("  ⁂ Minuman berhasil diubah");
                                             } else {
                                                 System.out.println("  ⁂ Minuman tidak diubah");
@@ -310,7 +309,6 @@ public class cMenuCLI {
                     // add.cls();
                     add.border();
                     // TODO: set menu laporan
-                    initLaporan();
                     System.out.println(" ⁘ Menu Laporan");
                     System.out.println("1. Laporan Pendapatan");
                     System.out.println("2. Laporan Pelanggan");
@@ -335,6 +333,7 @@ public class cMenuCLI {
                                                     laporanHargaMakanan[i]);
                                 }
                             }
+                            System.out.println("minuman");
                             for (int i = 0; i < add.idxMinuman; i++) {
                                 if (laporanHargaMinuman[i] != 0) {
                                     System.out.println(
