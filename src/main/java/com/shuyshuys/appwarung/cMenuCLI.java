@@ -212,7 +212,7 @@ public class cMenuCLI {
                                                 int hargaMakananUbah = add.sc().nextInt();
                                                 cMenuCLI.makanan[i].setNama(namaMakananUbah);
                                                 cMenuCLI.makanan[i].setHarga(hargaMakananUbah);
-                                                mineWriter.clean(add.PATH_MINUMAN);
+                                                mineWriter.clean(add.PATH_MAKANAN);
                                                 add.refreshDbMakanan();
                                                 System.out.println("  ⁂ Makanan berhasil diubah");
                                             } else {
@@ -347,6 +347,7 @@ public class cMenuCLI {
                         case 2:
                             add.cls();
                             add.border();
+                            // FIXME: kok gak akumulasi
                             System.out.println(" ⁘⁘ Menu Laporan Pelanggan");
                             add.border();
                             // System.out.println("1. "+cTransaksi.pembeli[o]);
