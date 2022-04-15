@@ -1,6 +1,9 @@
 package com.shuyshuys.appwarung;
 
+import java.util.Arrays;
 import java.util.Scanner;
+
+// import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
 /**
  * @author shuyshuys
@@ -16,6 +19,7 @@ public class cMenuCLI {
 
     static int[] laporanHargaMakanan;
     static int[] laporanHargaMinuman;
+    static int[] laporanPelanggan;
 
     public static void menuCLI() {
         do {
@@ -30,9 +34,8 @@ public class cMenuCLI {
             System.out.println("2. Menu Transaksi");
             System.out.println("3. Menu Pelanggan");
             System.out.println("4. Menu Laporan");
-            System.out.println("5. Save to File");
-            System.out.println("6. Back to Login");
-            System.out.println("7. Exit");
+            System.out.println("5. Back to Login");
+            System.out.println("6. Exit");
             System.out.print("Pilihan : ");
             pilihan = sc.nextInt();
             switch (pilihan) {
@@ -306,9 +309,8 @@ public class cMenuCLI {
                     cPelanggan.Pelanggan();
                     break;
                 case 4:
-                    // add.cls();
+                    add.cls();
                     add.border();
-                    // TODO: set menu laporan
                     System.out.println(" ⁘ Menu Laporan");
                     System.out.println("1. Laporan Pendapatan");
                     System.out.println("2. Laporan Pelanggan");
@@ -321,57 +323,124 @@ public class cMenuCLI {
                             add.border();
                             System.out.println(" ⁘⁘ Menu Laporan Pendapatan");
                             add.border();
-
                             // String[] sortlaporanHargaMakanan = new String[add.idxMakanan];
-                            String[] laporanMakanan = add.sort(laporanHargaMakanan);
-                            String[] laporanMinuman = add.sort(laporanHargaMinuman);
-                            System.out.println("Total Pendapatan: " + cTransaksi.totalHargaLifeTime);
+                            String[] laporanNamaMakanan = new String[add.idxMakanan];
+                            String[] laporanNamaMinuman = new String[add.idxMinuman];
+                            for (int i = 0; i < add.idxMakanan; i++) {
+                                laporanNamaMakanan[i] = cMenuCLI.makanan[i].getNama();
+                            }
+                            for (int i = 0; i < add.idxMinuman; i++) {
+                                laporanNamaMinuman[i] = cMenuCLI.minuman[i].getNama();
+                            }
+
+                            // System.out.println("Laporan nama makanan: " +
+                            // Arrays.toString(laporanNamaMakanan));
+                            // add.border();
+                            // System.out.println("Laporan nama minuman: " +
+                            // Arrays.toString(laporanNamaMinuman));
+
+                            String[] combinedBarang = new String[add.idxMakanan + add.idxMinuman];
+                            int idx = 0;
+                            for (String nama : laporanNamaMakanan) {
+                                combinedBarang[idx] = nama;
+                                idx++;
+                            }
+                            for (String nama : laporanNamaMinuman) {
+                                combinedBarang[idx] = nama;
+                                idx++;
+                            }
+
+                            // add.border();
+                            // System.out.println("Combined arrays barang: " +
+                            // Arrays.toString(combinedBarang));
+                            // String[][] laporanMakanan = add.sort(laporanNamaMakanan,
+                            // laporanHargaMakanan);
+                            // String[][] laporanMinuman = add.sort(laporanNamaMinuman,
+                            // laporanHargaMinuman);
+
+                            // System.out.println("Laporan makanan: " + Arrays.toString(laporanMakanan));
+                            // System.out.println("Laporan minuman: " + Arrays.toString(laporanMinuman));
+
+                            int[] combinedHarga = new int[add.idxMakanan + add.idxMinuman];
+                            idx = 0;
+                            for (int harga : laporanHargaMakanan) {
+                                combinedHarga[idx] = harga;
+                                idx++;
+                            }
+                            for (int harga : laporanHargaMinuman) {
+                                combinedHarga[idx] = harga;
+                                idx++;
+                            }
+                            // add.border();
+                            // System.out.println("Combined arrays harga: " +
+                            // Arrays.toString(combinedHarga));
+                            // add.border();
+                            add.sort(combinedBarang, combinedHarga);
+
+                            System.out.println("\t\t" + add.getDate());
+                            System.out.println("\tTotal Pendapatan: " + cTransaksi.totalHargaLifeTime);
+                            add.border();
                             for (int i = 0; i < add.idxMakanan; i++) {
                                 if (laporanHargaMakanan[i] != 0) {
-                                    System.out.println(
-                                            cMenuCLI.makanan[i].getNama() + "\t" +
-                                                    laporanHargaMakanan[i]);
+                                    if (combinedBarang[i].length() < 8) {
+                                        System.out.println(
+                                                combinedBarang[i] + "\t\t\t" +
+                                                        combinedHarga[i]);
+                                    } else if (combinedBarang[i].length() < 16) {
+                                        System.out.println(
+                                                combinedBarang[i] + "\t\t" +
+                                                        combinedHarga[i]);
+                                    } else {
+                                        System.out.println(
+                                                combinedBarang[i] + "\t" +
+                                                        combinedHarga[i]);
+                                    }
                                 }
                             }
-                            System.out.println("minuman");
-                            for (int i = 0; i < add.idxMinuman; i++) {
-                                if (laporanHargaMinuman[i] != 0) {
-                                    System.out.println(
-                                            cMenuCLI.minuman[i].getNama() + "\t" +
-                                                    laporanHargaMinuman[i]);
-                                }
-                            }
-                            add.border();
+                            // for (int i = 0; i < add.idxMinuman; i++) {
+                            // if (combinedHarga < 8) {
+                            // if (laporanHargaMinuman[i] != 0) {
+                            // System.out.println(
+                            // cMenuCLI.minuman[i].getNama() + "\t\t" +
+                            // laporanHargaMinuman[i]);
+                            // }
+                            // } else {
+                            // System.out.println(
+                            // cMenuCLI.minuman[i].getNama() + "\t" +
+                            // laporanHargaMinuman[i]);
+                            // }
+                            // }
                             add.backToMenu();
                             break;
                         case 2:
                             add.cls();
                             add.border();
-                            // FIXME: kok gak akumulasi
+                            // FIXME: non pelanggan null, cek lainnya [I@ apa ga
+
                             System.out.println(" ⁘⁘ Menu Laporan Pelanggan");
                             add.border();
+                            System.out.println("\t\t" + add.getDate());
                             // System.out.println("1. "+cTransaksi.pembeli[o]);
                             int no = 0;
                             for (int i = 1; i < add.idxPembeli; i++) {
-                                if (cTransaksi.dbTransaksi[2][i] != null) {
+                                if (cMenuCLI.laporanPelanggan[i] != 0) {
                                     if (cTransaksi.pembeli[i].getNama().length() < 13) {
                                         System.out.println(
-                                                (i) + ". " + cTransaksi.pembeli[i].getNama() + "\t\t\t"
-                                                        + cTransaksi.dbTransaksi[2][i]);
+                                                "\t" + cTransaksi.pembeli[i].getNama() + "\t\t\t"
+                                                        + cMenuCLI.laporanPelanggan[i]);
                                     } else {
                                         System.out.println(
-                                                (i) + ". " + cTransaksi.pembeli[i].getNama() + "\t\t"
-                                                        + cTransaksi.dbTransaksi[2][i]);
+                                                "\t" + cTransaksi.pembeli[i].getNama() + "\t\t"
+                                                        + cMenuCLI.laporanPelanggan[i]);
                                     }
-                                    no = i;
                                 }
                             }
-                            System.out.println(
-                                    (no + 1) + ". " + cTransaksi.pembeli[0].getNama() + "\t\t"
-                                            + cTransaksi.dbTransaksi[4][0]);
-                            add.border();
+                            if (cMenuCLI.laporanPelanggan[0] != 0) {
+                                System.out.println(
+                                        "\t" + cTransaksi.pembeli[0].getNama() + "\t\t"
+                                                + cMenuCLI.laporanPelanggan[0]);
+                            }
                             add.backToMenu();
-                            // TODO: laporan
                             break;
                         case 3:
                             menuCLI();
@@ -382,14 +451,11 @@ public class cMenuCLI {
                     }
                     break;
                 case 5:
-                    // TODO: set writer here
-                    break;
-                case 6:
                     AppWarung.main(null);
                     break;
-                case 7:
+                case 6:
                     add.border();
-                    System.out.println("Terima Kasih Telah Menggunakan Program ini");
+                    System.out.println("- Terima Kasih Telah Menggunakan Program ini -");
                     add.border();
                     System.exit(0);
                     break;
