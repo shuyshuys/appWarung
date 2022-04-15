@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author shuyshuys
  */
 
-// TODO: create string to array reader
+// create string to array reader
 
 public class mineReader {
     public static int idx_count;
@@ -80,7 +80,8 @@ public class mineReader {
                 }
             } else if (category == "transaksi") {
                 cTransaksi.beli = new cTransaksi();
-                cPembeli pembeli = new cPembeli();
+                // cPembeli pembeli = new cPembeli();
+                // FIXME: reader transaksi belum beres
 
                 idx_max_transaksi = idx_count;
 
@@ -88,7 +89,7 @@ public class mineReader {
                     while ((line = bufferedReader.readLine()) != null) {
                         cPembeli foundPembeli = add.searchPembeli(line.split("  ")[1]);
                         cTransaksi.beli.isiPembeli(foundPembeli, add.idxTransaksi);
-                        cTransaksi.beli.setIdTransaksi(add.idTransaksi, Integer.parseInt(line.split("  ")[0]), i); // FIXME:
+                        cTransaksi.beli.setIdTransaksi(add.idTransaksi, Integer.parseInt(line.split("  ")[0]), i);
                         add.idxTransaksi++;
                         cMakanan hasilCariMakanan = add.searchMakanan(line.split("  ")[2]);
                         cMinuman hasilCariMinuman = add.searchMinuman(line.split("  ")[2]);
