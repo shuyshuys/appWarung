@@ -31,6 +31,7 @@ class mineWriter {
             File file = new File(path);
             FileWriter writer = new FileWriter(file);
             writer.write("");
+            System.out.println("Successfully clear " + file.getName());
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -43,6 +44,7 @@ class mineWriter {
             FileWriter writer = new FileWriter(file, true);
 
             writer.write(id + "  " + nama + "  " + harga + "\n");
+            System.out.println("Successfully wrote to " + file.getName());
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -57,6 +59,7 @@ class mineWriter {
             FileWriter writer = new FileWriter(file, true);
 
             writer.write(id + "  " + nama + "  " + alamat + "\n");
+            System.out.println("Successfully wrote to " + file.getName());
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
