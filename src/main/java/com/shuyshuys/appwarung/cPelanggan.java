@@ -28,6 +28,8 @@ public class cPelanggan {
                 } else if (nama == "") {
                     System.out.println("  ⁂ Nama tidak boleh kosong");
                 }
+                mineWriter.clean(add.PATH_PEMBELI);
+                add.refeshDbPembeli();
                 add.idxPembeli++;
                 Pelanggan();
                 break;
@@ -64,6 +66,8 @@ public class cPelanggan {
                                 }
                             }
                             add.idxPembeli--;
+                            mineWriter.clean(add.PATH_PEMBELI);
+                            add.refeshDbPembeli();
                             System.out.println("  ⁂ Member berhasil dihapus");
                         } else {
                             System.out.println("  ⁂ Member tidak dihapus");
