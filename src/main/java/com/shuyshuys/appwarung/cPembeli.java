@@ -77,7 +77,7 @@ public class cPembeli {
     public String ToString() {
         return "ID: " + id +
                 "\nNama: " + nama +
-                "\nAlamat: " + alamat +
-                "\nPembelian berulang: " + jPembelian;
+                "\nAlamat: " + alamat;
+        // "\nPembelian berulang: " + jPembelian;
     }
 }
