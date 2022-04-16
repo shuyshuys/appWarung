@@ -62,6 +62,10 @@ public class AppWarung {
                     }
                     break;
                 case 2:
+                    JOptionPane.showMessageDialog(null,
+                            "Jika nanti terjadi 'too many connections', mohon diulangi kembali karena DB online terlimitasi 5 request",
+                            "Login GUI",
+                            JOptionPane.INFORMATION_MESSAGE);
                     Login login = new Login();
                     login.launchApp();
                     break;
