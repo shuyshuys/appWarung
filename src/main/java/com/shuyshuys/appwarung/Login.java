@@ -13,10 +13,10 @@ import java.sql.Statement;
 
 class Login {
 
-    public String getUser() {
-        LoginFrame lf = new LoginFrame();
-        return lf.getUser;
-    }
+    // public String getUser() {
+    // LoginFrame lf = new LoginFrame();
+    // return lf.getUser;
+    // }
 
     public void launchApp() {
         LoginFrame loginFrame = new LoginFrame();
@@ -54,9 +54,12 @@ class Login {
 class LoginFrame extends JFrame implements ActionListener {
 
     Container container = getContentPane();
+
     JLabel userLabel = new JLabel("Username");
     JLabel passLabel = new JLabel("Password");
-    JTextField userText = new JTextField();
+
+    String getRegister = Register.getUser();
+    JTextField userText = new JTextField(getRegister);
 
     // public void setUser(String user) {
     // // this.userLabel.setText(user);
@@ -66,7 +69,7 @@ class LoginFrame extends JFrame implements ActionListener {
     // System.out.println(user + " lf");
     // }
 
-    public String getUser = userText.getText();
+    String getUser = userText.getText();
     JPasswordField passText = new JPasswordField();
     JButton loginButton = new JButton("Login");
     JButton registerButton = new JButton("Register");
@@ -147,24 +150,12 @@ class LoginFrame extends JFrame implements ActionListener {
                 System.out.println(er);
             }
         }
+        // Coding part of REGISTER button
         if (e.getSource() == registerButton) {
             Register register = new Register();
             register.launchApp();
             this.dispose();
         }
-        // Coding part of LOGIN button
-        // if (e.getSource() == loginButton) {
-        // String userText;
-        // String passText;
-        // userText = this.userText.getText();
-        // passText = this.passText.getText();
-        // if (userText.equals("admin") && passText.equals("admin")) {
-        // JOptionPane.showMessageDialog(this, "Login Successful");
-        // // AppFrame();
-        // } else {
-        // JOptionPane.showMessageDialog(this, "Invalid Username or Password");
-        // }
-        // }
         // Coding part of RESET button
         if (e.getSource() == resetButton) {
             userText.setText("");
