@@ -1,4 +1,6 @@
-146001  Non Pelanggan  -  0
-146002  Shuya Setsuna  Veda no 5  1
-146003  Lynn Setsuna  Athanor no 7  0
-146004  Mshiro Setsuna  Lokheim no 3  1
+14600  Non Pelanggan  -
+14601  Stanford Adkins  Veda no.6
+14602  Kermit Davis  Athanor no.3
+14603  Guadalupe Gamble  Horizon no.9
+14604  Werner Chan  -
+14605  Tracy Mcmahon  -
