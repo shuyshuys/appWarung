@@ -381,7 +381,7 @@ public class cMenuCLI {
                             System.out.println("\tTotal Pendapatan: " + cTransaksi.totalHargaLifeTime);
                             add.border();
                             for (int i = 0; i < add.idxMakanan; i++) {
-                                if (laporanHargaMakanan[i] != 0) {
+                                if (combinedHarga[i] != 0) {
                                     if (combinedBarang[i].length() < 8) {
                                         System.out.println(
                                                 combinedBarang[i] + "\t\t\t" +
