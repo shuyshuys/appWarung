@@ -92,18 +92,14 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabelKategoriTambah" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelNamaTambah" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelKeteranganTambah" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelHargaTambah" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelStokTambah" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelIdTambah" min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jTextFieldNamaTambah" alignment="0" pref="150" max="32767" attributes="0"/>
                           <Component id="jTextFieldHargaTambah" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldKeteranganTambah" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTextFieldKategoriTambah" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldStokTambah" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTextFieldIdTambah" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -139,20 +135,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextFieldStokTambah" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelStokTambah" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelKategoriTambah" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextFieldKategoriTambah" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelKeteranganTambah" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldKeteranganTambah" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
+                      <EmptySpace pref="91" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -168,27 +154,15 @@
                 <Component class="javax.swing.JTable" name="jTabelTambah">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="6" rowCount="4">
-                        <Column editable="true" title="ID Barang" type="java.lang.Object"/>
-                        <Column editable="true" title="Nama" type="java.lang.Object"/>
-                        <Column editable="true" title="Harga" type="java.lang.Object"/>
-                        <Column editable="true" title="Stok" type="java.lang.Object"/>
-                        <Column editable="true" title="Kategori" type="java.lang.Object"/>
-                        <Column editable="true" title="Detail" type="java.lang.Object"/>
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="false" title="ID Barang" type="java.lang.Object"/>
+                        <Column editable="false" title="Nama" type="java.lang.Object"/>
+                        <Column editable="false" title="Harga" type="java.lang.Object"/>
+                        <Column editable="false" title="Kategori" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
@@ -215,6 +189,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTabelTambahMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -239,27 +216,12 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldHargaTambah">
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelStokTambah">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Stok"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldStokTambah">
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabelKategoriTambah">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Kategori"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldKategoriTambah">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelKeteranganTambah">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Keterangan"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldKeteranganTambah">
             </Component>
             <Component class="javax.swing.JButton" name="jButtonTambah">
               <Properties>
@@ -288,19 +250,15 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabelKategoriUbah" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelNamaUbah" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelKeteranganUbah" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelHargaUbah" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelStokUbah" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelIdUbah" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextFieldIdUbah" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldIdUbah" alignment="0" pref="150" max="32767" attributes="0"/>
                           <Component id="jTextFieldNamaUbah" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTextFieldHargaUbah" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldKeteranganUbah" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTextFieldKategoriUbah" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldStokUbah" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jButtonUbah" min="-2" max="-2" attributes="0"/>
@@ -335,20 +293,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextFieldStokUbah" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelStokUbah" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelKategoriUbah" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextFieldKategoriUbah" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelKeteranganUbah" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldKeteranganUbah" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
+                      <EmptySpace pref="91" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -364,27 +312,15 @@
                 <Component class="javax.swing.JTable" name="jTabelUbah">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="6" rowCount="4">
-                        <Column editable="true" title="ID Barang" type="java.lang.Object"/>
-                        <Column editable="true" title="Nama" type="java.lang.Object"/>
-                        <Column editable="true" title="Harga" type="java.lang.Object"/>
-                        <Column editable="true" title="Stok" type="java.lang.Object"/>
-                        <Column editable="true" title="Kategori" type="java.lang.Object"/>
-                        <Column editable="true" title="Detail" type="java.lang.Object"/>
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="false" title="ID Barang" type="java.lang.Object"/>
+                        <Column editable="false" title="Nama" type="java.lang.Object"/>
+                        <Column editable="false" title="Harga" type="java.lang.Object"/>
+                        <Column editable="false" title="Kategori" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
@@ -411,6 +347,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTabelUbahMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -443,26 +382,12 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldHargaUbah">
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelStokUbah">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Stok"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldStokUbah">
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabelKategoriUbah">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Kategori"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldKategoriUbah">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelKeteranganUbah">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Keterangan"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldKeteranganUbah">
             </Component>
           </SubComponents>
         </Container>
@@ -483,19 +408,15 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabelKategoriHapus" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelNamaHapus" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelKeteranganHapus" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelHargaHapus" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelStokHapus" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelIdHapus" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextFieldIdHapus" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldIdHapus" alignment="0" pref="150" max="32767" attributes="0"/>
                           <Component id="jTextFieldNamaHapus" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTextFieldHargaHapus" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldKeteranganHapus" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTextFieldKategoriHapus" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldStokHapus" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="385" max="32767" attributes="0"/>
                       <Component id="jButtonHapus" min="-2" max="-2" attributes="0"/>
@@ -530,20 +451,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextFieldStokHapus" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelStokHapus" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelKategoriHapus" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextFieldKategoriHapus" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelKeteranganHapus" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldKeteranganHapus" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
+                      <EmptySpace pref="91" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -559,27 +470,15 @@
                 <Component class="javax.swing.JTable" name="jTabelHapus">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="6" rowCount="4">
-                        <Column editable="true" title="ID Barang" type="java.lang.Object"/>
-                        <Column editable="true" title="Nama" type="java.lang.Object"/>
-                        <Column editable="true" title="Harga" type="java.lang.Object"/>
-                        <Column editable="true" title="Stok" type="java.lang.Object"/>
-                        <Column editable="true" title="Kategori" type="java.lang.Object"/>
-                        <Column editable="true" title="Detail" type="java.lang.Object"/>
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="false" title="ID Barang" type="java.lang.Object"/>
+                        <Column editable="false" title="Nama" type="java.lang.Object"/>
+                        <Column editable="false" title="Harga" type="java.lang.Object"/>
+                        <Column editable="false" title="Kategori" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
@@ -641,26 +540,12 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldHargaHapus">
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelStokHapus">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Stok"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldStokHapus">
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabelKategoriHapus">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Kategori"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldKategoriHapus">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelKeteranganHapus">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Keterangan"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldKeteranganHapus">
             </Component>
           </SubComponents>
         </Container>
@@ -700,27 +585,15 @@
                 <Component class="javax.swing.JTable" name="jTabelLihat">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="6" rowCount="4">
-                        <Column editable="true" title="ID Barang" type="java.lang.Object"/>
-                        <Column editable="true" title="Nama" type="java.lang.Object"/>
-                        <Column editable="true" title="Harga" type="java.lang.Object"/>
-                        <Column editable="true" title="Stok" type="java.lang.Object"/>
-                        <Column editable="true" title="Kategori" type="java.lang.Object"/>
-                        <Column editable="true" title="Keterangan" type="java.lang.Object"/>
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="false" title="ID Barang" type="java.lang.Object"/>
+                        <Column editable="false" title="Nama" type="java.lang.Object"/>
+                        <Column editable="false" title="Harga" type="java.lang.Object"/>
+                        <Column editable="false" title="Kategori" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
