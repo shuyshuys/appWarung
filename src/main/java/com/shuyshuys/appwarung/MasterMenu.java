@@ -43,11 +43,11 @@ class MasterMenuFrame extends JFrame implements ActionListener {
     Container container = getContentPane();
     JLabel barangLabel = new JLabel("Menu Barang");
     JButton barangButton = new JButton("Barang");
-    JLabel memberLabel = new JLabel("Pengaturan Member");
-    JButton memberButton = new JButton("");
-    JLabel transaksiLabel = new JLabel("Transaksi");
-    JButton transaksiButton = new JButton("");
-    JLabel laporanLabel = new JLabel("Laporan");
+    JLabel memberLabel = new JLabel("Menu Pelanggan");
+    JButton memberButton = new JButton("Member");
+    JLabel transaksiLabel = new JLabel("Menu Transaksi");
+    JButton transaksiButton = new JButton("Transaksi");
+    JLabel laporanLabel = new JLabel("Menu Laporan");
     JButton laporanButton = new JButton("Laporan");
     JLabel logoutLabel = new JLabel("Logout");
     JButton logoutButton = new JButton("Logout");
