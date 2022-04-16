@@ -1,28 +1,24 @@
 package com.shuyshuys.appwarung;
 
 import java.util.Scanner;
-// import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-// import javax.swing.JOptionPane;
 
 /**
  * @author shuyshuys
  */
 
 public class add {
-    public static int idxMakanan = 0;
-    public static int idxMinuman = 0;
-    public static int idxPembeli = 0;
-    public static int idxTransaksi = 1;
-    public static int idx_max_makanan;
-    public static int idx_max_minuman;
-    public static int idTransaksi = 92000;
-
+    static int idxMakanan = 0;
+    static int idxMinuman = 0;
+    static int idxPembeli = 0;
+    static int idxTransaksi = 1;
+    static int idx_max_makanan;
+    static int idx_max_minuman;
+    static int idTransaksi = 92000;
     static boolean foundIdxMa = false;
     static boolean foundIdxMi = false;
-
     private static int pilihBackToMenu = 0;
 
     public static Scanner sc() {
@@ -62,11 +58,6 @@ public class add {
         return hasil;
     }
 
-    // TODO: String[][] rekapMenu() dan String[][] daftarRekapMenu()
-    public static void rekapMenu() {
-
-    }
-
     static void refeshDbPembeli() {
         mineWriter.writePembeli(add.PATH_PEMBELI,
                 cTransaksi.pembeli[0].getId(),
@@ -81,10 +72,6 @@ public class add {
     }
 
     static void refreshDbMakanan() {
-        // for (cMakanan[] makanan : cMenuCLI.makanan) {
-        // mineWriter.writeObject(add.PATH_MAKANAN, cMenuCLI.makanan[i].getId(),
-        // cMenuCLI.makanan[i].getNama(), cMenuCLI.makanan[i].getHarga());
-        // }
         for (int i = 0; i < add.idxMakanan; i++) {
             mineWriter.writeObject(add.PATH_MAKANAN, cMenuCLI.makanan[i].getId(),
                     cMenuCLI.makanan[i].getNama(),
@@ -93,27 +80,12 @@ public class add {
     }
 
     static void refreshDbMinuman() {
-        // if (condition.equals("add")) {
         for (int i = 0; i < add.idxMinuman; i++) {
             mineWriter.writeObject(add.PATH_MINUMAN, cMenuCLI.minuman[i].getId(),
                     cMenuCLI.minuman[i].getNama(),
                     cMenuCLI.minuman[i].getHarga());
             // add.idxMakanan++;
         }
-        // } else if (condition.equals("del")) {
-        // for (int i = 0; i < add.idxMinuman; i++) {
-        // mineWriter.writeObject(add.PATH_MINUMAN, cMenuCLI.minuman[i].getId(),
-        // cMenuCLI.minuman[i].getNama(), cMenuCLI.minuman[i].getHarga());
-        // add.idxMinuman--;
-        // }
-        // } else if (condition.equals("change")) {
-        // for (int i = 0; i < add.idxMinuman; i++) {
-        // mineWriter.writeObject(add.PATH_MINUMAN, cMenuCLI.minuman[i].getId(),
-        // cMenuCLI.minuman[i].getNama(), cMenuCLI.minuman[i].getHarga());
-        // }
-        // } else {
-        // System.out.println(condition + " salah!");
-        // }
     }
 
     static cPembeli searchPembeli(String namaPembeli) {
@@ -318,20 +290,6 @@ public class add {
                     }
                     System.out.print("Harga Makanan\t: ");
                     int hargaMakanan = add.sc().nextInt();
-                    // String sql = "INSERT INTO barang (id_barang, nama_barang, harga_barang,
-                    // category_barang) VALUES (nextval('makanan'), '"
-                    // + namaMakanan + "', '" + hargaMakanan + "', 'makanan');";
-                    // try {
-                    // java.sql.Statement stmt = Post.getCon().createStatement();
-                    // stmt.executeUpdate(sql);
-                    // stmt.close();
-                    // } catch (SQLException e) {
-                    // add.border();
-                    // e.printStackTrace();
-                    // add.border();
-                    // e.getMessage();
-                    // add.border();
-                    // }
 
                     cMenuCLI.makanan[idxMakanan] = new cMakanan(
                             cMenuCLI.makanan[add.idxMakanan - 1].getId() + 1,
@@ -367,21 +325,7 @@ public class add {
                     }
                     System.out.print("Harga Minuman\t: ");
                     int hargaMinuman = add.sc().nextInt();
-                    // String sql = "INSERT INTO barang (id_barang, nama_barang, harga_barang,
-                    // category_barang) VALUES (nextval('minuman_sec'), '"
-                    // + namaMinuman + "', '" + hargaMinuman + "', 'minuman');";
-                    // try {
-                    // java.sql.Statement stmt = Post.getCon().createStatement();
-                    // stmt.executeUpdate(sql);
-                    // // Post.getCon().createStatement().executeUpdate(sql);
-                    // stmt.close();
-                    // } catch (SQLException e) {
-                    // add.border();
-                    // e.printStackTrace();
-                    // add.border();
-                    // e.getMessage();
-                    // add.border();
-                    // }
+
                     cMenuCLI.minuman[add.idxMinuman] = new cMinuman(
                             cMenuCLI.minuman[add.idxMinuman - 1].getId() + 1,
                             namaMinuman,
@@ -400,8 +344,6 @@ public class add {
     }
 
     public static void backToMenu() {
-
-        // Scanner sc = new Scanner(System.in);
         while (pilihBackToMenu != 1) {
             add.border();
             System.out.println("1. Back to Menu");
@@ -437,8 +379,6 @@ public class add {
     }
 
     public static void salahInput() {
-        // JOptionPane.showMessageDialog(null, "Pilihan salah, mohon ulangi!", "",
-        // JOptionPane.ERROR_MESSAGE);
         System.out.println("Pilihan salah, mohon ulangi!");
     }
 
@@ -482,8 +422,4 @@ public class add {
     public static String PATH_PEMBELI = "./src/main/java/com/shuyshuys/appwarung/database/pembeli.txt";
     public static String PATH_TRANSAKSI = "./src/main/java/com/shuyshuys/appwarung/database/transaksi.txt";
     public static String PATH_LOG = "./src/main/java/com/shuyshuys/appwarung/database/log.txt";
-
-    // public static String PATH_STRUK =
-    // "./src/main/java/com/shuyshuys/appwarung/Kasir/struk.txt";
-
 }
