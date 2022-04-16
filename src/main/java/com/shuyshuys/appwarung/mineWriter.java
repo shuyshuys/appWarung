@@ -79,31 +79,32 @@ class mineWriter {
             writer.write(cTransaksi.totalHarga + "  ");
             writer.write(cTransaksi.bayar + "  ");
             writer.write(cTransaksi.kembalian[idxPembeli] + "    ");
+            cTransaksi transaksi = new cTransaksi();
             try {
-                for (int i = 0; i < cTransaksi.tMakanan.length; i++) {
-                    if (cTransaksi.tMakanan[i] != null) {
+                for (int i = 0; i < transaksi.getMakananArray().length; i++) {
+                    if (transaksi.getMakanan(i) != null) {
                         writer.write(
-                                cTransaksi.tMakanan[i].getNama() + "  " + cTransaksi.tMakanan[i].getHarga() + "  "
+                                transaksi.getMakanan(i).getNama() + "  " + transaksi.getMakanan(i).getHarga() + "  "
                                         + cTransaksi.porsiMakanan[idxPembeli][add
-                                                .searchIdxById(cTransaksi.tMakanan[i].getId(), 0)]
+                                                .searchIdxById(transaksi.getMakanan(i).getId(), 0)]
                                         + "  "
-                                        + (cTransaksi.tMakanan[i].getHarga() * cTransaksi.porsiMakanan[idxPembeli][add
-                                                .searchIdxById(cTransaksi.tMakanan[i].getId(), 0)] + "  "));
+                                        + (transaksi.getMakanan(i).getHarga() * cTransaksi.porsiMakanan[idxPembeli][add
+                                                .searchIdxById(transaksi.getMakanan(i).getId(), 0)] + "  "));
                     }
                 }
             } catch (Exception e) {
             }
             writer.write("  ");
             try {
-                for (int i = 0; i < cTransaksi.tMinuman.length; i++) {
-                    if (cTransaksi.tMinuman[i] != null) {
+                for (int i = 0; i < transaksi.getMinumanArray().length; i++) {
+                    if (transaksi.getMinuman(i) != null) {
                         writer.write(
-                                cTransaksi.tMinuman[i].getNama() + "  " + cTransaksi.tMinuman[i].getHarga() + "  "
+                                transaksi.getMinuman(i).getNama() + "  " + transaksi.getMinuman(i).getHarga() + "  "
                                         + cTransaksi.porsiMinuman[idxPembeli][add
-                                                .searchIdxById(cTransaksi.tMinuman[i].getId(), 1)]
+                                                .searchIdxById(transaksi.getMinuman(i).getId(), 1)]
                                         + "  "
-                                        + (cTransaksi.tMinuman[i].getHarga() * cTransaksi.porsiMinuman[idxPembeli][add
-                                                .searchIdxById(cTransaksi.tMinuman[i].getId(), 1)] + "  "));
+                                        + (transaksi.getMinuman(i).getHarga() * cTransaksi.porsiMinuman[idxPembeli][add
+                                                .searchIdxById(transaksi.getMinuman(i).getId(), 1)] + "  "));
                     }
                 }
             } catch (Exception e) {
