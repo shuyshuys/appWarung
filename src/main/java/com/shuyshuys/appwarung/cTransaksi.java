@@ -7,11 +7,10 @@ package com.shuyshuys.appwarung;
 public class cTransaksi {
     static cPembeli[] pembeli;
     private int jumlahMakanan, jumlahMinuman, idxMaxMakanan, idxMaxMinuman;
-    static cMakanan[] tMakanan;
-    static cMinuman[] tMinuman;
+    private cMakanan[] tMakanan;
+    private cMinuman[] tMinuman;
 
-    static String[][] dbTransaksi = new String[5][add.getMostMenu()]; // 0 makanan 1 minuman 2 harga 3 jumlah 4
-                                                                      // porsiPembeli
+    static String[][] dbTransaksi = new String[5][add.getMostMenu()];
 
     static int[][] idTransaksi = new int[5][mineReader.idx_count];
     static String[] tanggalTransaksi = new String[mineReader.idx_count];
@@ -24,28 +23,6 @@ public class cTransaksi {
     static int totalHargaLifeTime = 0;
     static int[] kembalian = new int[mineReader.idx_count];
 
-    // cTransaksi(int idTransaksi,
-    // String tanggalTransaksi,
-    // String namaPembeli,
-    // String namaBarang,
-    // int hargaBarang,
-    // int jumlahBarang,
-    // int totalHarga,
-    // int bayar,
-    // int kembalian) {
-    // dbTransaksi[][] =
-    // this.idTransaksi = idTransaksi;
-    // this.namaPembeli = namaPembeli;
-    // this.namaBarang = namaBarang;
-    // this.hargaBarang = hargaBarang;
-    // this.jumlahBarang = jumlahBarang;
-    // this.totalHarga = totalHarga;
-    // this.bayar = bayar;
-    // this.kembalian = kembalian;
-    // this.tanggalTransaksi = tanggalTransaksi;
-    // System.out.println(" ⁂ Objek Transaksi " + namaPembeli + " dibuat...");
-    // }
-
     cTransaksi() {
         idxMaxMakanan = 5;
         idxMaxMinuman = 5;
@@ -55,7 +32,7 @@ public class cTransaksi {
         tMakanan = new cMakanan[idxMaxMakanan];
         tMinuman = new cMinuman[idxMaxMinuman];
 
-        System.out.println("  ↂ  Nota dibuat...");
+        System.out.println("  ↂ  Transaksi dibuat...");
     }
 
     public void isiPembeli(cPembeli pembeli, int idxPembeli) {
@@ -75,8 +52,8 @@ public class cTransaksi {
         for (int i = 0; i < mineReader.idx_count; i++) {
             kembalian[i] = 0;
         }
-        // jumlahMakanan = 0;
-        // jumlahMinuman = 0;
+        jumlahMakanan = 0;
+        jumlahMinuman = 0;
         add.idxTransaksi++;
         add.idTransaksi++;
         System.out.println("  ↂ  Nama Pembeli " + cTransaksi.pembeli[idxPembeli].getNama() + " ditambahkan ke Nota...");
@@ -88,14 +65,9 @@ public class cTransaksi {
             tMakanan[jumlahMakanan] = makanan;
             totalHarga = totalHarga + makanan.getHarga() * jumlah;
 
-            // dbTransaksi[0][idxMakanan] = makanan.getNama();
-            // dbTransaksi[2][idxMakanan] = String.valueOf(jumlah);
             dbTransaksi[0][idxMakanan] = Integer.toString(makanan.getHarga() * jumlah); // jumlah harga makanan
-            // dbTransaksi[4][idxPembeli] = String.valueOf(jumlah);
-            dbTransaksi[2][idxPembeli] = dbTransaksi[2][idxPembeli] + String.valueOf(makanan.getHarga() * jumlah); // jumlah
-                                                                                                                   // harga
-                                                                                                                   // pembelian
-                                                                                                                   // pembeli
+            dbTransaksi[2][idxPembeli] = dbTransaksi[2][idxPembeli] + String.valueOf(makanan.getHarga() * jumlah);
+
             cMenuCLI.laporanPelanggan[idxPembeli] = cMenuCLI.laporanPelanggan[idxPembeli] + makanan.getHarga() * jumlah;
             cMenuCLI.laporanHargaMakanan[idxMakanan] = makanan.getHarga() * jumlah;
 
@@ -117,10 +89,7 @@ public class cTransaksi {
             tMinuman[jumlahMinuman] = minuman;
             totalHarga = totalHarga + minuman.getHarga() * jumlah;
 
-            // dbTransaksi[2][idxMinuman] = minuman.getNama();
-            // dbTransaksi[2][idxMinuman] = String.valueOf(jumlah);
             dbTransaksi[1][idxMinuman] = String.valueOf(minuman.getHarga() * jumlah);
-            // dbTransaksi[4][idxPembeli] = String.valueOf(jumlah);
             dbTransaksi[2][idxPembeli] = String.valueOf(minuman.getHarga() * jumlah);
 
             cMenuCLI.laporanPelanggan[idxPembeli] = cMenuCLI.laporanPelanggan[idxPembeli] + minuman.getHarga() * jumlah;
@@ -143,7 +112,6 @@ public class cTransaksi {
             System.out.println("  ↂ  Makanan kosong...");
         } else {
             add.border();
-            // beli.ToString(idxPembeli);
             for (int i = 0; i < jumlahMakanan; i++) {
                 System.out.println(tMakanan[i].getNama() + "\t" + tMakanan[i].getHarga());
             }
@@ -182,11 +150,9 @@ public class cTransaksi {
             System.out.println("  ↂ  Minuman kosong...");
         } else {
             add.border();
-            // beli.ToString(idxPembeli);
             for (int i = 0; i < jumlahMinuman; i++) {
                 System.out.println(tMinuman[i].getNama() + "\t" + tMinuman[i].getHarga());
             }
-            // add.border();
             add.border();
             System.out.print("Nama Minuman yang ingin dihapus: ");
             String hapusMinuman = add.sc().nextLine();
@@ -217,37 +183,11 @@ public class cTransaksi {
         }
     }
 
-    // public String cetakNota(int idxPembeli) {
-    // String nota = " ⁂ Nota " + pembeli[idxPembeli].getNama() + " dicetak..." +
-    // "\n" +
-    // " ⁂ Tanggal Transaksi : " + tanggalTransaksi + "\n" +
-    // " ⁂ Nama Pembeli : " + pembeli[idxPembeli].getNama() + "\n" +
-    // // for (int i = 0; i < tMakanan.length; i++) {
-    // // if (tMakanan[i] != null) {
-    // // System.out.println(" ⁂ Makanan " + tMakanan[i].getNama() + " " +
-    // // tMakanan[i].getHarga() + " x "
-    // // + dbTransaksi[3][i]);
-    // // }
-    // // }
-    // // for (int i = 0; i < tMinuman.length; i++) {
-    // // if (tMinuman[i] != null) {
-    // // System.out.println(" ⁂ Minuman " + tMinuman[i].getNama() + " " +
-    // // tMinuman[i].getHarga() + " x "
-    // // + dbTransaksi[3][i]);
-    // // }
-    // // }
-    // " ⁂ Total Harga : " + totalHarga + "\n" +
-    // " ⁂ Kembalian : " + kembalian[idxPembeli];
-    // return nota;
-    // }
-
     public int getIdTransaksi(int idxTransaksi, int idxPembeli) {
         return idTransaksi[idxTransaksi][idxPembeli];
     }
 
     public void setIdTransaksi(int idxTransaksi, int idTransaksi, int idxPembeli) {
-        // this.idTransaksi = cMenuCLI.transaksi[add.idxTransaksi - 1].getIdTransaksi()
-        // + 1;
         cTransaksi.idTransaksi[idxTransaksi][idxPembeli] = idTransaksi;
     }
 
@@ -255,7 +195,15 @@ public class cTransaksi {
         return tMakanan[i];
     }
 
-    public cMinuman[] getMinuman() {
+    public cMakanan[] getMakananArray() {
+        return tMakanan;
+    }
+
+    public cMinuman getMinuman(int i) {
+        return tMinuman[i];
+    }
+
+    public cMinuman[] getMinumanArray() {
         return tMinuman;
     }
 
@@ -293,21 +241,14 @@ public class cTransaksi {
 
     public void ToString(int idxPembeli) {
         add.border();
-        // int idxTransaksi = 0;
-        // for (int j = 0; j < add.idxTransaksi; j++) {
-        // for (int k = 0; k < dbTransaksi.length; k++) {
-        // if (idTransaksi[j][idxPembeli] != null) {
         System.out.println("ID Transaksi\t: " + idTransaksi[add.idxTransaksi - 1][idxPembeli]);
-        // idxTransaksi = j;
-        // }
-        // }
-        // }
         System.out.println("Tanggal\t\t: " + tanggalTransaksi[add.idxTransaksi - 1]);
         if (idxPembeli == 0) {
             System.out.println("Nama Pembeli\t: " + pembeli[idxPembeli].getNama());
         } else {
             System.out.println("Nama Pembeli\t: " + pembeli[idxPembeli].getNama() + "  [Member]");
         }
+
         add.border();
         try {
             for (int i = 0; i < tMakanan.length; i++) {
@@ -334,6 +275,7 @@ public class cTransaksi {
                 }
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         try {
             for (int i = 0; i < tMinuman.length; i++) {
@@ -357,25 +299,12 @@ public class cTransaksi {
                 }
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         add.border();
         System.out.println("Total Harga\t\t\t\t" + totalHarga);
-
-        // System.out.println("Bayar\t\t: " + bayar[idxPembeli]);
-        // System.out.println("Kembalian\t: " + kembalian[idxPembeli]);
         add.border();
     }
-
-    // public String ToString(int idxPembeli) {
-    // return "Id Transaksi\t\t: " + idTransaksi + "\n" +
-    // "Tanggal Transaksi\t: " + tanggalTransaksi[idxPembeli] + "\n" +
-    // "Nama Pembeli\t\t: " + namaPembeli + "\n" +
-    // "Nama Makanan\t\t: " + tMakanan[idxPembeli] + "\n" +
-    // "Harga Barang\t\t: " + hargaBarang[idxPembeli] + "\n" +
-    // "Jumlah Barang\t\t: " + jumlahBarang[idxPembeli] + "\n" +
-    // "Total Harga\t\t: " + totalHarga[idxPembeli] + "\n" +
-    // "Kembalian\t\t: " + kembalian[idxPembeli];
-    // }
 
     static int pilihPembeli;
     public static cTransaksi beli = new cTransaksi();
@@ -512,17 +441,14 @@ public class cTransaksi {
                         }
                         System.out.print("Jumlah: ");
                         jumlah[idx][kodeMenu] = add.sc().nextInt();
-                        // dbTransaksi[3][idx] = String.valueOf(jumlah[idx][kodeMenu]);
 
                         if (kodeMenu == 0) {
                             beli.tambahMakanan(cMenuCLI.makanan[idx], jumlah[idx][kodeMenu], (pilihPembeli - 1), idx);
                             porsiMakanan[pilihPembeli - 1][idx] = jumlah[idx][kodeMenu];
-                            // System.out.println("Pesanan ditambahkan");
                         }
                         if (kodeMenu == 1) {
                             beli.tambahMinuman(cMenuCLI.minuman[idx], jumlah[idx][kodeMenu], (pilihPembeli - 1), idx);
                             porsiMinuman[pilihPembeli - 1][idx] = jumlah[idx][kodeMenu];
-                            // System.out.println("Pesanan ditambahkan");
                         }
                         System.out.println("\tTambah Pesanan Lagi? (0 Tidak/1 Ya)");
                         System.out.print("\tPilihan: ");
@@ -535,48 +461,6 @@ public class cTransaksi {
                     } while (belilagi == true);
                     add.border();
                     break;
-                // add.border();
-                // cTransaksi.pembeli.setNama(pilihPembeli);
-                // add.printMenu("makanan");
-                // add.printMenu("minuman");
-                // add.border();
-                // System.out.print("Pilih Id Menu : ");
-                // int idMenu = add.sc().nextInt();
-                // add.border();
-                // System.out.print("Jumlah Pesanan : ");
-                // int jumlahPesanan = add.sc().nextInt();
-                // add.border();
-                // cMenuCLI.transaksi[add.idxTransaksi] = new cTransaksi(
-                // cMenuCLI.transaksi[add.idxTransaksi - 1].getIdTransaksi() + 1,
-                // cMenuCLI.pembeli[idPembeli - 1].getNama(),
-                // cMenuCLI.makanan[idMenu - 1].getNama(),
-                // cMenuCLI.makanan[idMenu - 1].getHarga(),
-                // jumlahPesanan,
-                // cMenuCLI.makanan[idMenu - 1].getHarga() * jumlahPesanan);
-
-                // System.out.println(cMenuCLI.makanan);
-                // add.border();
-                // add.backToMenu();
-                // break;
-                // cTransaksi transaksi = new cTransaksi();
-                // if (pilih > 0 && pilih <= add.idxPembeli) {
-                // add.border();
-                // System.out.println(cMenuCLI.pembeli[pilih - 1].ToString());
-                // add.border();
-                // } else {
-                // add.salahInput();
-                // }
-                // switch (pilih) {
-                // case 1:
-                // break;
-                // case 2:
-                // break;
-                // default:
-                // add.salahInput();
-                // break;
-                // }
-                // add.backToMenu();
-                // break;
                 case 3:
                     add.cls();
                     add.border();
@@ -598,19 +482,6 @@ public class cTransaksi {
                     }
                     break;
                 case 4:
-                    // add.cls();
-                    // bug gaes :)
-                    // for (int i = 0; i < add.idxTransaksi; i++) {
-                    // String temp = beli[i].getMakanan().getNama();
-                    // if (beli[i].getMakanan(i) != null) {
-                    // System.out.println("[Transaksi ke-" + (i + 1) + "] ");
-                    // if (tMakanan[0] == null && tMinuman[0] == null) {
-                    // add.border();
-                    // System.out.println("Belum mengisi pesanan!");
-                    // add.border();
-                    // add.sleep();
-                    // cTransaksi.Transaksi();
-                    // }
                     boolean paidInFull = false;
                     boolean notEnough = false;
                     do {
@@ -656,20 +527,6 @@ public class cTransaksi {
                     System.out.println(" ⁘⁘ Lihat Transaksi");
                     add.border();
                     System.out.println("Under development");
-                    // for (int i = 0; i < add.idxTransaksi; i++) {
-                    // System.out.println("[Transaksi ke-" + (i + 1) + "] ");
-                    // beli.ToString(i);
-                    // // System.out.println(print.ToString(i));
-                    // add.border();
-                    // // if (cMenuCLI.transaksi[i] != null) {
-                    // // add.border();
-                    // // System.out.println(i);
-                    // // System.out.println("[Transaksi ke-" + (i + 1) + "] ");
-                    // // System.out.println(cMenuCLI.transaksi[i].ToString());
-                    // // add.border();
-                    // // i++;
-                    // // }
-                    // }
                     add.backToMenu();
                     break;
                 case 6:
