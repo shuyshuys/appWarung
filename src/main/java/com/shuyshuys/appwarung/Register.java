@@ -13,15 +13,16 @@ import java.awt.event.ActionListener;
 
 class Register {
 
+    static String id = "";
+
     public static void main(String[] args) {
         Register regis = new Register();
         regis.launchApp();
     }
 
-    // public String getUser() {
-    // RegisterFrame lf = new RegisterFrame();
-    // return lf.getUser;
-    // }
+    public static String getUser() {
+        return id;
+    }
 
     public void launchApp() {
         RegisterFrame regisFrame = new RegisterFrame();
@@ -42,18 +43,6 @@ class Register {
         regisFrame.setResizable(false);
     }
 }
-
-// class AppFrame extends JFrame implements ActionListener {
-// AppFrame() {
-
-// }
-
-// @Override
-// public void actionPerformed(ActionEvent e) {
-// // Auto-generated method stub
-
-// }
-// }
 
 // NOTE: Creating RegisterFrame class
 class RegisterFrame extends JFrame implements ActionListener {
@@ -121,18 +110,16 @@ class RegisterFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // Coding part of LOGIN button
         if (e.getSource() == registerButton) {
-            String id = userText.getText();
+            Register.id = userText.getText();
             String pass = String.valueOf(passText.getPassword());
 
             try {
-                String sql = "INSERT INTO login (Nama, Password) VALUES ('" + id + "', '" + pass + "')";
-                koneksi.getCon().createStatement().executeUpdate(sql);
+                String sql = "INSERT INTO login (Nama, Password) VALUES ('" + Register.id + "', '" + pass + "')";
+                Post.getCon().createStatement().executeUpdate(sql);
                 JOptionPane.showMessageDialog(null, "Register Success");
 
                 dispose();
                 login.launchApp();
-                // badLogin login = new badLogin();
-                // login.launchApp();
             } catch (Exception er) {
                 JOptionPane.showMessageDialog(null, er.getMessage());
                 System.err.println(er.getMessage());
