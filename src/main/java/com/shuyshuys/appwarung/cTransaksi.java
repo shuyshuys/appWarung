@@ -7,8 +7,8 @@ package com.shuyshuys.appwarung;
 public class cTransaksi {
     static cPembeli[] pembeli;
     private int jumlahMakanan, jumlahMinuman, idxMaxMakanan, idxMaxMinuman;
-    private cMakanan[] tMakanan;
-    private cMinuman[] tMinuman;
+    static cMakanan[] tMakanan;
+    static cMinuman[] tMinuman;
 
     static String[][] dbTransaksi = new String[5][add.getMostMenu()];
 
@@ -68,8 +68,15 @@ public class cTransaksi {
             dbTransaksi[0][idxMakanan] = Integer.toString(makanan.getHarga() * jumlah); // jumlah harga makanan
             dbTransaksi[2][idxPembeli] = dbTransaksi[2][idxPembeli] + String.valueOf(makanan.getHarga() * jumlah);
 
-            cMenuCLI.laporanPelanggan[idxPembeli] = cMenuCLI.laporanPelanggan[idxPembeli] + makanan.getHarga() * jumlah;
-            cMenuCLI.laporanHargaMakanan[idxMakanan] = makanan.getHarga() * jumlah;
+            if (idxPembeli == 0) {
+                cMenuCLI.laporanPelanggan[idxPembeli] = cMenuCLI.laporanPelanggan[idxPembeli]
+                        + makanan.getHarga() * jumlah;
+                cMenuCLI.laporanHargaMakanan[idxMakanan] = makanan.getHarga() * jumlah;
+            } else {
+                cMenuCLI.laporanPelanggan[idxPembeli] = cMenuCLI.laporanPelanggan[idxPembeli]
+                        + (makanan.getHarga() * jumlah * 90 / 100);
+                cMenuCLI.laporanHargaMakanan[idxMakanan] = makanan.getHarga() * jumlah * 90 / 100;
+            }
 
             porsiMakanan[idxPembeli][idxMakanan] = jumlah;
             jumlahMakanan++;
@@ -92,8 +99,15 @@ public class cTransaksi {
             dbTransaksi[1][idxMinuman] = String.valueOf(minuman.getHarga() * jumlah);
             dbTransaksi[2][idxPembeli] = String.valueOf(minuman.getHarga() * jumlah);
 
-            cMenuCLI.laporanPelanggan[idxPembeli] = cMenuCLI.laporanPelanggan[idxPembeli] + minuman.getHarga() * jumlah;
-            cMenuCLI.laporanHargaMinuman[idxMinuman] = minuman.getHarga() * jumlah;
+            if (idxPembeli == 0) {
+                cMenuCLI.laporanPelanggan[idxPembeli] = cMenuCLI.laporanPelanggan[idxPembeli]
+                        + minuman.getHarga() * jumlah;
+                cMenuCLI.laporanHargaMinuman[idxMinuman] = minuman.getHarga() * jumlah;
+            } else {
+                cMenuCLI.laporanPelanggan[idxPembeli] = cMenuCLI.laporanPelanggan[idxPembeli]
+                        + (minuman.getHarga() * jumlah * 90 / 100);
+                cMenuCLI.laporanHargaMinuman[idxMinuman] = minuman.getHarga() * jumlah * 90 / 100;
+            }
 
             porsiMinuman[idxPembeli][idxMinuman] = jumlah;
             jumlahMinuman++;
@@ -124,6 +138,16 @@ public class cTransaksi {
                     found = true;
                     totalHarga = totalHarga - tMakanan[i].getHarga()
                             * porsiMakanan[idxPembeli][add.searchIdxById(tMakanan[i].getId(), 0)];
+
+                    cMenuCLI.laporanPelanggan[idxPembeli] = cMenuCLI.laporanPelanggan[idxPembeli]
+                            - tMakanan[i].getHarga()
+                                    * porsiMakanan[idxPembeli][add.searchIdxById(tMakanan[i].getId(), 0)];
+
+                    cMenuCLI.laporanHargaMakanan[add.searchIdxById(tMakanan[i].getId(),
+                            0)] = cMenuCLI.laporanHargaMakanan[add.searchIdxById(tMakanan[i].getId(), 0)]
+                                    - tMakanan[i].getHarga()
+                                            * porsiMakanan[idxPembeli][add.searchIdxById(tMakanan[i].getId(), 0)];
+
                     tMakanan[i] = null;
                     jumlahMakanan--;
                     for (int j = i; j < jumlahMakanan; j++) {
@@ -162,6 +186,16 @@ public class cTransaksi {
                     found = true;
                     totalHarga = totalHarga - tMinuman[i].getHarga()
                             * porsiMinuman[idxPembeli][add.searchIdxById(tMinuman[i].getId(), 1)];
+
+                    cMenuCLI.laporanPelanggan[idxPembeli] = cMenuCLI.laporanPelanggan[idxPembeli]
+                            - tMinuman[i].getHarga()
+                                    * porsiMinuman[idxPembeli][add.searchIdxById(tMinuman[i].getId(), 1)];
+
+                    cMenuCLI.laporanHargaMinuman[add.searchIdxById(tMinuman[i].getId(),
+                            1)] = cMenuCLI.laporanHargaMinuman[add.searchIdxById(tMinuman[i].getId(), 1)]
+                                    - tMinuman[i].getHarga()
+                                            * porsiMinuman[idxPembeli][add.searchIdxById(tMinuman[i].getId(), 1)];
+
                     tMinuman[i] = null;
                     jumlahMinuman--;
                     for (int j = i; j < jumlahMinuman; j++) {
@@ -351,7 +385,7 @@ public class cTransaksi {
                             add.idxPembeli++;
                             pilihPembeli = add.idxPembeli - 1;
                         } else if (alamat == "" && pilih == "") {
-                            cTransaksi.pembeli[0] = new cPembeli();
+                            // cTransaksi.pembeli = new cPembeli();
                             beli.isiPembeli(pembeli[0], 0);
                             pilihPembeli = 1;
                         } else {
@@ -518,6 +552,7 @@ public class cTransaksi {
                     } while (paidInFull == false);
                     add.border();
                     mineWriter.writeTransaksi(pilihPembeli - 1);
+                    mineWriter.struk(add.PATH_STRUK, pilihPembeli - 1);
                     totalHargaLifeTime = totalHargaLifeTime + totalHarga;
                     add.backToMenu();
                     break;
