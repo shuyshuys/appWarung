@@ -25,15 +25,6 @@ public class AppWarung {
         cMenuCLI.laporanHargaMakanan = new int[add.idxMakanan];
         cMenuCLI.laporanHargaMinuman = new int[add.idxMinuman];
         cMenuCLI.laporanPelanggan = new int[add.idxPembeli + 5];
-        // for (int i = 0; i < add.idxMakanan; i++) {
-        // if (cMenuCLI.laporanHargaMakanan != null) {
-        // cMenuCLI.laporanHargaMakanan[i] = 0;
-        // cMenuCLI.laporanHargaMinuman[i] = 0;
-        // System.out.println("laporan harga makanan " + cMenuCLI.laporanHargaMakanan[i]
-        // + ", minuman "
-        // + cMenuCLI.laporanHargaMinuman[i]);
-        // }
-        // }
 
         while (pilihan != 3) {
             add.border();
