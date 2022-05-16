@@ -2,6 +2,7 @@ package com.shuyshuys.appwarung;
 
 /**
  * @author shuyshuys
+ * @author naishlts
  */
 
 public class cBarang {
