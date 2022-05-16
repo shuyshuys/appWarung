@@ -378,6 +378,10 @@ public class add {
         System.out.println("=================================================");
     }
 
+    public static String borderString() {
+        return "=================================================";
+    }
+
     public static void salahInput() {
         System.out.println("Pilihan salah, mohon ulangi!");
     }
@@ -389,7 +393,7 @@ public class add {
 
     public static void sleep() {
         try {
-            Thread.sleep(2500);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -422,4 +426,5 @@ public class add {
     public static String PATH_PEMBELI = "./src/main/java/com/shuyshuys/appwarung/database/pembeli.txt";
     public static String PATH_TRANSAKSI = "./src/main/java/com/shuyshuys/appwarung/database/transaksi.txt";
     public static String PATH_LOG = "./src/main/java/com/shuyshuys/appwarung/database/log.txt";
+    public static String PATH_STRUK = "./src/main/java/com/shuyshuys/appwarung/database/struk.txt";
 }
