@@ -333,12 +333,6 @@ public class cMenuCLI {
                                 laporanNamaMinuman[i] = cMenuCLI.minuman[i].getNama();
                             }
 
-                            // System.out.println("Laporan nama makanan: " +
-                            // Arrays.toString(laporanNamaMakanan));
-                            // add.border();
-                            // System.out.println("Laporan nama minuman: " +
-                            // Arrays.toString(laporanNamaMinuman));
-
                             String[] combinedBarang = new String[add.idxMakanan + add.idxMinuman];
                             int idx = 0;
                             for (String nama : laporanNamaMakanan) {
@@ -350,17 +344,6 @@ public class cMenuCLI {
                                 idx++;
                             }
 
-                            // add.border();
-                            // System.out.println("Combined arrays barang: " +
-                            // Arrays.toString(combinedBarang));
-                            // String[][] laporanMakanan = add.sort(laporanNamaMakanan,
-                            // laporanHargaMakanan);
-                            // String[][] laporanMinuman = add.sort(laporanNamaMinuman,
-                            // laporanHargaMinuman);
-
-                            // System.out.println("Laporan makanan: " + Arrays.toString(laporanMakanan));
-                            // System.out.println("Laporan minuman: " + Arrays.toString(laporanMinuman));
-
                             int[] combinedHarga = new int[add.idxMakanan + add.idxMinuman];
                             idx = 0;
                             for (int harga : laporanHargaMakanan) {
@@ -371,10 +354,7 @@ public class cMenuCLI {
                                 combinedHarga[idx] = harga;
                                 idx++;
                             }
-                            // add.border();
-                            // System.out.println("Combined arrays harga: " +
-                            // Arrays.toString(combinedHarga));
-                            // add.border();
+
                             add.sort(combinedBarang, combinedHarga);
 
                             System.out.println("\t\t" + add.getDate());
@@ -397,19 +377,6 @@ public class cMenuCLI {
                                     }
                                 }
                             }
-                            // for (int i = 0; i < add.idxMinuman; i++) {
-                            // if (combinedHarga < 8) {
-                            // if (laporanHargaMinuman[i] != 0) {
-                            // System.out.println(
-                            // cMenuCLI.minuman[i].getNama() + "\t\t" +
-                            // laporanHargaMinuman[i]);
-                            // }
-                            // } else {
-                            // System.out.println(
-                            // cMenuCLI.minuman[i].getNama() + "\t" +
-                            // laporanHargaMinuman[i]);
-                            // }
-                            // }
                             add.backToMenu();
                             break;
                         case 2:
@@ -426,6 +393,10 @@ public class cMenuCLI {
                                     if (cTransaksi.pembeli[i].getNama().length() < 13) {
                                         System.out.println(
                                                 "\t" + cTransaksi.pembeli[i].getNama() + "\t\t\t"
+                                                        + cMenuCLI.laporanPelanggan[i]);
+                                    } else if (cTransaksi.pembeli[i].getNama().length() > 16) {
+                                        System.out.println(
+                                                "\t" + cTransaksi.pembeli[i].getNama() + "\t"
                                                         + cMenuCLI.laporanPelanggan[i]);
                                     } else {
                                         System.out.println(
