@@ -2,6 +2,7 @@ package com.shuyshuys.appwarung;
 
 /**
  * @author shuyshuys
+ * @author Naishaltss
  */
 
 public class cMakanan extends cBarang {

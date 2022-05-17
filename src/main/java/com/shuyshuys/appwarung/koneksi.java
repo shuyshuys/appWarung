@@ -6,6 +6,7 @@ import java.sql.Statement;
 
 /**
  * @author shuyshuys
+ * @author  Naishaltss
  */
 
 public class koneksi {
