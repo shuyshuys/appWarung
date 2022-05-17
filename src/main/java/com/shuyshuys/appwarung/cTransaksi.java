@@ -2,6 +2,7 @@ package com.shuyshuys.appwarung;
 
 /**
  * @author shuyshuys
+ * @author arnica13
  */
 
 public class cTransaksi {
