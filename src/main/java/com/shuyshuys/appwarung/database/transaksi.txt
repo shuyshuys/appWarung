@@ -1,3 +1,11 @@
-902001  Shuya Setsuna  Nasi Bakar  5000  5  25000  30000  5000  08/04/2022 01:01:01
-902002  Mshiro Setsuna  Soto Ayam  20000  2  40000  50000  10000  09/04/2022 02:02:02
-902003  Pembeli 3  Es Milo  5000  3  15000  50000  35000  09/04/2022 03:03:03
+92001  15/04/2022 22:52:38  Guadalupe Gamble  54000  60000  6000    Nasi Bandeng Penyet (K)  15000  2  30000  Kentang Rebus  5000  4  20000  Nasi Putih  5000  2  10000    END
+92003  15/04/2022 22:57:11  New Commers  26100  30000  3900      Teh Panas  3000  3  9000  Es Teh  4000  5  20000  END
+92004  15/04/2022 22:57:59  Non Pelanggan  32000  35000  3000      Cappunico Panas  5000  4  20000  Fanta / Coca Cola  6000  2  12000  END
+92001  16/04/2022 00:50:50  Guadalupe Gamble  59400  60000  600    Nasi Rawon  17000  2  34000    Es Ekstra Joss Susu  8000  4  32000  END
+92001  17/04/2022 14:47:32  Non Pelanggan  66000  100000  34000    Capcay Kuah  17000  2  34000    Jeruk Panas  4000  8  32000  END
+92002  17/04/2022 14:50:30  Werner Chan  41400  50000  8600    Nasi Campur  17000  2  34000    Susu / Susu Coklat  4000  3  12000  END
+92001  17/04/2022 16:45:15  budi  60300  100000  39700    Capcay Kuah  17000  3  51000    Kopi Jahe  4000  4  16000  END
+92001  17/04/2022 16:53:51  Werner Chan  37800  40000  2200    Nasi Asem Daging  17000  2  34000    Susu Jahe  4000  2  8000  END
+92002  17/04/2022 16:55:34  Budi  14400  15000  600      Jeruk Panas  4000  2  8000  Kopi Jahe  4000  2  8000  END
+92003  17/04/2022 16:56:22  Non Pelanggan  20000  30000  10000    Nasi Putih  5000  4  20000    END
+92003  17/04/2022 21:40:02  Budi  16200  20000  3800    Nasi Pecel  9000  2  18000    END
